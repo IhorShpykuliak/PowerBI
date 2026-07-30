@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "e540fe3d8da54a1a4c05",
+  "position": {
+    "x": 9.72644376899696,
+    "y": 546.89969604863222,
+    "z": 1,
+    "height": 173.10030395136778,
+    "width": 1059.2097264437691
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Query"
+                    }
+                  },
+                  "Property": "CapturedActiveDeliveryAddress"
+                }
+              },
+              "queryRef": "Query.CapturedActiveDeliveryAddress",
+              "nativeQueryRef": "CapturedActiveDeliveryAddress"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "9d7348a6604eb6c38199",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Query"
+              }
+            },
+            "Property": "CapturedActiveDeliveryAddress"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}
