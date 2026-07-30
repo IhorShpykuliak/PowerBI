@@ -1,0 +1,22 @@
+.pbi/localSettings.json
+*.cache
+
+# 1. Игнорировать все бинарные тяжелые файлы Power BI (.pbix)
+*.pbix
+
+# 2. Игнорировать сторонние/старые проекты и папки в этой директории
+project.pbip
+project.Report/
+project.SemanticModel/
+OLD/
+Sales Analysis 4.SemanticModel/
+Sales Analysis 4.Report/
+Sales Analysis 4.pbip
+
+# 3. Игнорировать локальный кэш Power BI
+.pbi/localSettings.json
+.pbi/cache.abf
+*.cache
+
+
+*.abf

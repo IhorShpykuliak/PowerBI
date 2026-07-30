@@ -1,0 +1,116 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "2bf8b647600089a9b82e",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 719.70260223048331,
+    "width": 1280
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Query"
+                        }
+                      },
+                      "Property": "AverageCost"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Query.AverageCost)",
+              "nativeQueryRef": "Sum of AverageCost"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Query"
+                    }
+                  },
+                  "Property": "Product_ID"
+                }
+              },
+              "queryRef": "CountNonNull(Query.Product_ID)",
+              "nativeQueryRef": "Product_ID"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Query"
+                      }
+                    },
+                    "Property": "AverageCost"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "838b68285059145200ee",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Query"
+                  }
+                },
+                "Property": "AverageCost"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "dcb36a770e3025087449",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Query"
+              }
+            },
+            "Property": "Product_ID"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

@@ -1,0 +1,332 @@
+table Query
+	lineageTag: 010f290a-848f-4214-9b73-235b5966c861
+
+	column SalesLine_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 932a3c2e-13cb-4d96-80c6-1618d1de4ad5
+		summarizeBy: count
+		sourceColumn: SalesLine_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6be5190e-09ca-4fdf-9de8-df8ebb4a148d
+		summarizeBy: none
+		sourceColumn: SalesDate
+
+		variation Variation
+			isDefault
+			relationship: 37d9adf3-93e6-44e1-beaa-b49d63a32d1c
+			defaultHierarchy: LocalDateTable_a54869c1-4efd-4f12-a66a-9b58d2312bef.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DocType
+		dataType: string
+		lineageTag: 8d2d2b32-a21b-4687-bf5e-5eb20cc4e334
+		summarizeBy: none
+		sourceColumn: DocType
+
+		annotation SummarizationSetBy = Automatic
+
+	column DocNumber
+		dataType: string
+		lineageTag: 72deb2d6-726d-4759-9828-d4b7fecb4868
+		summarizeBy: none
+		sourceColumn: DocNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Line_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 83541ff4-45fa-417f-aebb-f563fcef4e9e
+		summarizeBy: sum
+		sourceColumn: Line_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Branch_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 2df58b57-9b95-495d-93d6-497fdc8d2ac5
+		summarizeBy: count
+		sourceColumn: Branch_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customer_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 08c890a7-2e12-4eb7-9229-8031eabeee5e
+		summarizeBy: count
+		sourceColumn: Customer_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: c267c5f9-257e-4d54-b861-15d50999ceda
+		summarizeBy: count
+		sourceColumn: Product_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Special_Product_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9964849b-01e4-4f2b-bad2-df27413d89a8
+		summarizeBy: count
+		sourceColumn: Special_Product_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales_Order_By_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 25a9d73e-e6fb-48e2-8a1c-5a107c79b2fb
+		summarizeBy: count
+		sourceColumn: Sales_Order_By_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales_Order_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: d6cd5489-e55d-4488-89d4-9a030dde027a
+		summarizeBy: count
+		sourceColumn: Sales_Order_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column StockBranchID
+		dataType: int64
+		formatString: 0
+		lineageTag: 5244693d-f912-465d-8a91-1827846bec46
+		summarizeBy: count
+		sourceColumn: StockBranchID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OriginalBranchID
+		dataType: int64
+		formatString: 0
+		lineageTag: a9c15087-18be-4d2d-8df9-25d3a1e26159
+		summarizeBy: count
+		sourceColumn: OriginalBranchID
+
+		annotation SummarizationSetBy = Automatic
+
+	column IQ_CostCentreID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c2e6cda-8d68-4675-8dbb-314605d9a353
+		summarizeBy: count
+		sourceColumn: IQ_CostCentreID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartmentID
+		dataType: double
+		lineageTag: 8d9db7d0-fb53-445e-89f4-e7e56a3698ee
+		summarizeBy: count
+		sourceColumn: DepartmentID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PriceListRule_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: bf7f0a49-51a2-4469-b88b-7c3762c8dbed
+		summarizeBy: count
+		sourceColumn: PriceListRule_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierPriceSupport_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 4347ddad-5c3a-470e-aa9c-c220e156905b
+		summarizeBy: count
+		sourceColumn: SupplierPriceSupport_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: double
+		lineageTag: f3b949f8-8783-4149-8231-1df99d7a52f1
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NetAmountLessDiscountBase
+		dataType: double
+		lineageTag: e5ad72be-5abb-4a9a-9a54-9191bbb98720
+		summarizeBy: sum
+		sourceColumn: NetAmountLessDiscountBase
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NetCostBase
+		dataType: double
+		lineageTag: c8d7f7c0-5e7e-47a1-8073-e0265c3b38a2
+		summarizeBy: sum
+		sourceColumn: NetCostBase
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column netSellingCostBase
+		dataType: double
+		lineageTag: 9055aaa7-bbb2-4c65-9347-f33fbfb12922
+		summarizeBy: sum
+		sourceColumn: netSellingCostBase
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AverageCost
+		dataType: double
+		lineageTag: cf79dcfc-7752-42f7-84ad-f809f7ad4fcb
+		summarizeBy: sum
+		sourceColumn: AverageCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AveragePerUnitCost
+		dataType: double
+		lineageTag: a349d555-27d5-4238-ad2f-b53c75451ab4
+		summarizeBy: sum
+		sourceColumn: AveragePerUnitCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PotentialRebateAmount
+		dataType: double
+		lineageTag: 95dbb65d-1ce2-448d-b6f2-823f2ef4f5b9
+		summarizeBy: sum
+		sourceColumn: PotentialRebateAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SellingCostRebate
+		dataType: double
+		lineageTag: 70496cb0-75e5-40e8-8043-b0cbca8e3117
+		summarizeBy: sum
+		sourceColumn: SellingCostRebate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Original_Price_Per_Unit
+		dataType: double
+		lineageTag: cf79070e-2849-4290-9fc0-047d7656bc5b
+		summarizeBy: sum
+		sourceColumn: Original_Price_Per_Unit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Selling_Price_Per_Unit
+		dataType: double
+		lineageTag: ba4d035e-3e00-4100-b716-a24945fe4ffe
+		summarizeBy: sum
+		sourceColumn: Selling_Price_Per_Unit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Diff_Original_Vs_Selling_Price_Per_Unit
+		dataType: double
+		lineageTag: b3d379a8-905a-4b60-8135-8864c7e891c8
+		summarizeBy: sum
+		sourceColumn: Diff_Original_Vs_Selling_Price_Per_Unit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SupplierPriceSupportAmount
+		dataType: double
+		lineageTag: b11a9468-78fb-4180-9b73-990ccb99667e
+		summarizeBy: sum
+		sourceColumn: SupplierPriceSupportAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CreditReason
+		dataType: string
+		lineageTag: f926061e-6d37-48ba-8f5e-77073b8ac3b2
+		summarizeBy: none
+		sourceColumn: CreditReason
+
+		annotation SummarizationSetBy = Automatic
+
+	column Original_Source
+		dataType: string
+		lineageTag: e848cd07-8562-4b4d-b4b6-fc421a928eaa
+		summarizeBy: none
+		sourceColumn: Original_Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderSource
+		dataType: string
+		lineageTag: 12b745de-8944-4c9d-b3d7-0c732ed97046
+		summarizeBy: none
+		sourceColumn: OrderSource
+
+		annotation SummarizationSetBy = Automatic
+
+	column CapturedActiveDeliveryAddress
+		dataType: string
+		lineageTag: 1efd3534-e5a4-49a9-a949-9425c6b53e2c
+		summarizeBy: none
+		sourceColumn: CapturedActiveDeliveryAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column CapturedActiveDeliveryAddressPostCode
+		dataType: string
+		lineageTag: 078a8a6c-b9e0-4a23-b083-80e37bc1c9db
+		summarizeBy: none
+		sourceColumn: CapturedActiveDeliveryAddressPostCode
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Query = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"4679ec9e-3a9e-4199-a9ae-185b39e968d2" = Workspaces{[workspaceId="4679ec9e-3a9e-4199-a9ae-185b39e968d2"]}[Data],
+				    #"813390b6-9e41-4bf8-9d9b-d54d575633e2" = #"4679ec9e-3a9e-4199-a9ae-185b39e968d2"{[dataflowId="813390b6-9e41-4bf8-9d9b-d54d575633e2"]}[Data],
+				    Query_ = #"813390b6-9e41-4bf8-9d9b-d54d575633e2"{[entity="Query",version=""]}[Data]
+				in
+				    Query_
+

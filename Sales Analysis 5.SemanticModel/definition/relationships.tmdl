@@ -1,0 +1,5 @@
+relationship 37d9adf3-93e6-44e1-beaa-b49d63a32d1c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Query.SalesDate
+	toColumn: LocalDateTable_a54869c1-4efd-4f12-a66a-9b58d2312bef.Date
+
