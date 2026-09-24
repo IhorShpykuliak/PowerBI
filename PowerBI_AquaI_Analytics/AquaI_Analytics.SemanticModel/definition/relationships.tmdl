@@ -1,0 +1,36 @@
+relationship AutoDetected_d5ad01f9-2e03-46d3-8ba5-736634c4083e
+	fromColumn: Fact_PurchaseOrder.ProductID
+	toColumn: Dim_Product.ProductID
+
+relationship 6e96c8bd-01c1-7a26-f4fe-1bc4aee0943f
+	fromColumn: Fact_PurchaseOrder.PODateKey
+	toColumn: Dim_Date.Date
+
+relationship AutoDetected_a83af2ab-750a-4e0d-9c4d-dce1d644871b
+	fromColumn: Fact_PurchaseOrder.SupplierID
+	toColumn: Dim_Supplier.SupplierID
+
+relationship 96c1829f-6229-90ca-5363-0e6fb799007d
+	fromColumn: Fact_SalesOrder.SODateKey
+	toColumn: Dim_Date.Date
+
+relationship 3e33d74a-2a70-1c6e-5bb2-01874073be54
+	fromColumn: Fact_SalesOrder.ProductID
+	toColumn: Dim_Product.ProductID
+
+relationship AutoDetected_5341199f-693f-4810-9d31-783885d44273
+	fromColumn: Fact_SalesOrder.CustomerID
+	toColumn: Dim_Customer.CustomerID
+
+relationship AutoDetected_063fc12d-0f0e-4999-8db1-c6e5edd0abd7
+	fromColumn: Fact_SalesOrder.BranchID
+	toColumn: Dim_Branch.BranchID
+
+relationship AutoDetected_71d56218-acaf-4163-8984-a74bfe2a7e53
+	fromColumn: Fact_SalesOrder.SalesRepID
+	toColumn: Dim_SalesRep.SalesRepID
+
+relationship d7f7e456-2e14-a2dd-4559-c7a9256f275f
+	fromColumn: Dim_AlternateSupplier.ProductID
+	toColumn: Dim_Product.ProductID
+

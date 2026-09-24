@@ -1,0 +1,161 @@
+table Fact_PurchaseOrder
+	lineageTag: 3dfee5e6-3012-4299-9c1c-85c7fe1c81fb
+
+	refreshPolicy
+		policyType: basic
+		rollingWindowGranularity: year
+		rollingWindowPeriods: 3
+		incrementalGranularity: day
+		incrementalPeriods: 30
+		sourceExpression =
+			let
+			    Source = Sql.Database("SER-SQL-01\SQL", "Intact_IQ_Walter_Tipper_Ltd", [Query="SELECT #(lf)    -- Primary & Foreign Keys for Star Schema Relationships#(lf)    PO.C_ID                                AS PurchaseOrderID,#(lf)    POL.C_ID                               AS POLineID,#(lf)    CAST(PO.C_DATE AS DATE)                AS PODateKey,        -- Foreign key to Dim_Date#(lf)    PO.C_SUPPLIER                          AS SupplierID,       -- Foreign key to Dim_Supplier / Dim_Customer#(lf)    POL.C_PRODUCT                          AS ProductID,        -- Foreign key to Dim_Product#(lf)    PO.C_WORKFLOWSTATUS                    AS StatusID,         -- Foreign key to Dim_Status (if applicable)#(lf)    #(lf)    -- Purchase Order Header Attributes#(lf)    PO.C_NUMBER                            AS PONumber,#(lf)    #(lf)    -- Line Quantities#(lf)    ISNULL(POL.C_QUANTITY, 0)              AS QtyOrdered,#(lf)    ISNULL(POL.C_QUANTITYSUPPLIED, 0)      AS QtySupplied,#(lf)    ISNULL(POL.C_QUANTITYOUTSTANDING, 0)   AS QtyOutstanding,#(lf)    ISNULL(POL.C_QUANTITYWRITTENOFF, 0)    AS QtyWrittenOff,#(lf)    ISNULL(POL.C_PACKQUANTITY, 0)          AS PackQuantity,#(lf)    #(lf)    -- Line Amounts#(lf)    ISNULL(POL.C_NETAMOUNTLESSDISCOUNTBASE, 0) AS NetAmount,#(lf)    #(lf)    -- Calculated Financial Metrics (Outstanding Amount)#(lf)    CASE #(lf)        WHEN ISNULL(POL.C_QUANTITY, 0) > 0 #(lf)        THEN (ISNULL(POL.C_NETAMOUNTLESSDISCOUNTBASE, 0) / POL.C_QUANTITY) * ISNULL(POL.C_QUANTITYOUTSTANDING, 0)#(lf)        ELSE 0 #(lf)    END                                    AS OutstandingAmount#(lf)#(lf)FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PURCHASEORDER] PO WITH (NOLOCK)#(lf)INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PURCHASEORDER_LINE] POL WITH (NOLOCK)#(lf)    ON POL.C__OWNER_ = PO.C_ID#(lf)INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT] P WITH (NOLOCK)#(lf)    ON P.C_ID = POL.C_PRODUCT#(lf)INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENT] PD WITH (NOLOCK)#(lf)    ON PD.C_ID = P.C_DEPARTMENT#(lf)INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENTGROUP] PDG WITH (NOLOCK)#(lf)    ON PD.C_GROUP = PDG.C_ID#(lf)WHERE 1=1 #(lf)    AND PDG.C_CODE = 'AQUAI'#(lf)    AND P.C_ID != 21479144630299 -- Exclude system/text item 'TEXT HAS DEPARTMENT GROUP AQUA I'#(lf)    AND PO.C_DATE >= '2026-01-01'"]),
+			    #"Filtered Rows" = Table.SelectRows(Source, each [PODateKey] >= RangeStart and [PODateKey] < RangeEnd)
+			in
+			    #"Filtered Rows"
+
+	column PurchaseOrderID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9bb44c09-30ef-499f-9229-58bc7a0d6e64
+		summarizeBy: count
+		sourceColumn: PurchaseOrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column POLineID
+		dataType: int64
+		formatString: 0
+		lineageTag: 731cdfed-323d-4555-9c7c-ba996eafa0f9
+		summarizeBy: count
+		sourceColumn: POLineID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PODateKey
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fed6f9d4-053a-4dc0-ba8e-2fe9d57a3eb7
+		summarizeBy: none
+		sourceColumn: PODateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierID
+		dataType: int64
+		formatString: 0
+		lineageTag: 7fe41ddd-103a-482d-8c17-fc88f24a6a3a
+		summarizeBy: none
+		sourceColumn: SupplierID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		lineageTag: 2a8126eb-c31d-4550-8833-ad463b01498f
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusID
+		dataType: int64
+		formatString: 0
+		lineageTag: ec2a21d5-b5f5-4474-b846-670155f13e73
+		summarizeBy: count
+		sourceColumn: StatusID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PONumber
+		dataType: string
+		lineageTag: 76f8842c-f448-47f6-8933-4edd9a628b13
+		summarizeBy: none
+		sourceColumn: PONumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyOrdered
+		dataType: double
+		lineageTag: f8c17bee-361a-447d-91c3-58ee1f72f0e9
+		summarizeBy: sum
+		sourceColumn: QtyOrdered
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtySupplied
+		dataType: double
+		lineageTag: bbc45309-4e9b-4cbd-b405-31e4c28d733a
+		summarizeBy: sum
+		sourceColumn: QtySupplied
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyOutstanding
+		dataType: double
+		lineageTag: f18b295f-146c-4541-8d82-4fe31dbaf8fc
+		summarizeBy: sum
+		sourceColumn: QtyOutstanding
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyWrittenOff
+		dataType: double
+		lineageTag: abc0e2ca-5d45-49ce-b204-0164d0f50e99
+		summarizeBy: sum
+		sourceColumn: QtyWrittenOff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PackQuantity
+		dataType: double
+		lineageTag: 5a52e133-9b21-49b2-a6bb-260afc4ed6a8
+		summarizeBy: sum
+		sourceColumn: PackQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NetAmount
+		dataType: double
+		lineageTag: 5c2ddebf-cf33-48f6-be8f-e0b59df195e1
+		summarizeBy: sum
+		sourceColumn: NetAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OutstandingAmount
+		dataType: double
+		lineageTag: 30c364f7-d75f-4611-8532-a63e2d6c26ed
+		summarizeBy: sum
+		sourceColumn: OutstandingAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fact_PurchaseOrder = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("SER-SQL-01\SQL", "Intact_IQ_Walter_Tipper_Ltd", [Query="SELECT #(lf)    -- Primary & Foreign Keys for Star Schema Relationships#(lf)    PO.C_ID                                AS PurchaseOrderID,#(lf)    POL.C_ID                               AS POLineID,#(lf)    CAST(PO.C_DATE AS DATE)                AS PODateKey,        -- Foreign key to Dim_Date#(lf)    PO.C_SUPPLIER                          AS SupplierID,       -- Foreign key to Dim_Supplier / Dim_Customer#(lf)    POL.C_PRODUCT                          AS ProductID,        -- Foreign key to Dim_Product#(lf)    PO.C_WORKFLOWSTATUS                    AS StatusID,         -- Foreign key to Dim_Status (if applicable)#(lf)    #(lf)    -- Purchase Order Header Attributes#(lf)    PO.C_NUMBER                            AS PONumber,#(lf)    #(lf)    -- Line Quantities#(lf)    ISNULL(POL.C_QUANTITY, 0)              AS QtyOrdered,#(lf)    ISNULL(POL.C_QUANTITYSUPPLIED, 0)      AS QtySupplied,#(lf)    ISNULL(POL.C_QUANTITYOUTSTANDING, 0)   AS QtyOutstanding,#(lf)    ISNULL(POL.C_QUANTITYWRITTENOFF, 0)    AS QtyWrittenOff,#(lf)    ISNULL(POL.C_PACKQUANTITY, 0)          AS PackQuantity,#(lf)    #(lf)    -- Line Amounts#(lf)    ISNULL(POL.C_NETAMOUNTLESSDISCOUNTBASE, 0) AS NetAmount,#(lf)    #(lf)    -- Calculated Financial Metrics (Outstanding Amount)#(lf)    CASE #(lf)        WHEN ISNULL(POL.C_QUANTITY, 0) > 0 #(lf)        THEN (ISNULL(POL.C_NETAMOUNTLESSDISCOUNTBASE, 0) / POL.C_QUANTITY) * ISNULL(POL.C_QUANTITYOUTSTANDING, 0)#(lf)        ELSE 0 #(lf)    END                                    AS OutstandingAmount#(lf)#(lf)FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PURCHASEORDER] PO WITH (NOLOCK)#(lf)INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PURCHASEORDER_LINE] POL WITH (NOLOCK)#(lf)    ON POL.C__OWNER_ = PO.C_ID#(lf)INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT] P WITH (NOLOCK)#(lf)    ON P.C_ID = POL.C_PRODUCT#(lf)INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENT] PD WITH (NOLOCK)#(lf)    ON PD.C_ID = P.C_DEPARTMENT#(lf)INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENTGROUP] PDG WITH (NOLOCK)#(lf)    ON PD.C_GROUP = PDG.C_ID#(lf)WHERE 1=1 #(lf)    AND PDG.C_CODE = 'AQUAI'#(lf)    AND P.C_ID != 21479144630299 -- Exclude system/text item 'TEXT HAS DEPARTMENT GROUP AQUA I'#(lf)    AND PO.C_DATE >= '2026-01-01'"]),
+				    #"Filtered Rows" = Table.SelectRows(Source, each [PODateKey] >= RangeStart and [PODateKey] < RangeEnd)
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

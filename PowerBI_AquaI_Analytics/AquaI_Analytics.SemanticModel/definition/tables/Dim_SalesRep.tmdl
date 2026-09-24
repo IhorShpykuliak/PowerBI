@@ -1,0 +1,40 @@
+table Dim_SalesRep
+	lineageTag: 31d80ccf-635b-45ea-b6b3-e9fba4b1ed47
+
+	column SalesRepID
+		dataType: int64
+		formatString: 0
+		lineageTag: 51f5c99f-25f9-4547-ba9d-72facf264c79
+		summarizeBy: none
+		sourceColumn: SalesRepID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesRepCode
+		dataType: string
+		lineageTag: bd84992c-60bb-4ecb-8916-af960ebfc2e2
+		summarizeBy: none
+		sourceColumn: SalesRepCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesRepName
+		dataType: string
+		lineageTag: b8116d8b-5141-4380-a5da-1f666371405d
+		summarizeBy: none
+		sourceColumn: SalesRepName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_SalesRep = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [SalesRepID]#(lf)      ,[SalesRepCode]#(lf)      ,[SalesRepName]#(lf)  FROM [Tippers].[dbo].[Dim_SalesRep]"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

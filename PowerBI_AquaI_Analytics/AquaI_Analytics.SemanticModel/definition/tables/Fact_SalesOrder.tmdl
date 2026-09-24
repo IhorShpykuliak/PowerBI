@@ -1,0 +1,132 @@
+table Fact_SalesOrder
+	lineageTag: bed62fb1-2396-4360-914c-8fe8bdf3391d
+
+	column SalesOrderLineID
+		dataType: int64
+		formatString: 0
+		lineageTag: 31726582-da61-4b3e-b66b-0f807959c7d2
+		summarizeBy: count
+		sourceColumn: SalesOrderLineID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesOrderID
+		dataType: int64
+		formatString: 0
+		lineageTag: 32a08507-5683-478b-b4e4-88de76c08d08
+		summarizeBy: count
+		sourceColumn: SalesOrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderNumber
+		dataType: string
+		lineageTag: 5fd3a545-4a0e-4829-9dbe-27f71b0a152e
+		summarizeBy: none
+		sourceColumn: OrderNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column SODateKey
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 146d28b2-16ee-41b6-88da-a9012d01885d
+		summarizeBy: none
+		sourceColumn: SODateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		lineageTag: a05dd406-e21c-41e2-9fe4-3749333ec16f
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerID
+		dataType: int64
+		formatString: 0
+		lineageTag: 7a7a0a00-82e8-492a-9ccb-0a97bd85c816
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BranchID
+		dataType: int64
+		formatString: 0
+		lineageTag: b4557b2b-86c6-4cd1-b97b-7c250682f5fb
+		summarizeBy: none
+		sourceColumn: BranchID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesRepID
+		dataType: int64
+		formatString: 0
+		lineageTag: 33434a48-f766-404b-a493-5dad90009e2f
+		summarizeBy: none
+		sourceColumn: SalesRepID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderTypeID
+		dataType: int64
+		formatString: 0
+		lineageTag: 855146f8-050d-480e-9dc3-10842901a0d1
+		summarizeBy: count
+		sourceColumn: OrderTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkflowStatusID
+		dataType: int64
+		formatString: 0
+		lineageTag: a491268d-87cf-4a0a-8a61-ce22f37d5bbe
+		summarizeBy: count
+		sourceColumn: WorkflowStatusID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderCategory
+		dataType: string
+		lineageTag: d6b11bba-a7df-4112-a478-65702efb0870
+		summarizeBy: none
+		sourceColumn: OrderCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantityOrdered
+		dataType: double
+		lineageTag: 31a6d552-f5db-4823-9edd-21e9f0529da1
+		summarizeBy: sum
+		sourceColumn: QuantityOrdered
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LineNetAmount
+		dataType: double
+		lineageTag: 864fc9cc-e921-46de-b6b1-a361bb094984
+		summarizeBy: sum
+		sourceColumn: LineNetAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fact_SalesOrder = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [SalesOrderLineID]#(lf)      ,[SalesOrderID]#(lf)      ,[OrderNumber]#(lf)      ,[SODateKey]#(lf)      ,[ProductID]#(lf)      ,[CustomerID]#(lf)      ,[BranchID]#(lf)      ,[SalesRepID]#(lf)      ,[OrderTypeID]#(lf)      ,[WorkflowStatusID]#(lf)      ,[OrderCategory]#(lf)      ,[QuantityOrdered]#(lf)      ,[LineNetAmount]#(lf)  FROM [Tippers].[dbo].[Fact_SalesOrder]"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

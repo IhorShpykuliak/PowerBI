@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "87abdf1f01498364e589",
+  "position": {
+    "x": 0,
+    "y": 85.549915397631125,
+    "z": 2,
+    "height": 212.45449729735287,
+    "width": 1280
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Branch"
+                    }
+                  },
+                  "Property": "BranchCode"
+                }
+              },
+              "queryRef": "Dim_Branch.BranchCode",
+              "nativeQueryRef": "BranchCode"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "20ad9205aba6dd74b5a1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Branch"
+              }
+            },
+            "Property": "BranchCode"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

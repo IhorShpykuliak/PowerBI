@@ -1,0 +1,335 @@
+table Dim_Product
+	lineageTag: ac03f1a2-79cc-4a84-82fa-df5c60606210
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		lineageTag: 76481afa-6634-4a2a-aa0e-217c083cf4ab
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProdCode
+		dataType: string
+		lineageTag: 94405762-ed05-4f5c-9204-ac6f80369d32
+		summarizeBy: none
+		sourceColumn: ProdCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProdDescription
+		dataType: string
+		lineageTag: 03f0e000-3b43-4946-9962-0b5e9bab0e4e
+		summarizeBy: none
+		sourceColumn: ProdDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column Department
+		dataType: string
+		lineageTag: c7541479-3023-40a0-8f30-870f9d1b83c3
+		summarizeBy: none
+		sourceColumn: Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductType
+		dataType: string
+		lineageTag: 695179a0-8a58-4d39-9ce5-6ddacc1559bb
+		summarizeBy: none
+		sourceColumn: ProductType
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierName
+		dataType: string
+		lineageTag: 0298b257-25da-4fbd-8ad7-09534bf212e4
+		summarizeBy: none
+		sourceColumn: SupplierName
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierCode
+		dataType: string
+		lineageTag: 5af817c5-985f-45aa-8de7-06a01b7324fc
+		summarizeBy: none
+		sourceColumn: SupplierCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column StockingStatus
+		dataType: string
+		lineageTag: e3e5119e-5143-4b95-96ff-9ebf6ecdfde1
+		summarizeBy: none
+		sourceColumn: StockingStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearchKeywords
+		dataType: string
+		lineageTag: 60e33db2-84c6-464b-838f-8e17abb73227
+		summarizeBy: none
+		sourceColumn: SearchKeywords
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierProductCode
+		dataType: string
+		lineageTag: a46abbbd-b4c1-43f3-b199-02301f509e45
+		summarizeBy: none
+		sourceColumn: SupplierProductCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Length
+		dataType: double
+		lineageTag: 5e67a754-123d-499f-9b72-b8ef7212677b
+		summarizeBy: sum
+		sourceColumn: Length
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Width
+		dataType: double
+		lineageTag: 80b983a9-7299-4aa7-9297-21bda0b62c96
+		summarizeBy: sum
+		sourceColumn: Width
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Height
+		dataType: double
+		lineageTag: 97ccce75-fe17-45a8-aba9-e1b1c510339b
+		summarizeBy: sum
+		sourceColumn: Height
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GrossWeight
+		dataType: double
+		lineageTag: f6d355f2-ef45-4faf-8542-9ba5ad1c6f94
+		summarizeBy: sum
+		sourceColumn: GrossWeight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CBM
+		dataType: double
+		lineageTag: 2dac73aa-8594-47a1-b3f3-163eb6d9b52e
+		summarizeBy: sum
+		sourceColumn: CBM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ExchangeRateUSD
+		dataType: double
+		lineageTag: ad76c0b3-5fdf-47e3-9895-905a8e8cf1ec
+		summarizeBy: sum
+		sourceColumn: ExchangeRateUSD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ListPriceActual
+		dataType: double
+		lineageTag: 5d3e4fc5-58c6-47c1-81b4-7f6b3d4ce801
+		summarizeBy: sum
+		sourceColumn: ListPriceActual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column USDListPrice
+		dataType: double
+		lineageTag: 4f97f369-29b0-4ac1-9187-cf182c18ea89
+		summarizeBy: sum
+		sourceColumn: USDListPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DutyRatePercentage
+		dataType: double
+		lineageTag: 3d6297ab-3c0d-4986-9852-325403d4ca8d
+		summarizeBy: sum
+		sourceColumn: DutyRatePercentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column StandardCost
+		dataType: double
+		lineageTag: 35b0941f-4dae-485b-a521-710514e65f94
+		summarizeBy: sum
+		sourceColumn: StandardCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AvgCost
+		dataType: double
+		lineageTag: b0547718-5b3a-473c-bdf2-bbee7e98573d
+		summarizeBy: sum
+		sourceColumn: AvgCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CalculatedLandedCost
+		dataType: double
+		lineageTag: 6291c8da-43e4-47a6-99a9-3347030c3d59
+		summarizeBy: sum
+		sourceColumn: CalculatedLandedCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column StockLevel
+		dataType: double
+		lineageTag: 7901e178-9e43-4b5d-b2e3-0f9b8800fa77
+		summarizeBy: sum
+		sourceColumn: StockLevel
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OutstandingSO
+		dataType: double
+		lineageTag: 01213694-317e-48fb-bbdf-8efc8fcbd1ed
+		summarizeBy: sum
+		sourceColumn: OutstandingSO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OutstandingPO
+		dataType: double
+		lineageTag: 9912c577-3221-483d-a4d5-12c23bbd866d
+		summarizeBy: sum
+		sourceColumn: OutstandingPO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EffectiveStockLevel
+		dataType: double
+		lineageTag: 83840b22-b3a3-495a-9130-d97fa5192fb5
+		summarizeBy: sum
+		sourceColumn: EffectiveStockLevel
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SalesYtdQty
+		dataType: int64
+		formatString: 0
+		lineageTag: ec153a37-2e40-42b2-8114-50aa47d43800
+		summarizeBy: sum
+		sourceColumn: SalesYtdQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesYtdAmount
+		dataType: double
+		lineageTag: c8dc9fd0-170e-4447-9d0e-402ebf60f2a2
+		summarizeBy: sum
+		sourceColumn: SalesYtdAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyPurchasedYtd
+		dataType: double
+		lineageTag: 3c732454-4b40-4d60-8990-897469980e45
+		summarizeBy: sum
+		sourceColumn: QtyPurchasedYtd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Aqua I Code'
+		dataType: string
+		lineageTag: c33c5d86-cc7b-4bd6-98d3-aab3706eeddc
+		summarizeBy: none
+		sourceColumn: Aqua I Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Aqua I Description'
+		dataType: string
+		lineageTag: 5000aaa3-b965-4354-8968-81f296411877
+		summarizeBy: none
+		sourceColumn: Aqua I Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Wyndam Code'
+		dataType: string
+		lineageTag: 9f8906d7-8f74-4789-82d2-9019f6a12ca0
+		summarizeBy: none
+		sourceColumn: Wyndam Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Wyndam Description'
+		dataType: string
+		lineageTag: b0fa510f-2b76-4f32-baf5-0687b68e03b6
+		summarizeBy: none
+		sourceColumn: Wyndam Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Supplier Stock Code'
+		dataType: string
+		lineageTag: f2ad87f0-9765-4c05-b878-fadc982a314e
+		summarizeBy: none
+		sourceColumn: Supplier Stock Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column C_D_MOQ
+		dataType: double
+		lineageTag: 1853ef56-b2e2-4b5e-acae-662ecb4587a1
+		summarizeBy: sum
+		sourceColumn: C_D_MOQ
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Dim_Product = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("SER-SQL-01\SQL", "Intact_IQ_Walter_Tipper_Ltd", [Query=";WITH IQAvgCost AS#(lf)(#(lf)    SELECT #(lf)        sub1.C_PRODUCT,#(lf)        SUM(C_NEWSTOCKVALUE) / NULLIF(SUM(C_NEWSTOCKLEVEL), 0) AS C_NEWCOSTPRICE#(lf)    FROM#(lf)    (#(lf)        SELECT #(lf)            ac.C_PRODUCT,#(lf)            ac.C_NEWSTOCKVALUE,#(lf)            ac.C_NEWSTOCKLEVEL,#(lf)            ROW_NUMBER() OVER (#(lf)                PARTITION BY ac.C_PRODUCT, ac.C_BRANCH #(lf)                ORDER BY ac.C_DATE DESC#(lf)            ) AS rn#(lf)        FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTAVERAGECOSTUPDATE] ac WITH (NOLOCK)#(lf)        WHERE ac.C_BRANCH = 4337992263053#(lf)    ) sub1#(lf)    WHERE rn = 1#(lf)    GROUP BY sub1.C_PRODUCT#(lf)),#(lf)SalesYTD AS#(lf)(#(lf)    SELECT #(lf)        [Product_ID],#(lf)        SUM([Quantity]) AS TotalQty,#(lf)        SUM([NetAmountLessDiscountBase]) AS TotalSales#(lf)    FROM [Intact_IQ_Walter_Tipper_Ltd_Archive].[dbo].[Tippers_SalesAnalysis] WITH (NOLOCK)#(lf)    WHERE [Date] >= DATEADD(YEAR, -1, GETDATE())#(lf)    GROUP BY [Product_ID]#(lf)),#(lf)SupplierPurchasingYTD AS#(lf)(#(lf)    SELECT #(lf)        PDNL.C_PRODUCT AS Product_ID,#(lf)        SUM(PDNL.C_QUANTITYINVOICED) AS QtyInvoiced#(lf)    FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PURCHASEDELIVERYNOTE_LINE] PDNL WITH (NOLOCK)#(lf)    INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PURCHASEDELIVERYNOTE] PDN WITH (NOLOCK)#(lf)        ON PDN.C_ID = PDNL.C__OWNER_#(lf)    WHERE PDN.C_DATE >= DATEADD(YEAR, -1, GETDATE())#(lf)    GROUP BY PDNL.C_PRODUCT#(lf)),#(lf)ExchangeRate AS#(lf)(#(lf)    SELECT C_PURCHASELEDGERRATE AS exRate#(lf)    FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_IS_CURRENCYRATEDEFINITION_CURRENCYRATEDEFINITIONCURRENCYINFO] WITH (NOLOCK)#(lf)    WHERE C_ID = 524883787719020#(lf))#(lf)SELECT#(lf)    p.C_ID AS ProductID,#(lf)    p.C_CODE AS ProdCode,#(lf)    p.C_DESCRIPTION AS ProdDescription,#(lf)    PD.C_DESCRIPTION AS Department,#(lf)#(lf)    CASE p.C_TYPE #(lf)        WHEN 0  THEN 'Standard'#(lf)        WHEN 4  THEN 'Special'#(lf)        WHEN 7  THEN 'Assembly'#(lf)        WHEN 3  THEN 'Kit'#(lf)        WHEN 11 THEN 'Linear'#(lf)        WHEN 12 THEN 'LinearCon'#(lf)        WHEN 21 THEN 'Index'#(lf)        ELSE CAST(p.C_TYPE AS VARCHAR(10)) #(lf)    END AS ProductType,#(lf)#(lf)    s.C_NAME AS SupplierName,#(lf)    s.C_CODE AS SupplierCode,#(lf)#(lf)    CASE p.C_STOCKINGSTATUS #(lf)        WHEN 0 THEN 'Stocked'#(lf)        WHEN 5 THEN 'Discontinued Immediately'#(lf)        WHEN 4 THEN 'Discontinued After Stock Is Sold'#(lf)        WHEN 1 THEN 'Non Stocked'#(lf)        WHEN 7 THEN 'Not Applicable' #(lf)        WHEN 2 THEN 'Superseded'#(lf)        ELSE CAST(p.C_STOCKINGSTATUS AS VARCHAR(10)) #(lf)    END AS StockingStatus,#(lf)#(lf)    p.C_D_SEARCHKEYWORDS AS SearchKeywords,#(lf)    PP.C_SUPPLIERPRODUCTCODE AS SupplierProductCode,#(lf)#(lf)    -- Габариты и объем (CBM)#(lf)    m.C_LENGTH AS Length,#(lf)    m.C_WIDTH AS Width,#(lf)    m.C_HEIGHT AS Height,#(lf)    m.C_GROSSWEIGHT AS GrossWeight,#(lf)    CAST((m.C_LENGTH * m.C_WIDTH * m.C_HEIGHT) / 1000000000.0 AS DECIMAL(18,4)) AS CBM,#(lf)#(lf)    -- Стоковые показатели#(lf)    CONVERT(DOUBLE PRECISION, ISNULL(pstats.C_STOCKLEVEL, 0)) AS StockLevel,#(lf)    CONVERT(DOUBLE PRECISION, ISNULL(pstats.C_OUTSTANDINGSALESORDERS, 0)) AS OutstandingSO,#(lf)    CONVERT(DOUBLE PRECISION, ISNULL(pstats.C_OUTSTANDINGPURCHASEORDERS, 0)) AS OutstandingPO,#(lf)    CONVERT(DOUBLE PRECISION, ISNULL(pstats.C_EFFECTIVESTOCKLEVEL, 0)) AS EffectiveStockLevel,#(lf)#(lf)    -- Данные YTD#(lf)    CAST(ISNULL(Ytd.TotalQty, 0) AS INT) AS SalesYtdQty,#(lf)    CAST(ISNULL(Ytd.TotalSales, 0) AS DECIMAL(18,2)) AS SalesYtdAmount,#(lf)    CONVERT(DOUBLE PRECISION, ISNULL(SPY.QtyInvoiced, 0)) AS QtyPurchasedYtd,#(lf)#(lf)    -- Цены и себестоимость#(lf)    ex.exRate AS ExchangeRateUSD,#(lf)    CAST(PP.C_LISTPRICEACTUAL AS DECIMAL(18,2)) AS ListPriceActual,#(lf)    CAST(CASE WHEN CUR.C_CODE = 'USD' THEN PPalt.C_LISTPRICEACTUAL ELSE 0 END AS DECIMAL(18,2)) AS USDListPrice,#(lf)    ISNULL(comc.C_D_RATE, 0) AS DutyRatePercentage,#(lf)    cc.C_STANDARDCOST AS StandardCost,#(lf)    i.C_NEWCOSTPRICE AS AvgCost,#(lf)#(lf)    -- Расчет Landed Cost#(lf)    CAST(#(lf)        CASE #(lf)            WHEN CUR.C_CODE = 'USD' #(lf)                 AND PPalt.C_LISTPRICEACTUAL IS NOT NULL #(lf)                 AND (m.C_LENGTH * m.C_WIDTH * m.C_HEIGHT) > 0#(lf)                 AND ex.exRate > 0#(lf)            THEN (#(lf)                    (CEILING((PPalt.C_LISTPRICEACTUAL / ex.exRate) * 100) / 100.0) +#(lf)                    (((m.C_LENGTH * m.C_WIDTH * m.C_HEIGHT) / 1000000000.0) / 66.0 * 6000.0)#(lf)                 ) * (1 + ISNULL(comc.C_D_RATE, 0) / 100.0)#(lf)            ELSE i.C_NEWCOSTPRICE#(lf)        END AS DECIMAL(18,2)#(lf)    ) AS CalculatedLandedCost#(lf)#(lf)    ,PP.[C_SUPPLIERPRODUCTCODE] AS 'Aqua I Code'#(lf)    ,PP.[C_SUPPLIERPRODUCTDESCRIPTION] AS 'Aqua I Description'#(lf)    ,P.C_D_WyndamCode AS 'Wyndam Code'#(lf)    ,P.C_D_WyndamDescription AS 'Wyndam Description'#(lf)    ,P.C_ManufacturerProductCode AS 'Supplier Stock Code'#(lf)    ,PP.C_D_MOQ#(lf)#(lf)FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT] p WITH (NOLOCK)#(lf)CROSS JOIN ExchangeRate ex#(lf)LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_STATISTICS] pstats WITH (NOLOCK) ON pstats.C_ID = p.C_STATISTICS#(lf)LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_PURCHASING] pp WITH (NOLOCK) ON pp.C_ID = p.C_PURCHASING#(lf)LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_SUPPLIER] s WITH (NOLOCK) ON s.C_ID = pp.C_DEFAULTSUPPLIER#(lf)LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENT] PD WITH (NOLOCK) ON PD.C_ID = p.C_DEPARTMENT#(lf)LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENTGROUP] PDG WITH (NOLOCK) ON PD.C_GROUP = PDG.C_ID#(lf)LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_COSTINGS] cc WITH (NOLOCK) ON cc.C_ID = p.C_COSTINGS#(lf)LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_MEASUREMENTS] m WITH (NOLOCK) ON p.C_MEASUREMENTS = m.C_ID#(lf)LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_ALTERNATEPURCHASINGINFO] PI WITH (NOLOCK) ON PI.C__OWNER_ = p.C_ID#(lf)LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_PURCHASING] PPAlt WITH (NOLOCK) ON PPAlt.C_ID = PI.C_ID#(lf)LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_CURRENCY] CUR WITH (NOLOCK) ON CUR.C_ID = PPalt.C_LISTPRICECURRENCY#(lf)LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_IMPORTDUTYSETTINGS] com WITH (NOLOCK) ON com.C_ID = p.C_IMPORTDUTYSETTINGS#(lf)LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_IS_COMMODITYCODE] comc WITH (NOLOCK) ON comc.C_ID = com.C_COMMODITYCODE#(lf)LEFT JOIN IQAvgCost i ON i.C_PRODUCT = p.C_ID#(lf)LEFT JOIN SalesYTD Ytd ON Ytd.Product_ID = p.C_ID#(lf)LEFT JOIN SupplierPurchasingYTD SPY ON SPY.Product_ID = p.C_ID#(lf)WHERE p.C_TYPE NOT IN (15, 2, 6, 19, 10, 18)#(lf)  AND PDG.C_CODE = 'AQUAI';"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

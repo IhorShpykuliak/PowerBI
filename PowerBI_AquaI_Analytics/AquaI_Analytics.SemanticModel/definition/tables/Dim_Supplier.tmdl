@@ -1,0 +1,169 @@
+table Dim_Supplier
+	lineageTag: 358d99ef-69b4-49d8-9ff3-2c4df4e814c1
+
+	column SupplierID
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b844221-bc80-4d10-8344-aa6535ff6b55
+		summarizeBy: none
+		sourceColumn: SupplierID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierCode
+		dataType: string
+		lineageTag: 78460801-4bc8-49f8-815a-acc7b3dbe23d
+		summarizeBy: none
+		sourceColumn: SupplierCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierName
+		dataType: string
+		lineageTag: f674aacd-8e75-474c-8b04-7c1e6a2d78dd
+		summarizeBy: none
+		sourceColumn: SupplierName
+
+		annotation SummarizationSetBy = Automatic
+
+	column TradingName
+		dataType: string
+		lineageTag: 3322f961-c399-4682-a5d6-76e9f00cbbda
+		summarizeBy: none
+		sourceColumn: TradingName
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkflowStatusID
+		dataType: int64
+		formatString: 0
+		lineageTag: 8fe2b3ae-9d4a-4f37-8a07-877ecf3a1f5d
+		summarizeBy: none
+		sourceColumn: WorkflowStatusID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreditStatusID
+		dataType: int64
+		formatString: 0
+		lineageTag: 24eff475-76d2-4ef0-b8e5-0e3429d386a8
+		summarizeBy: none
+		sourceColumn: CreditStatusID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierCategoryID
+		dataType: int64
+		formatString: 0
+		lineageTag: b6b3c6ff-86a2-48a0-a19b-128aee928c33
+		summarizeBy: none
+		sourceColumn: SupplierCategoryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierTypeID
+		dataType: int64
+		formatString: 0
+		lineageTag: 2478de3b-a71f-45ff-9de3-d8358bfa2549
+		summarizeBy: none
+		sourceColumn: SupplierTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column HomeBranchID
+		dataType: int64
+		formatString: 0
+		lineageTag: cd266a8d-1e82-4cf8-b563-847e03914249
+		summarizeBy: none
+		sourceColumn: HomeBranchID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurrencyID
+		dataType: int64
+		formatString: 0
+		lineageTag: ecb85c07-b6be-4a34-9f1b-32525b66f4e3
+		summarizeBy: none
+		sourceColumn: CurrencyID
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsHidePricesOnPO
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0004eb60-7f4b-4f42-84a0-c11c855852be
+		summarizeBy: none
+		sourceColumn: IsHidePricesOnPO
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsSupplierHidden
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3f687536-4bf8-4ddd-9ba7-0b72c16936b8
+		summarizeBy: none
+		sourceColumn: IsSupplierHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsOneOffSpecialsDisabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 83cc00d0-752c-43f0-8d54-b5bc4435db7c
+		summarizeBy: none
+		sourceColumn: IsOneOffSpecialsDisabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column Address
+		dataType: string
+		lineageTag: 7cb07348-d6cd-4a50-9640-4822185e55b7
+		summarizeBy: none
+		sourceColumn: Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column Phone
+		dataType: string
+		lineageTag: add7cf20-99af-4b75-9095-e26a00c87ac7
+		summarizeBy: none
+		sourceColumn: Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mobile
+		dataType: string
+		lineageTag: ef6ef0ea-320c-41ef-ac78-6e0a89c3bd13
+		summarizeBy: none
+		sourceColumn: Mobile
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailAddress
+		dataType: string
+		lineageTag: b4c7fd2f-ffda-4a91-bef4-419e467fecda
+		summarizeBy: none
+		sourceColumn: EmailAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteURL
+		dataType: string
+		lineageTag: 6ec0ea4a-fdd9-4772-b9f8-02083d9b785a
+		summarizeBy: none
+		sourceColumn: WebsiteURL
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Supplier = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [SupplierID]#(lf)      ,[SupplierCode]#(lf)      ,[SupplierName]#(lf)      ,[TradingName]#(lf)      ,[WorkflowStatusID]#(lf)      ,[CreditStatusID]#(lf)      ,[SupplierCategoryID]#(lf)      ,[SupplierTypeID]#(lf)      ,[HomeBranchID]#(lf)      ,[CurrencyID]#(lf)      ,[IsHidePricesOnPO]#(lf)      ,[IsSupplierHidden]#(lf)      ,[IsOneOffSpecialsDisabled]#(lf)      ,[Address]#(lf)      ,[Phone]#(lf)      ,[Mobile]#(lf)      ,[EmailAddress]#(lf)      ,[WebsiteURL]#(lf)  FROM [Tippers].[dbo].[Dim_Supplier]"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

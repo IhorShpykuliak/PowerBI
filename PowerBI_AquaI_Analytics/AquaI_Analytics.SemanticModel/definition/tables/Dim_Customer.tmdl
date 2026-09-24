@@ -1,0 +1,108 @@
+table Dim_Customer
+	lineageTag: ae2dde43-bdac-4e39-8aed-8e2478087b8f
+
+	column CustomerID
+		dataType: int64
+		formatString: 0
+		lineageTag: 6010d652-100d-47e7-b699-e99a7f66bca6
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerCode
+		dataType: string
+		lineageTag: 8ad19649-61e4-48b1-913e-bba5e3bbc826
+		summarizeBy: none
+		sourceColumn: CustomerCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerName
+		dataType: string
+		lineageTag: 09c3a525-7297-4320-865a-860a9bec59ba
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column TradingName
+		dataType: string
+		lineageTag: 3ba9d58e-820f-4cd2-a76f-1338522c1873
+		summarizeBy: none
+		sourceColumn: TradingName
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkflowStatusID
+		dataType: int64
+		formatString: 0
+		lineageTag: ec6ff5ca-6a43-4ed2-8095-386e4b1ad272
+		summarizeBy: none
+		sourceColumn: WorkflowStatusID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreditStatusID
+		dataType: int64
+		formatString: 0
+		lineageTag: 3444aca5-819d-456a-8bac-4de5e1486336
+		summarizeBy: none
+		sourceColumn: CreditStatusID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerCategoryID
+		dataType: int64
+		formatString: 0
+		lineageTag: b57b1ddb-ed0b-4524-b431-68d2a73309ea
+		summarizeBy: none
+		sourceColumn: CustomerCategoryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column HomeBranchID
+		dataType: int64
+		formatString: 0
+		lineageTag: b438207a-120a-4e9d-a892-c244c7d2666e
+		summarizeBy: none
+		sourceColumn: HomeBranchID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Address
+		dataType: string
+		lineageTag: 0f387f97-d398-4aa9-9362-408e2ee9492c
+		summarizeBy: none
+		sourceColumn: Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column Phone
+		dataType: string
+		lineageTag: 1d650225-4704-49c8-951d-dbd27b820f12
+		summarizeBy: none
+		sourceColumn: Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailAddress
+		dataType: string
+		lineageTag: ff4bafdb-f4de-4182-b2fb-18bab88a91bc
+		summarizeBy: none
+		sourceColumn: EmailAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Customer = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [CustomerID]#(lf)      ,[CustomerCode]#(lf)      ,[CustomerName]#(lf)      ,[TradingName]#(lf)      ,[WorkflowStatusID]#(lf)      ,[CreditStatusID]#(lf)      ,[CustomerCategoryID]#(lf)      ,[HomeBranchID]#(lf)      ,[Address]#(lf)      ,[Phone]#(lf)      ,[EmailAddress]#(lf)  FROM [Tippers].[dbo].[Dim_Customer]"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,85 @@
+table Dim_AlternateSupplier
+	lineageTag: 608f4989-374c-474a-9228-0d571e8f571f
+
+	column AlternatePurchasingID
+		dataType: int64
+		formatString: 0
+		lineageTag: f8da2ff6-13a7-4b00-a209-681c5812495b
+		summarizeBy: count
+		sourceColumn: AlternatePurchasingID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		lineageTag: a37b57f4-d462-4032-809c-87c388935444
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AltSupplierCode
+		dataType: string
+		lineageTag: cd82ea46-cf21-4b7d-81dc-28c270a13fce
+		summarizeBy: none
+		sourceColumn: AltSupplierCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column AltSupplierName
+		dataType: string
+		lineageTag: 76c1e178-5dec-489d-ac7c-d4893f18bf4c
+		summarizeBy: none
+		sourceColumn: AltSupplierName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AltSupplierProductCode
+		dataType: string
+		lineageTag: b6f31a3f-0242-4f1a-8c4a-a6fe61b3a38b
+		summarizeBy: none
+		sourceColumn: AltSupplierProductCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column AltListPriceActual
+		dataType: double
+		lineageTag: 47f7396e-f8ac-46b3-a2e6-0d723ac79795
+		summarizeBy: sum
+		sourceColumn: AltListPriceActual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AltCurrencyCode
+		dataType: string
+		lineageTag: 7ba27bee-8b7a-4d6b-9242-209c8c317ecc
+		summarizeBy: none
+		sourceColumn: AltCurrencyCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column AltUSDCostPrice
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 67717bde-cba9-43ff-8095-409d787a9f8f
+		summarizeBy: none
+		sourceColumn: AltUSDCostPrice
+
+		annotation SummarizationSetBy = User
+
+	partition Dim_AlternateSupplier = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("SER-SQL-01\SQL", "Intact_IQ_Walter_Tipper_Ltd", [Query="SELECT #(lf)    ppa.C_ID AS AlternatePurchasingID,#(lf)    ppa.C__OWNER_ AS ProductID, -- Foreign Key to Dim_Product#(lf)    s2.C_CODE AS AltSupplierCode,#(lf)    s2.C_NAME AS AltSupplierName,#(lf)    pp2.C_SUPPLIERPRODUCTCODE AS AltSupplierProductCode,#(lf)    CAST(pp2.C_LISTPRICEACTUAL AS DECIMAL(18,2)) AS AltListPriceActual,#(lf)    cur2.C_CODE AS AltCurrencyCode,#(lf)    CAST(#(lf)        CASE #(lf)            WHEN cur2.C_CODE = 'USD' THEN pp2.C_LISTPRICEACTUAL #(lf)            ELSE 0 #(lf)        END AS DECIMAL(18,2)#(lf)    ) AS AltUSDListPrice#(lf)#(lf)FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_ALTERNATEPURCHASINGINFO] ppa WITH (NOLOCK)#(lf)INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_PURCHASING] pp2 WITH (NOLOCK) #(lf)    ON pp2.C_ID = ppa.C_ID#(lf)LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_SUPPLIER] s2 WITH (NOLOCK) #(lf)    ON s2.C_ID = pp2.C_DEFAULTSUPPLIER#(lf)LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_CURRENCY] cur2 WITH (NOLOCK) #(lf)    ON cur2.C_ID = pp2.C_LISTPRICECURRENCY#(lf)#(lf)-- Ограничиваем выборку только товарами из группы AQUAI:#(lf)INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT] p WITH (NOLOCK) #(lf)    ON p.C_ID = ppa.C__OWNER_#(lf)INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENT] PD WITH (NOLOCK) #(lf)    ON PD.C_ID = p.C_DEPARTMENT#(lf)INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENTGROUP] PDG WITH (NOLOCK) #(lf)    ON PDG.C_ID = PD.C_GROUP#(lf)#(lf)WHERE ppa.C_ID IS NOT NULL#(lf)  AND p.C_TYPE NOT IN (15, 2, 6, 19, 10, 18)#(lf)  AND PDG.C_CODE = 'AQUAI';"]),
+				    #"Renamed Columns" = Table.RenameColumns(Source,{{"AltUSDListPrice", "AltUSDCostPrice"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

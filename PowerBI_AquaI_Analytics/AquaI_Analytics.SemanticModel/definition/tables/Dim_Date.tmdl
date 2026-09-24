@@ -1,0 +1,166 @@
+table Dim_Date
+	lineageTag: ac616092-e90d-45fb-a17f-73dd4fc4d6f4
+	dataCategory: Time
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 47549be0-68c6-4a02-ba95-e372918db897
+		summarizeBy: count
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: General Date
+		lineageTag: e4bbe431-630c-475c-b5db-06cd8bb5a754
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: b57acb5f-e827-4b69-84aa-9b0604a8fc60
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: fd8a7fee-0e38-4077-97e5-f1f0b67b896f
+		summarizeBy: sum
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuarterName
+		dataType: string
+		lineageTag: 37d37015-323a-46d1-9bea-455f42796346
+		summarizeBy: none
+		sourceColumn: QuarterName
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: d0e39b1a-3708-49d4-8261-28c5b729f14e
+		summarizeBy: sum
+		sourceColumn: MonthNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		lineageTag: 6bb0ef0c-cb32-43b2-856e-5a7195976755
+		summarizeBy: none
+		sourceColumn: MonthName
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNameShort
+		dataType: string
+		lineageTag: a4454827-919f-4c56-a55d-9b7dd3bbd301
+		summarizeBy: none
+		sourceColumn: MonthNameShort
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth
+		dataType: int64
+		formatString: 0
+		lineageTag: df3f4871-5d45-4032-b01f-a3114f726326
+		summarizeBy: sum
+		sourceColumn: YearMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonthName
+		dataType: string
+		lineageTag: b37b07b5-cd9c-4b47-9182-4403ed1a7750
+		summarizeBy: none
+		sourceColumn: YearMonthName
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekOfYear
+		dataType: int64
+		formatString: 0
+		lineageTag: a12bd59e-65ab-4cb0-8937-a16565bb6ef3
+		summarizeBy: sum
+		sourceColumn: WeekOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfMonth
+		dataType: int64
+		formatString: 0
+		lineageTag: b251dd28-c4d3-4204-b12d-f0ec5905d382
+		summarizeBy: sum
+		sourceColumn: DayOfMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeekNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 03b49d59-8647-498c-b996-e2990f9a0c36
+		summarizeBy: sum
+		sourceColumn: DayOfWeekNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeekName
+		dataType: string
+		lineageTag: 98ee680e-57de-4330-9b86-40f213884db8
+		summarizeBy: none
+		sourceColumn: DayOfWeekName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeekNameShort
+		dataType: string
+		lineageTag: 2cab327a-f173-4f1b-946f-7c68dd1e337e
+		summarizeBy: none
+		sourceColumn: DayOfWeekNameShort
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsWeekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d3f4ebc9-aa43-4f16-bc29-015077de684d
+		summarizeBy: none
+		sourceColumn: IsWeekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsLeapYear
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: af9d7166-90a1-4260-a6db-edbde4ee23b1
+		summarizeBy: none
+		sourceColumn: IsLeapYear
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Date = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT #(lf)    [DateKey],#(lf)    [Date],#(lf)    [Year],#(lf)    [Quarter],#(lf)    [QuarterName],#(lf)    [MonthNumber],#(lf)    [MonthName],#(lf)    [MonthNameShort],#(lf)    [YearMonth],#(lf)    [YearMonthName],#(lf)    [WeekOfYear],#(lf)    [DayOfMonth],#(lf)    [DayOfWeekNumber],#(lf)    [DayOfWeekName],#(lf)    [DayOfWeekNameShort],#(lf)    [IsWeekend],#(lf)    [IsLeapYear]#(lf)FROM [Tippers].[dbo].[Dim_Date]"])
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

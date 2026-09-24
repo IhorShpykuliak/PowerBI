@@ -1,0 +1,571 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "d2aa2b080c2732482c03",
+  "position": {
+    "x": 0,
+    "y": 349.78003384094751,
+    "z": 0,
+    "height": 370.35532994923858,
+    "width": 1280
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "ProdCode"
+                }
+              },
+              "queryRef": "Dim_Product.ProdCode",
+              "nativeQueryRef": "ProdCode"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "ProdDescription"
+                }
+              },
+              "queryRef": "Dim_Product.ProdDescription",
+              "nativeQueryRef": "ProdDescription"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "Aqua I Code"
+                }
+              },
+              "queryRef": "Dim_Product.Aqua I Code",
+              "nativeQueryRef": "Aqua I Code"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "Aqua I Description"
+                }
+              },
+              "queryRef": "Dim_Product.Aqua I Description",
+              "nativeQueryRef": "Aqua I Description"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "Wyndam Code"
+                }
+              },
+              "queryRef": "Dim_Product.Wyndam Code",
+              "nativeQueryRef": "Wyndam Code"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "Wyndam Description"
+                }
+              },
+              "queryRef": "Dim_Product.Wyndam Description",
+              "nativeQueryRef": "Wyndam Description"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "Supplier Stock Code"
+                }
+              },
+              "queryRef": "Dim_Product.Supplier Stock Code",
+              "nativeQueryRef": "Supplier Stock Code"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_AlternateSupplier"
+                    }
+                  },
+                  "Property": "AltSupplierName"
+                }
+              },
+              "queryRef": "Dim_AlternateSupplier.AltSupplierName",
+              "nativeQueryRef": "AltSupplierName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_AlternateSupplier"
+                    }
+                  },
+                  "Property": "AltSupplierCode"
+                }
+              },
+              "queryRef": "Dim_AlternateSupplier.AltSupplierCode",
+              "nativeQueryRef": "AltSupplierCode"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_AlternateSupplier"
+                    }
+                  },
+                  "Property": "AltCurrencyCode"
+                }
+              },
+              "queryRef": "Dim_AlternateSupplier.AltCurrencyCode",
+              "nativeQueryRef": "AltCurrencyCode"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_AlternateSupplier"
+                    }
+                  },
+                  "Property": "AltUSDCostPrice"
+                }
+              },
+              "queryRef": "Sum(Dim_AlternateSupplier.AltUSDListPrice)",
+              "nativeQueryRef": "AltUSDCostPrice"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "StockingStatus"
+                }
+              },
+              "queryRef": "Dim_Product.StockingStatus",
+              "nativeQueryRef": "StockingStatus"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Product"
+                        }
+                      },
+                      "Property": "StockLevel"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Dim_Product.StockLevel)",
+              "nativeQueryRef": "Sum of StockLevel"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Product"
+                        }
+                      },
+                      "Property": "C_D_MOQ"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Dim_Product.C_D_MOQ)",
+              "nativeQueryRef": "Sum of C_D_MOQ"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "175.66667029144676D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Product.Aqua I Description"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "136.08628623617383D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Product.Wyndam Description"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "116.34687577968721D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_AlternateSupplier.AltSupplierName"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "109.50761021827948D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Product.Supplier Stock Code"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "153.3248730964467D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Product.ProdDescription"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "bc9dfd88aeac7b703ac6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "ProdCode"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "Dim_Product",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "ProdCode"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "724bd2303222b9ba2483",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "ProdDescription"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9419cce7a021226ba58a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_AlternateSupplier"
+              }
+            },
+            "Property": "AltSupplierName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6a70ffc24077954de54b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_AlternateSupplier"
+              }
+            },
+            "Property": "AltSupplierCode"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3c10b38ce943419cc50a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "StockingStatus"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "58e868509ae5e626c799",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_Product"
+                  }
+                },
+                "Property": "StockLevel"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ca7bd2c11025aa0cd6ab",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_Product"
+                  }
+                },
+                "Property": "C_D_MOQ"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "207946cc31170d01e7ad",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "Wyndam Code"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "93d595d3811b7dc639d0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "Wyndam Description"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e4cf8e92ab087d71b618",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "Aqua I Code"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1b876033d809959829e0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "Aqua I Description"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "365571094981185043a5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "Supplier Stock Code"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2251d5608091cc3a6eae",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_AlternateSupplier"
+              }
+            },
+            "Property": "AltCurrencyCode"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "003625c4ddb85ca72d8e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_AlternateSupplier"
+              }
+            },
+            "Property": "AltUSDCostPrice"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

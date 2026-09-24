@@ -1,0 +1,34 @@
+table _Measures
+	lineageTag: 3927fa90-3c9c-455f-a8c4-6da16e4bdac2
+
+	measure 'Sales YTD Qty' =
+			
+			CALCULATE (
+			    SUM ( Fact_SalesOrder[QuantityOrdered] ),
+			    DATESYTD ( Dim_Date[Date] )
+			)
+		lineageTag: 2b2f8eb7-66c5-4844-89a6-87752cafb2f8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AQUAI Avg Monthly Sales' =
+			
+			DIVIDE ( SUM ( Dim_Product[SalesYtdQty] ), 12, 0 )
+		lineageTag: f4d7594a-01d0-4bb4-92d3-0a77cd72ed9f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Name
+		lineageTag: 4f044140-a3c4-4f8d-b7fd-cf2cab527079
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = DATATABLE("Name", STRING, {{"Measure Table"}})
+
+	annotation PBI_Id = 27a95eaae6ff44ac800258419bc39cc8
+

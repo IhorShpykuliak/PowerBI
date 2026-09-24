@@ -1,0 +1,48 @@
+table Dim_Branch
+	lineageTag: 6632b90e-5984-40c9-92d0-e034c4146590
+
+	column BranchID
+		dataType: int64
+		formatString: 0
+		lineageTag: 30817589-f7f3-4b82-94d1-fc9ccc825ace
+		summarizeBy: none
+		sourceColumn: BranchID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BranchCode
+		dataType: string
+		lineageTag: 79ab170a-a101-4009-9f0e-247f7c1e6923
+		summarizeBy: none
+		sourceColumn: BranchCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column BranchName
+		dataType: string
+		lineageTag: a055f051-af2d-4896-9fed-046a08b21218
+		summarizeBy: none
+		sourceColumn: BranchName
+
+		annotation SummarizationSetBy = Automatic
+
+	column BranchAddress
+		dataType: string
+		lineageTag: c0455859-96bd-4441-bb1c-846aa57bff14
+		summarizeBy: none
+		sourceColumn: BranchAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Branch = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [BranchID]#(lf)      ,[BranchCode]#(lf)      ,[BranchName]#(lf)      ,[BranchAddress]#(lf)  FROM [Tippers].[dbo].[Dim_Branch]"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

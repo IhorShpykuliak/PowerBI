@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "AquaI_Analytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "68b83151-67e4-4315-8654-2cd1c23eab8d"
+  }
+}
