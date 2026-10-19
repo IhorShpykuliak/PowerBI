@@ -120,6 +120,15 @@ SELECT
         END AS DECIMAL(18,2)
     ) AS CalculatedLandedCost
 
+    ,PP.[C_SUPPLIERPRODUCTCODE] AS 'Aqua I Code'
+    ,PP.[C_SUPPLIERPRODUCTDESCRIPTION] AS 'Aqua I Description'
+    ,P.C_D_WyndamCode AS 'Wyndam Code'
+    ,P.C_D_WyndamDescription AS 'Wyndam Description'
+    ,P.C_ManufacturerProductCode AS 'Supplier Stock Code'
+    ,PP.C_D_MOQ
+    ,p.[C_D_PERCENTAGEGROWTH] as GrowthFactor
+    ,pp.C_PACKSIZE as CartonQTY
+
 FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT] p WITH (NOLOCK)
 CROSS JOIN ExchangeRate ex
 LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_STATISTICS] pstats WITH (NOLOCK) ON pstats.C_ID = p.C_STATISTICS
@@ -131,7 +140,7 @@ LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_COSTINGS] cc WITH (NOLO
 LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_MEASUREMENTS] m WITH (NOLOCK) ON p.C_MEASUREMENTS = m.C_ID
 LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_ALTERNATEPURCHASINGINFO] PI WITH (NOLOCK) ON PI.C__OWNER_ = p.C_ID
 LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_PURCHASING] PPAlt WITH (NOLOCK) ON PPAlt.C_ID = PI.C_ID
-LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_CURRENCY] CUR WITH (NOLOCK) ON CUR.C_ID = PPalt.C_LISTPRICECURRENCY
+LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_CURRENCY] CUR WITH (NOLOCK) ON CUR.C_ID = PPalt.C_LISTPRICECURRENCY AND CUR.C_CODE = 'USD'
 LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_IMPORTDUTYSETTINGS] com WITH (NOLOCK) ON com.C_ID = p.C_IMPORTDUTYSETTINGS
 LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_IS_COMMODITYCODE] comc WITH (NOLOCK) ON comc.C_ID = com.C_COMMODITYCODE
 LEFT JOIN IQAvgCost i ON i.C_PRODUCT = p.C_ID
@@ -139,3 +148,5 @@ LEFT JOIN SalesYTD Ytd ON Ytd.Product_ID = p.C_ID
 LEFT JOIN SupplierPurchasingYTD SPY ON SPY.Product_ID = p.C_ID
 WHERE p.C_TYPE NOT IN (15, 2, 6, 19, 10, 18)
   AND PDG.C_CODE = 'AQUAI';
+    
+
