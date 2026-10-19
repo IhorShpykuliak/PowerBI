@@ -1,4 +1,4 @@
-;WITH IQAvgCost AS
+WITH IQAvgCost AS
 (
     SELECT 
         sub1.C_PRODUCT,
@@ -45,6 +45,24 @@ ExchangeRate AS
     SELECT C_PURCHASELEDGERRATE AS exRate
     FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_IS_CURRENCYRATEDEFINITION_CURRENCYRATEDEFINITIONCURRENCYINFO] WITH (NOLOCK)
     WHERE C_ID = 524883787719020
+),
+-- cte without dublicztes
+USDAltPurchasing AS
+(
+    SELECT 
+        PI.C__OWNER_ AS Product_ID,
+        PPAlt.C_LISTPRICEACTUAL,
+        CUR.C_CODE AS CurrencyCode,
+        ROW_NUMBER() OVER (
+            PARTITION BY PI.C__OWNER_ 
+            ORDER BY PPAlt.C_LISTPRICEACTUAL DESC
+        ) AS rn
+    FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_ALTERNATEPURCHASINGINFO] PI WITH (NOLOCK)
+    INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_PURCHASING] PPAlt WITH (NOLOCK) 
+        ON PPAlt.C_ID = PI.C_ID
+    INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_CURRENCY] CUR WITH (NOLOCK) 
+        ON CUR.C_ID = PPalt.C_LISTPRICECURRENCY
+    WHERE CUR.C_CODE = 'USD'
 )
 SELECT
     p.C_ID AS ProductID,
@@ -79,41 +97,41 @@ SELECT
     p.C_D_SEARCHKEYWORDS AS SearchKeywords,
     PP.C_SUPPLIERPRODUCTCODE AS SupplierProductCode,
 
-    -- Габариты и объем (CBM)
+    --  CBM
     m.C_LENGTH AS Length,
     m.C_WIDTH AS Width,
     m.C_HEIGHT AS Height,
     m.C_GROSSWEIGHT AS GrossWeight,
     CAST((m.C_LENGTH * m.C_WIDTH * m.C_HEIGHT) / 1000000000.0 AS DECIMAL(18,4)) AS CBM,
 
-    -- Стоковые показатели
+    -- Stock
     CONVERT(DOUBLE PRECISION, ISNULL(pstats.C_STOCKLEVEL, 0)) AS StockLevel,
     CONVERT(DOUBLE PRECISION, ISNULL(pstats.C_OUTSTANDINGSALESORDERS, 0)) AS OutstandingSO,
     CONVERT(DOUBLE PRECISION, ISNULL(pstats.C_OUTSTANDINGPURCHASEORDERS, 0)) AS OutstandingPO,
     CONVERT(DOUBLE PRECISION, ISNULL(pstats.C_EFFECTIVESTOCKLEVEL, 0)) AS EffectiveStockLevel,
 
-    -- Данные YTD
+    -- YTD
     CAST(ISNULL(Ytd.TotalQty, 0) AS INT) AS SalesYtdQty,
     CAST(ISNULL(Ytd.TotalSales, 0) AS DECIMAL(18,2)) AS SalesYtdAmount,
     CONVERT(DOUBLE PRECISION, ISNULL(SPY.QtyInvoiced, 0)) AS QtyPurchasedYtd,
 
-    -- Цены и себестоимость
+    -- Price
     ex.exRate AS ExchangeRateUSD,
     CAST(PP.C_LISTPRICEACTUAL AS DECIMAL(18,2)) AS ListPriceActual,
-    CAST(CASE WHEN CUR.C_CODE = 'USD' THEN PPalt.C_LISTPRICEACTUAL ELSE 0 END AS DECIMAL(18,2)) AS USDListPrice,
+    CAST(ISNULL(altUSD.C_LISTPRICEACTUAL, 0) AS DECIMAL(18,2)) AS USDListPrice,
     ISNULL(comc.C_D_RATE, 0) AS DutyRatePercentage,
     cc.C_STANDARDCOST AS StandardCost,
     i.C_NEWCOSTPRICE AS AvgCost,
 
-    -- Расчет Landed Cost
+    --  Landed Cost
     CAST(
         CASE 
-            WHEN CUR.C_CODE = 'USD' 
-                 AND PPalt.C_LISTPRICEACTUAL IS NOT NULL 
+            WHEN altUSD.CurrencyCode = 'USD' 
+                 AND altUSD.C_LISTPRICEACTUAL IS NOT NULL 
                  AND (m.C_LENGTH * m.C_WIDTH * m.C_HEIGHT) > 0
                  AND ex.exRate > 0
             THEN (
-                    (CEILING((PPalt.C_LISTPRICEACTUAL / ex.exRate) * 100) / 100.0) +
+                    (CEILING((altUSD.C_LISTPRICEACTUAL / ex.exRate) * 100) / 100.0) +
                     (((m.C_LENGTH * m.C_WIDTH * m.C_HEIGHT) / 1000000000.0) / 66.0 * 6000.0)
                  ) * (1 + ISNULL(comc.C_D_RATE, 0) / 100.0)
             ELSE i.C_NEWCOSTPRICE
@@ -138,9 +156,7 @@ LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENT] PD WITH (NOL
 LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENTGROUP] PDG WITH (NOLOCK) ON PD.C_GROUP = PDG.C_ID
 LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_COSTINGS] cc WITH (NOLOCK) ON cc.C_ID = p.C_COSTINGS
 LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_MEASUREMENTS] m WITH (NOLOCK) ON p.C_MEASUREMENTS = m.C_ID
-LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_ALTERNATEPURCHASINGINFO] PI WITH (NOLOCK) ON PI.C__OWNER_ = p.C_ID
-LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_PURCHASING] PPAlt WITH (NOLOCK) ON PPAlt.C_ID = PI.C_ID
-LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_CURRENCY] CUR WITH (NOLOCK) ON CUR.C_ID = PPalt.C_LISTPRICECURRENCY AND CUR.C_CODE = 'USD'
+LEFT JOIN USDAltPurchasing altUSD ON altUSD.Product_ID = p.C_ID AND altUSD.rn = 1
 LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_IMPORTDUTYSETTINGS] com WITH (NOLOCK) ON com.C_ID = p.C_IMPORTDUTYSETTINGS
 LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_IS_COMMODITYCODE] comc WITH (NOLOCK) ON comc.C_ID = com.C_COMMODITYCODE
 LEFT JOIN IQAvgCost i ON i.C_PRODUCT = p.C_ID
@@ -148,5 +164,3 @@ LEFT JOIN SalesYTD Ytd ON Ytd.Product_ID = p.C_ID
 LEFT JOIN SupplierPurchasingYTD SPY ON SPY.Product_ID = p.C_ID
 WHERE p.C_TYPE NOT IN (15, 2, 6, 19, 10, 18)
   AND PDG.C_CODE = 'AQUAI';
-    
-
