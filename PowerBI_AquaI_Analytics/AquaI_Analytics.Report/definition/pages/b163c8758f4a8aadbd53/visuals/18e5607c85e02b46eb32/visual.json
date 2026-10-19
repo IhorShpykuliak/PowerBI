@@ -1,0 +1,728 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "18e5607c85e02b46eb32",
+  "position": {
+    "x": 9.8545765611633875,
+    "y": 0,
+    "z": 0,
+    "height": 273.73823781009406,
+    "width": 1246.0564585115483,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_SalesOrder"
+                    }
+                  },
+                  "Property": "BranchID"
+                }
+              },
+              "queryRef": "Fact_SalesOrder.BranchID",
+              "nativeQueryRef": "BranchID"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Fact_SalesOrder"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "EffectiveDueDate"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Year"
+                }
+              },
+              "queryRef": "Fact_SalesOrder.EffectiveDueDate.Variation.Date Hierarchy.Year",
+              "nativeQueryRef": "EffectiveDueDate Year"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Fact_SalesOrder"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "EffectiveDueDate"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Quarter"
+                }
+              },
+              "queryRef": "Fact_SalesOrder.EffectiveDueDate.Variation.Date Hierarchy.Quarter",
+              "nativeQueryRef": "EffectiveDueDate Quarter"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Fact_SalesOrder"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "EffectiveDueDate"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Month"
+                }
+              },
+              "queryRef": "Fact_SalesOrder.EffectiveDueDate.Variation.Date Hierarchy.Month",
+              "nativeQueryRef": "EffectiveDueDate Month"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Fact_SalesOrder"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "EffectiveDueDate"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Day"
+                }
+              },
+              "queryRef": "Fact_SalesOrder.EffectiveDueDate.Variation.Date Hierarchy.Day",
+              "nativeQueryRef": "EffectiveDueDate Day"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_SalesOrder"
+                    }
+                  },
+                  "Property": "CustomerID"
+                }
+              },
+              "queryRef": "Fact_SalesOrder.CustomerID",
+              "nativeQueryRef": "CustomerID"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_SalesOrder"
+                        }
+                      },
+                      "Property": "ForecastOrder"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_SalesOrder.ForecastOrder)",
+              "nativeQueryRef": "Sum of ForecastOrder"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_SalesOrder"
+                        }
+                      },
+                      "Property": "LineNetAmount"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_SalesOrder.LineNetAmount)",
+              "nativeQueryRef": "Sum of LineNetAmount"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_SalesOrder"
+                    }
+                  },
+                  "Property": "OrderCategory"
+                }
+              },
+              "queryRef": "Fact_SalesOrder.OrderCategory",
+              "nativeQueryRef": "OrderCategory"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_SalesOrder"
+                        }
+                      },
+                      "Property": "OrderTypeID"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(Fact_SalesOrder.OrderTypeID)",
+              "nativeQueryRef": "Count of OrderTypeID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_SalesOrder"
+                    }
+                  },
+                  "Property": "OrderNumber"
+                }
+              },
+              "queryRef": "Fact_SalesOrder.OrderNumber",
+              "nativeQueryRef": "OrderNumber"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_SalesOrder"
+                    }
+                  },
+                  "Property": "ProductID"
+                }
+              },
+              "queryRef": "Fact_SalesOrder.ProductID",
+              "nativeQueryRef": "ProductID"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_SalesOrder"
+                        }
+                      },
+                      "Property": "QuantityOrdered"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_SalesOrder.QuantityOrdered)",
+              "nativeQueryRef": "Sum of QuantityOrdered"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_SalesOrder"
+                        }
+                      },
+                      "Property": "SalesOrderID"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(Fact_SalesOrder.SalesOrderID)",
+              "nativeQueryRef": "Count of SalesOrderID"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_SalesOrder"
+                        }
+                      },
+                      "Property": "SalesOrderLineID"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(Fact_SalesOrder.SalesOrderLineID)",
+              "nativeQueryRef": "Count of SalesOrderLineID"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_SalesOrder"
+                        }
+                      },
+                      "Property": "QuantityOutstanding"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_SalesOrder.QuantityOutstanding)",
+              "nativeQueryRef": "Sum of QuantityOutstanding"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_SalesOrder"
+                    }
+                  },
+                  "Property": "SODateKey"
+                }
+              },
+              "queryRef": "Fact_SalesOrder.SODateKey",
+              "nativeQueryRef": "SODateKey"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_SalesOrder"
+                    }
+                  },
+                  "Property": "SalesRepID"
+                }
+              },
+              "queryRef": "Fact_SalesOrder.SalesRepID",
+              "nativeQueryRef": "SalesRepID"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_SalesOrder"
+                        }
+                      },
+                      "Property": "WorkflowStatusID"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(Fact_SalesOrder.WorkflowStatusID)",
+              "nativeQueryRef": "Count of WorkflowStatusID"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c3a19263c8719d3ccec0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_SalesOrder"
+              }
+            },
+            "Property": "BranchID"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "180a71be01d33de6671a",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Fact_SalesOrder"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "EffectiveDueDate"
+                  }
+                },
+                "Hierarchy": "Date Hierarchy"
+              }
+            },
+            "Level": "Year"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "277c7d621a8f3a821250",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Fact_SalesOrder"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "EffectiveDueDate"
+                  }
+                },
+                "Hierarchy": "Date Hierarchy"
+              }
+            },
+            "Level": "Quarter"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "4d83c1e55bbee47d8660",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Fact_SalesOrder"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "EffectiveDueDate"
+                  }
+                },
+                "Hierarchy": "Date Hierarchy"
+              }
+            },
+            "Level": "Month"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "143f9b988d2dfb9de445",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Fact_SalesOrder"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "EffectiveDueDate"
+                  }
+                },
+                "Hierarchy": "Date Hierarchy"
+              }
+            },
+            "Level": "Day"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "94b0e1e1d3ca65502349",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_SalesOrder"
+              }
+            },
+            "Property": "CustomerID"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bcaeb75aeef5c761f2dd",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_SalesOrder"
+                  }
+                },
+                "Property": "ForecastOrder"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "239f4a5f0e9d4cc4d2ca",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_SalesOrder"
+                  }
+                },
+                "Property": "LineNetAmount"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "edeaf705b8516b3f3cff",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_SalesOrder"
+              }
+            },
+            "Property": "OrderCategory"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3cdd09a903ac95f75b16",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_SalesOrder"
+                  }
+                },
+                "Property": "OrderTypeID"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "cb1c611f617855e2d2bb",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_SalesOrder"
+              }
+            },
+            "Property": "OrderNumber"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "079ba47b42d354b68647",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_SalesOrder"
+              }
+            },
+            "Property": "ProductID"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bbc76f59a8c13e02f364",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_SalesOrder"
+                  }
+                },
+                "Property": "QuantityOrdered"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "74e9c1d9473e94e569fe",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_SalesOrder"
+                  }
+                },
+                "Property": "SalesOrderID"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d669cdb9db06943261a4",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_SalesOrder"
+                  }
+                },
+                "Property": "SalesOrderLineID"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "cdd80be2602591f806d8",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_SalesOrder"
+                  }
+                },
+                "Property": "QuantityOutstanding"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d4910fbc090c58407f45",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_SalesOrder"
+              }
+            },
+            "Property": "SODateKey"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "fb148b63d1b1af07f4ae",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_SalesOrder"
+              }
+            },
+            "Property": "SalesRepID"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f96bbc4c1f040476b98d",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_SalesOrder"
+                  }
+                },
+                "Property": "WorkflowStatusID"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

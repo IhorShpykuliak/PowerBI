@@ -118,13 +118,47 @@ table Fact_SalesOrder
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column EffectiveDueDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4f9acb57-1b38-48b8-b11f-f4e19e8b874e
+		summarizeBy: none
+		sourceColumn: EffectiveDueDate
+
+		variation Variation
+			isDefault
+			relationship: 06b43039-1a06-452f-8cb8-9b996ecee13b
+			defaultHierarchy: LocalDateTable_472aa295-5a1f-453b-a77a-246ecde6e519.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantityOutstanding
+		dataType: double
+		lineageTag: fd074c79-a61a-43df-a772-36fb20b34765
+		summarizeBy: sum
+		sourceColumn: QuantityOutstanding
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ForecastOrder
+		dataType: int64
+		formatString: 0
+		lineageTag: 661f2b00-eb47-46c2-b81e-eb4ca4229f36
+		summarizeBy: sum
+		sourceColumn: ForecastOrder
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Fact_SalesOrder = m
 		mode: import
 		source =
 				let
-				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [SalesOrderLineID]#(lf)      ,[SalesOrderID]#(lf)      ,[OrderNumber]#(lf)      ,[SODateKey]#(lf)      ,[ProductID]#(lf)      ,[CustomerID]#(lf)      ,[BranchID]#(lf)      ,[SalesRepID]#(lf)      ,[OrderTypeID]#(lf)      ,[WorkflowStatusID]#(lf)      ,[OrderCategory]#(lf)      ,[QuantityOrdered]#(lf)      ,[LineNetAmount]#(lf)  FROM [Tippers].[dbo].[Fact_SalesOrder]"])
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [SalesOrderLineID]#(lf)      ,[SalesOrderID]#(lf)      ,[OrderNumber]#(lf)      ,[SODateKey]#(lf)      ,[ProductID]#(lf)      ,[CustomerID]#(lf)      ,[BranchID]#(lf)      ,[SalesRepID]#(lf)      ,[OrderTypeID]#(lf)      ,[WorkflowStatusID]#(lf)      ,[OrderCategory]#(lf)      ,[QuantityOrdered]#(lf)      ,[LineNetAmount]#(lf),[EffectiveDueDate]#(lf),QuantityOutstanding#(lf),ForecastOrder#(lf)  FROM [Tippers].[dbo].[Fact_SalesOrder]"]),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([QuantityOutstanding] = 200))
 				in
-				    Source
+				    #"Filtered Rows"
 
 	annotation PBI_NavigationStepName = Navigation
 

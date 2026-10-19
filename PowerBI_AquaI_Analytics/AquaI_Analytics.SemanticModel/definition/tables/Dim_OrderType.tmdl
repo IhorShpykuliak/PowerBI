@@ -1,0 +1,42 @@
+table Dim_OrderType
+	lineageTag: 6a56a44d-81b6-4162-9d08-04dc14fca116
+
+	column C_ID
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 14806e95-ee3e-4546-a025-7fa806423bc2
+		summarizeBy: count
+		sourceColumn: C_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column C_CODE
+		dataType: string
+		sourceProviderType: nvarchar(10)
+		lineageTag: 683ab506-90db-4753-91d1-fcf1165f44c6
+		summarizeBy: none
+		sourceColumn: C_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column C_DESCRIPTION
+		dataType: string
+		sourceProviderType: nvarchar(55)
+		lineageTag: a79eb424-871f-4b11-a50c-82591dc20ed6
+		summarizeBy: none
+		sourceColumn: C_DESCRIPTION
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_OrderType = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("SER-SQL-01\SQL", "Intact_IQ_Walter_Tipper_Ltd", [Query="SELECT [C_ID]#(lf)      ,[C_CODE]#(lf)      ,[C_DESCRIPTION]#(lf)     #(lf)  FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_SALESORDERTYPE]"])
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

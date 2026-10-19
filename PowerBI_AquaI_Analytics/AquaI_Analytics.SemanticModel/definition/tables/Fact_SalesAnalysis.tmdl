@@ -1,0 +1,323 @@
+table Fact_SalesAnalysis
+	lineageTag: 8bdae2c1-94f9-41c7-8647-b3b63b5607e3
+
+	column SalesAnalysisLineID
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 6b2f7b7b-c2da-481e-a3a8-4db8e957df47
+		summarizeBy: count
+		sourceColumn: SalesAnalysisLineID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DocumentHeaderID
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 811a7cae-cda6-4c9d-bc5e-fee3f4b67bcf
+		summarizeBy: count
+		sourceColumn: DocumentHeaderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DocumentNumber
+		dataType: string
+		sourceProviderType: nvarchar(80)
+		lineageTag: dc0d1fb7-c117-491b-9bdd-697440c86922
+		summarizeBy: none
+		sourceColumn: DocumentNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column DocType
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(2)
+		lineageTag: d3a2e599-2eba-4173-88d6-65d79488a524
+		summarizeBy: none
+		sourceColumn: DocType
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesDateKey
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 871cd3b1-0d2f-4005-b963-32595f5b6d4f
+		summarizeBy: none
+		sourceColumn: SalesDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: fb64e983-33fd-49a2-be08-fb453e273203
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: fb669b0f-81c4-4f4c-9865-96f9b21d3cbe
+		summarizeBy: count
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BranchID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 06ab3edf-938a-4da0-87ea-b16072daf306
+		summarizeBy: count
+		sourceColumn: BranchID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesRepID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: c098dac0-fbe9-4c56-a8cf-67d32ef7cbc1
+		summarizeBy: count
+		sourceColumn: SalesRepID
+
+		annotation SummarizationSetBy = Automatic
+
+	column StockBranchID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: acec35a8-a1ef-49ea-9dec-e2a141ddaa22
+		summarizeBy: count
+		sourceColumn: StockBranchID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OriginalBranchID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: a917c589-419c-4db3-aad0-67bed3794f00
+		summarizeBy: count
+		sourceColumn: OriginalBranchID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerCode
+		dataType: string
+		sourceProviderType: nvarchar(20)
+		lineageTag: 45b252ac-f365-43f7-b016-19e000fda108
+		summarizeBy: none
+		sourceColumn: CustomerCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductCode
+		dataType: string
+		sourceProviderType: nvarchar(80)
+		lineageTag: ff901400-8784-41c9-993c-fd9603456aa1
+		summarizeBy: none
+		sourceColumn: ProductCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CostCentre
+		dataType: string
+		sourceProviderType: nvarchar(20)
+		lineageTag: ee29a5fa-c427-4578-b5a9-49570beb4214
+		summarizeBy: none
+		sourceColumn: CostCentre
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartmentID
+		dataType: double
+		sourceProviderType: decimal(19, 0)
+		lineageTag: 6caa0b4c-1f89-4b4b-a6e0-21b9b8c3bbea
+		summarizeBy: count
+		sourceColumn: DepartmentID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OrderSource
+		dataType: string
+		sourceProviderType: nvarchar(50)
+		lineageTag: a11add81-2a00-42c5-b910-e37c8ae3fca8
+		summarizeBy: none
+		sourceColumn: OrderSource
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesOrderNumber
+		dataType: string
+		sourceProviderType: nvarchar(15)
+		lineageTag: fa812548-ed28-4c84-9d12-0d8de56d3db9
+		summarizeBy: none
+		sourceColumn: SalesOrderNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantitySold
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(15, 6)
+		lineageTag: b57b27ed-14d7-4c51-9cdb-bca06bd9e97b
+		summarizeBy: sum
+		sourceColumn: QuantitySold
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NetSalesAmount
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(16, 4)
+		lineageTag: b7bc6a0a-0f17-4ca5-bc4b-f3ec3619f78e
+		summarizeBy: sum
+		sourceColumn: NetSalesAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NetCostAmount
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(16, 4)
+		lineageTag: f4dc21f6-c851-47b5-b99b-6458fcb65d9b
+		summarizeBy: sum
+		sourceColumn: NetCostAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GrossProfitValue
+		dataType: double
+		sourceProviderType: decimal(17, 4)
+		lineageTag: 42256e0f-6a90-462d-a9d3-a0117765d803
+		summarizeBy: sum
+		sourceColumn: GrossProfitValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NetSellingCostAmount
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(16, 4)
+		lineageTag: 5f76b04c-81a8-40e9-b47b-637b482cbc60
+		summarizeBy: sum
+		sourceColumn: NetSellingCostAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AverageCost
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(18, 4)
+		lineageTag: c938156f-ff7e-4603-a9d4-2a5bbd6a8d98
+		summarizeBy: sum
+		sourceColumn: AverageCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AveragePerUnitCost
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(18, 4)
+		lineageTag: e5cb2911-66a5-4a55-8eff-6f5f0bd07efa
+		summarizeBy: sum
+		sourceColumn: AveragePerUnitCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PotentialRebateAmount
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(16, 4)
+		lineageTag: c616e772-96e7-4691-a051-d3c21e7cfbab
+		summarizeBy: sum
+		sourceColumn: PotentialRebateAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SellingCostRebate
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(15, 6)
+		lineageTag: d133b057-555c-40c8-bb1a-fafcd6ea0e46
+		summarizeBy: sum
+		sourceColumn: SellingCostRebate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SupplierPriceSupportAmount
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(18, 6)
+		lineageTag: 68404a4b-4403-4d81-b242-23827e553cf9
+		summarizeBy: sum
+		sourceColumn: SupplierPriceSupportAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OriginalPricePerUnit
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(18, 6)
+		lineageTag: 8a5e5f1b-244b-424a-883b-9e2dc8a35570
+		summarizeBy: sum
+		sourceColumn: OriginalPricePerUnit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SellingPricePerUnit
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(18, 6)
+		lineageTag: 55b28675-3120-4b9b-a56e-060857567851
+		summarizeBy: sum
+		sourceColumn: SellingPricePerUnit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fact_SalesAnalysis = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [SalesAnalysisLineID]#(lf)      ,[DocumentHeaderID]#(lf)      ,[DocumentNumber]#(lf)      ,[DocType]#(lf)      ,[SalesDateKey]#(lf)      ,[ProductID]#(lf)      ,[CustomerID]#(lf)      ,[BranchID]#(lf)      ,[SalesRepID]#(lf)      ,[StockBranchID]#(lf)      ,[OriginalBranchID]#(lf)      ,[CustomerCode]#(lf)      ,[ProductCode]#(lf)      ,[CostCentre]#(lf)      ,[DepartmentID]#(lf)      ,[OrderSource]#(lf)      ,[SalesOrderNumber]#(lf)      ,[QuantitySold]#(lf)      ,[NetSalesAmount]#(lf)      ,[NetCostAmount]#(lf)      ,[GrossProfitValue]#(lf)      ,[NetSellingCostAmount]#(lf)      ,[AverageCost]#(lf)      ,[AveragePerUnitCost]#(lf)      ,[PotentialRebateAmount]#(lf)      ,[SellingCostRebate]#(lf)      ,[SupplierPriceSupportAmount]#(lf)      ,[OriginalPricePerUnit]#(lf)      ,[SellingPricePerUnit]#(lf)  FROM [Tippers].[dbo].[Fact_SalesAnalysis]"])
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

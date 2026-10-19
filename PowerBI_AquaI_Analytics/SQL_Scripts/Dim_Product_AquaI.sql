@@ -146,7 +146,8 @@ SELECT
     ,PP.C_D_MOQ
     ,p.[C_D_PERCENTAGEGROWTH] as GrowthFactor
     ,pp.C_PACKSIZE as CartonQTY
-
+    ,p.[C_D_COREPRODUCT] as CoreProduct
+    
 FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT] p WITH (NOLOCK)
 CROSS JOIN ExchangeRate ex
 LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_STATISTICS] pstats WITH (NOLOCK) ON pstats.C_ID = p.C_STATISTICS
