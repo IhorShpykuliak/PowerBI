@@ -166,20 +166,6 @@
         "type": "Advanced"
       },
       {
-        "name": "e63c1c917dd5b0715a04",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "CalculatedLandedCost"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "dc49fe16d150be55af3d",
         "field": {
           "Measure": {
@@ -194,7 +180,21 @@
         "type": "Advanced"
       },
       {
-        "name": "23845797262f0edc41a1",
+        "name": "63b6734753766c7e4261",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "CalculatedLandedCost"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3268c8b3e42a0a28f235",
         "field": {
           "Column": {
             "Expression": {

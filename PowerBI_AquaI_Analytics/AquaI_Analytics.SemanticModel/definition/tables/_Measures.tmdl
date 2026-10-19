@@ -29,7 +29,7 @@ table _Measures
 			
 			CALCULATE(
 			    SUM('Fact_SalesOrder'[QuantityOutstanding]),
-			    'Fact_SalesOrder'[OrderCategory] <> "Forecast Order"
+			    'Dim_OrderType'[C_DESCRIPTION] <> "7. Forecast Order"
 			)
 		lineageTag: ea4261be-0dea-425c-946c-e1e99f453c95
 

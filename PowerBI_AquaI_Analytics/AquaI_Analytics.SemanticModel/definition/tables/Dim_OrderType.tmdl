@@ -7,7 +7,7 @@ table Dim_OrderType
 		formatString: 0
 		sourceProviderType: bigint
 		lineageTag: 14806e95-ee3e-4546-a025-7fa806423bc2
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: C_ID
 
 		annotation SummarizationSetBy = Automatic

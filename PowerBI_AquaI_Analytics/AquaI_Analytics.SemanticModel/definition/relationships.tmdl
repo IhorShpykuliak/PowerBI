@@ -43,3 +43,7 @@ relationship 95d28067-3ecd-297c-6a22-2d34fcf3a0e7
 	fromColumn: Fact_SalesAnalysis.ProductID
 	toColumn: Dim_Product.ProductID
 
+relationship 235ac3fc-23d7-8eb0-87fd-c4284f36b73e
+	fromColumn: Fact_SalesOrder.OrderTypeID
+	toColumn: Dim_OrderType.C_ID
+

@@ -76,7 +76,7 @@ table Fact_SalesOrder
 		dataType: int64
 		formatString: 0
 		lineageTag: 855146f8-050d-480e-9dc3-10842901a0d1
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: OrderTypeID
 
 		annotation SummarizationSetBy = Automatic
@@ -87,14 +87,6 @@ table Fact_SalesOrder
 		lineageTag: a491268d-87cf-4a0a-8a61-ce22f37d5bbe
 		summarizeBy: count
 		sourceColumn: WorkflowStatusID
-
-		annotation SummarizationSetBy = Automatic
-
-	column OrderCategory
-		dataType: string
-		lineageTag: d6b11bba-a7df-4112-a478-65702efb0870
-		summarizeBy: none
-		sourceColumn: OrderCategory
 
 		annotation SummarizationSetBy = Automatic
 
@@ -155,10 +147,9 @@ table Fact_SalesOrder
 		mode: import
 		source =
 				let
-				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [SalesOrderLineID]#(lf)      ,[SalesOrderID]#(lf)      ,[OrderNumber]#(lf)      ,[SODateKey]#(lf)      ,[ProductID]#(lf)      ,[CustomerID]#(lf)      ,[BranchID]#(lf)      ,[SalesRepID]#(lf)      ,[OrderTypeID]#(lf)      ,[WorkflowStatusID]#(lf)      ,[OrderCategory]#(lf)      ,[QuantityOrdered]#(lf)      ,[LineNetAmount]#(lf),[EffectiveDueDate]#(lf),QuantityOutstanding#(lf),ForecastOrder#(lf)  FROM [Tippers].[dbo].[Fact_SalesOrder]"]),
-				    #"Filtered Rows" = Table.SelectRows(Source, each ([QuantityOutstanding] = 200))
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [SalesOrderLineID]#(lf)      ,[SalesOrderID]#(lf)      ,[OrderNumber]#(lf)      ,[SODateKey]#(lf)      ,[ProductID]#(lf)      ,[CustomerID]#(lf)      ,[BranchID]#(lf)      ,[SalesRepID]#(lf)      ,[OrderTypeID]#(lf)      ,[WorkflowStatusID]#(lf)      ,[QuantityOrdered]#(lf)      ,[LineNetAmount]#(lf),[EffectiveDueDate]#(lf),QuantityOutstanding#(lf),ForecastOrder#(lf)  FROM [Tippers].[dbo].[Fact_SalesOrder]"])
 				in
-				    #"Filtered Rows"
+				    Source
 
 	annotation PBI_NavigationStepName = Navigation
 
