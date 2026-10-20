@@ -134,5 +134,107 @@
       }
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ab85440f3dc5aaee3bbe",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Monthly Average Sales"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1f16f2526b87a3efcf3f",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Months Stock Remaining"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a69e9b19abab384518ca",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "CalculatedLandedCost"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c98420c7effa3999c310",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5499784190ec8d42f2cd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_SalesOrder"
+              }
+            },
+            "Property": "OrderNumber"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "4fcc9f3f1f665fd42a03",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "ProductID"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "622b04cca1159d312f94",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "ProdCode"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

@@ -96,6 +96,7 @@ SELECT
     p.C_DESCRIPTION AS ProdDescription,
     PD.C_DESCRIPTION AS Department,
 
+    -- Product Type mapping
     CASE p.C_TYPE 
         WHEN 0  THEN 'Standard'
         WHEN 4  THEN 'Special'
@@ -110,6 +111,7 @@ SELECT
     s.C_NAME AS SupplierName,
     s.C_CODE AS SupplierCode,
 
+    -- Stocking Status mapping
     CASE p.C_STOCKINGSTATUS 
         WHEN 0 THEN 'Stocked'
         WHEN 5 THEN 'Discontinued Immediately'
@@ -124,7 +126,7 @@ SELECT
     PP.C_SUPPLIERPRODUCTCODE AS SupplierProductCode,
     kc.KitComponentsList AS KitComponents,
 
-    -- Measurements & CBM
+    -- Measurements & CBM calculation
     m.C_LENGTH AS Length,
     m.C_WIDTH AS Width,
     m.C_HEIGHT AS Height,
@@ -137,7 +139,7 @@ SELECT
     CONVERT(DOUBLE PRECISION, ISNULL(pstats.C_OUTSTANDINGPURCHASEORDERS, 0)) AS OutstandingPO,
     CONVERT(DOUBLE PRECISION, ISNULL(pstats.C_EFFECTIVESTOCKLEVEL, 0)) AS EffectiveStockLevel,
 
-    -- YTD Metrics
+    -- Year-to-Date (YTD) Metrics
     CAST(ISNULL(Ytd.TotalQty, 0) AS INT) AS SalesYtdQty,
     CAST(ISNULL(Ytd.TotalSales, 0) AS DECIMAL(18,2)) AS SalesYtdAmount,
     CONVERT(DOUBLE PRECISION, ISNULL(SPY.QtyInvoiced, 0)) AS QtyPurchasedYtd,
@@ -145,7 +147,7 @@ SELECT
     -- Price & Cost Metrics
     ex.exRate AS ExchangeRateUSD,
     CAST(PP.C_LISTPRICEACTUAL AS DECIMAL(18,2)) AS ListPriceActual,
-    CAST(ISNULL(altUSD.C_LISTPRICEACTUAL, 0) AS DECIMAL(18,2)) USDListPrice,
+    CAST(ISNULL(altUSD.C_LISTPRICEACTUAL, 0) AS DECIMAL(18,2)) AS USDListPrice,
     ISNULL(comc.C_D_RATE, 0) AS DutyRatePercentage,
     cc.C_STANDARDCOST AS StandardCost,
     i.C_NEWCOSTPRICE AS AvgCost,
