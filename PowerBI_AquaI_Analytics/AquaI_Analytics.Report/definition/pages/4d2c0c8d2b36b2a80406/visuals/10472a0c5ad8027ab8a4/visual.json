@@ -4,7 +4,7 @@
   "position": {
     "x": 973.98457583547554,
     "y": 240.20565552699227,
-    "z": 7002,
+    "z": 8000,
     "height": 119.55441302485004,
     "width": 306.0154241645244
   },
@@ -51,23 +51,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "dce4882dfb226d5e31c3",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Ordered Stock"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

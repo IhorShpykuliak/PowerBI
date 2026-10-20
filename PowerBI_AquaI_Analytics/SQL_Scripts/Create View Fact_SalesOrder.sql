@@ -28,20 +28,17 @@ SELECT
     SO.C_CUSTOMER                             AS CustomerID,          -- -> Dim_Customer[CustomerID]
     SO.C_BRANCH                                AS BranchID,            -- -> Dim_Branch[BranchID]
     SO.C_SALESREP                              AS SalesRepID,          -- -> Dim_SalesRep[SalesRepID]
+    SO.C_SOURCEFORECASTORDER                   AS ForecastOrder,
     
     -- Status & Business Category Logic
     SO.C_ORDERTYPE                             AS OrderTypeID,
     SO.C_WORKFLOWSTATUS                        AS WorkflowStatusID,
-    CASE 
-        WHEN SO.C_ORDERTYPE = 9247139882382 AND SO.C_WORKFLOWSTATUS = 9251359563444 
-        THEN 'Forecast Order'
-        ELSE 'Standard Sales Order'
-    END                                        AS OrderCategory,
 
     -- Fact Metrics
     ISNULL(SOL.C_QUANTITY, 0)                  AS QuantityOrdered,
-    ISNULL(SOL.C_NETAMOUNT, 0)                 AS LineNetAmount
-
+    ISNULL(SOL.C_QUANTITYOUTSTANDING, 0)       AS QuantityOutstanding,
+    ISNULL(SOL.C_NETAMOUNT, 0)                 AS LineNetAmount,
+    COALESCE(SOL.C_DUEDATE, SO.C_DUEDATE)      AS EffectiveDueDate
 FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_SALESORDER] SO WITH (NOLOCK)
 INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_SALESORDER_LINE] SOL WITH (NOLOCK)
     ON SOL.C__OWNER_ = SO.C_ID
@@ -52,5 +49,5 @@ INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENT] PD WITH (NO
 INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENTGROUP] PDG WITH (NOLOCK)
     ON PD.C_GROUP = PDG.C_ID
 WHERE 1=1
-    AND PDG.C_CODE = 'AQUAI'; -- Filter strictly for AQUAI department group
+   -- AND PDG.C_CODE = 'AQUAI'; -- Filter strictly for AQUAI department group
 GO

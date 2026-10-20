@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "9d2a46c8e8dcb63762ee",
+  "name": "c744e9c05d4b184b1f1e",
   "position": {
-    "x": 1006.2703165098374,
+    "x": 1077.7883096366509,
     "y": 0,
-    "z": 1,
-    "height": 300,
-    "width": 273.72968349016264
+    "z": 3000,
+    "height": 84.928909952606645,
+    "width": 202.21169036334913
   },
   "visual": {
     "visualType": "slicer",
@@ -22,11 +22,11 @@
                       "Entity": "Dim_Product"
                     }
                   },
-                  "Property": "Aqua I Code"
+                  "Property": "AquaICode"
                 }
               },
-              "queryRef": "Dim_Product.Aqua I Code",
-              "nativeQueryRef": "Aqua I Code",
+              "queryRef": "Dim_Product.AquaICode",
+              "nativeQueryRef": "AquaICode",
               "active": true
             }
           ]
@@ -78,12 +78,12 @@
                                 "Source": "d"
                               }
                             },
-                            "Property": "Aqua I Code"
+                            "Property": "AquaICode"
                           }
                         },
                         "Right": {
                           "Literal": {
-                            "Value": "'ai8wp070-20h'"
+                            "Value": "'AI8WP070S-20H'"
                           }
                         }
                       }
@@ -93,67 +93,6 @@
                     }
                   }
                 ]
-              }
-            },
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "d",
-                    "Entity": "Dim_Product",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "In": {
-                        "Expressions": [
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Source": "d"
-                                }
-                              },
-                              "Property": "Aqua I Code"
-                            }
-                          }
-                        ],
-                        "Values": [
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'AI8WP070-20H'"
-                              }
-                            }
-                          ]
-                        ]
-                      }
-                    }
-                  }
-                ]
-              }
-            }
-          }
-        }
-      ],
-      "selection": [
-        {
-          "properties": {
-            "selectAllCheckboxEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "singleSelect": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
               }
             }
           }
@@ -165,7 +104,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "d25f5aeb8fb6df0620db",
+        "name": "34ce9047dd5fe6abf308",
         "field": {
           "Column": {
             "Expression": {
@@ -173,7 +112,7 @@
                 "Entity": "Dim_Product"
               }
             },
-            "Property": "Aqua I Code"
+            "Property": "AquaICode"
           }
         },
         "type": "Categorical"

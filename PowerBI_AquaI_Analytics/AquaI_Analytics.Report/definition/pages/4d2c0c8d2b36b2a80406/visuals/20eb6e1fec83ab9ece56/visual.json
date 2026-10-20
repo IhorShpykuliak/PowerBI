@@ -4,7 +4,7 @@
   "position": {
     "x": 298.337617823479,
     "y": 0,
-    "z": 7008,
+    "z": 14000,
     "height": 85.552699228791766,
     "width": 150.26563838903169
   },
@@ -123,23 +123,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "ddecad02b48139eea66c",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_AlternateSupplier"
-              }
-            },
-            "Property": "AltSupplierName"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

@@ -22,11 +22,11 @@
                       "Entity": "Dim_Product"
                     }
                   },
-                  "Property": "Aqua I Code"
+                  "Property": "ProdCode"
                 }
               },
-              "queryRef": "Dim_Product.Aqua I Code",
-              "nativeQueryRef": "Aqua I Code"
+              "queryRef": "Dim_Product.ProdCode",
+              "nativeQueryRef": "ProdCode"
             },
             {
               "field": {
@@ -97,6 +97,20 @@
               },
               "queryRef": "Fact_SalesOrder.OrderNumber",
               "nativeQueryRef": "OrderNumber"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "ProductID"
+                }
+              },
+              "queryRef": "Dim_Product.ProductID",
+              "nativeQueryRef": "ProductID"
             }
           ]
         }
@@ -120,93 +134,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "a8ae29bbb586193ce2ae",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "Aqua I Code"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "5618add04abf8e13b9cb",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Monthly Average Sales"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "0ff310e79dc7fbb5f9d1",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Months Stock Remaining"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "dc49fe16d150be55af3d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "63b6734753766c7e4261",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "CalculatedLandedCost"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "3268c8b3e42a0a28f235",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_SalesOrder"
-              }
-            },
-            "Property": "OrderNumber"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

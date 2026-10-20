@@ -4,7 +4,7 @@
   "position": {
     "x": 972.88774635818334,
     "y": 0,
-    "z": 4000,
+    "z": 3000,
     "height": 85.552699228791766,
     "width": 307.11225364181661
   },
@@ -51,23 +51,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "2f3e54aea1390e19a0a1",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Monthly Average Sales"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

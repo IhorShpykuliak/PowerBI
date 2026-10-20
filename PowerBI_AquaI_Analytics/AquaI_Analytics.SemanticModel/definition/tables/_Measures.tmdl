@@ -108,7 +108,7 @@ table _Measures
 	measure 'Suggested Order Amount' =
 			
 			VAR RawOrderNeeded = [Ideal Stocking Level] - SUM(Dim_Product[StockLevel]) - [Ordered Stock] + [Forecasted Sales]
-			VAR MOQ = SELECTEDVALUE('Dim_Product'[C_D_MOQ], 0)
+			VAR MOQ = SELECTEDVALUE('Dim_Product'[MOQ], 0)
 			VAR CartonQty = SELECTEDVALUE('Dim_Product'[CartonQTY], 1)
 			RETURN
 			    IF(
@@ -143,7 +143,7 @@ table _Measures
 	measure 'Suggested Order Amount M1' =
 			
 			VAR RawQty = [Ideal Stocking Level] - ([Predicted Stock M1] + [Ordered Stock] - [Forecasted Sales])
-			VAR MOQ = SELECTEDVALUE('Dim_Product'[C_D_MOQ], 0)
+			VAR MOQ = SELECTEDVALUE('Dim_Product'[MOQ], 0)
 			VAR CartonQty = SELECTEDVALUE('Dim_Product'[CartonQTY], 1)
 			RETURN
 			    IF(

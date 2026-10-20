@@ -4,7 +4,7 @@
   "position": {
     "x": 588.99742930591253,
     "y": 85.552699228791766,
-    "z": 3000,
+    "z": 2000,
     "height": 80.068551842330763,
     "width": 383.89031705227075
   },
@@ -51,23 +51,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "29ab53dd8387cc8b342e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Current Space Requirements CBM"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

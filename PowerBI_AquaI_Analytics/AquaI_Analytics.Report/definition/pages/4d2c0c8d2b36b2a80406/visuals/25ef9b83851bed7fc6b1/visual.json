@@ -4,7 +4,7 @@
   "position": {
     "x": 588.99742930591253,
     "y": 165.62125107112254,
-    "z": 7000,
+    "z": 6000,
     "height": 74.584404455869745,
     "width": 384.98714652956295
   },
@@ -51,23 +51,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "2e0ab75b81cabf9f096e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

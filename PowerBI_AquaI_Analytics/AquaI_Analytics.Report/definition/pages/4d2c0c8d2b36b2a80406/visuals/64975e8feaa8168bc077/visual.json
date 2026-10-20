@@ -4,7 +4,7 @@
   "position": {
     "x": 972.88774635818334,
     "y": 85.552699228791766,
-    "z": 5000,
+    "z": 4000,
     "height": 80.068551842330763,
     "width": 307.11225364181661
   },
@@ -51,23 +51,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "89e03a233c482f2b09ce",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Ideal Stocking Level"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

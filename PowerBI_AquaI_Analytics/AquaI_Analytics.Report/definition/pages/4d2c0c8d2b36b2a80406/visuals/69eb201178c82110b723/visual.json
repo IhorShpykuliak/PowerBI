@@ -4,7 +4,7 @@
   "position": {
     "x": 374.01885175664097,
     "y": 240.20565552699227,
-    "z": 7005,
+    "z": 11000,
     "height": 109.68294772922022,
     "width": 128.32904884318765
   },
@@ -51,23 +51,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "1e76555bb0519703bf22",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Container Total Value"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

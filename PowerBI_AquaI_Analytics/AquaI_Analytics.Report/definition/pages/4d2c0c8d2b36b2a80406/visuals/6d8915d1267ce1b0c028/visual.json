@@ -4,7 +4,7 @@
   "position": {
     "x": 589.08468776732252,
     "y": 0,
-    "z": 6000,
+    "z": 5000,
     "height": 85.406330196749352,
     "width": 384.32848588537212
   },
@@ -51,23 +51,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "c925ba29f9828fab8dcc",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Ideal Space Requirements"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

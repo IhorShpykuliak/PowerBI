@@ -4,7 +4,7 @@
   "position": {
     "x": 973.53637901861248,
     "y": 165.68527918781726,
-    "z": 7001,
+    "z": 7000,
     "height": 74.720812182741113,
     "width": 306.46362098138746
   },
@@ -51,23 +51,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "3072c45233365c8dcde6",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Months Stock Remaining"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

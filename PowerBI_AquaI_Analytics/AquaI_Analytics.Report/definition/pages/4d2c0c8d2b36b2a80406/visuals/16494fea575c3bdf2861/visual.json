@@ -4,7 +4,7 @@
   "position": {
     "x": 0,
     "y": 0,
-    "z": 7007,
+    "z": 13000,
     "height": 85.552699228791766,
     "width": 151.3624678663239
   },
@@ -100,23 +100,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "ebd6c8d4349e2ffaf28b",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "Aqua I Code"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }
