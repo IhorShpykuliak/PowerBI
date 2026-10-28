@@ -1,0 +1,98 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "98f4e384bd1b1225bbd2",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 2000,
+    "height": 335.1160928742994,
+    "width": 942.83426741393112
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_SalesAnalysis"
+                    }
+                  },
+                  "Property": "ProductCode"
+                }
+              },
+              "queryRef": "Fact_SalesAnalysis.ProductCode",
+              "nativeQueryRef": "ProductCode"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_SalesAnalysis"
+                        }
+                      },
+                      "Property": "QuantitySold"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_SalesAnalysis.QuantitySold)",
+              "nativeQueryRef": "Sum of QuantitySold"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_SalesAnalysis"
+                    }
+                  },
+                  "Property": "SalesDateKey"
+                }
+              },
+              "queryRef": "Fact_SalesAnalysis.SalesDateKey",
+              "nativeQueryRef": "SalesDateKey"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_SalesAnalysis"
+                    }
+                  },
+                  "Property": "SalesOrderNumber"
+                }
+              },
+              "queryRef": "Fact_SalesAnalysis.SalesOrderNumber",
+              "nativeQueryRef": "SalesOrderNumber"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_SalesAnalysis"
+                    }
+                  },
+                  "Property": "SalesOrderType"
+                }
+              },
+              "queryRef": "Fact_SalesAnalysis.SalesOrderType",
+              "nativeQueryRef": "SalesOrderType"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

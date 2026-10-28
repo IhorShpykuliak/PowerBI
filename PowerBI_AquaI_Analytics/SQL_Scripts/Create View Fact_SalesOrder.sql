@@ -1,64 +1,100 @@
-/*******************************************************************************
-  Script Name:  Create_Fact_SalesOrder.sql
-  Description:  Creates Fact view for Sales Orders (Fact_SalesOrder)
-                linking to Conformed Dimensions with Kit component expansion.
-  Database:     Tippers
-  Author:       Ihor Shpykuliak
+ /*******************************************************************************
+   Fact_SalesOrder:  
 *******************************************************************************/
-
-USE [Tippers];
+Use [Tippers];
 GO
+ IF OBJECT_ID('dbo.Fact_SalesOrder', 'V') IS NOT NULL
+     DROP VIEW dbo.Fact_SalesOrder;
+ GO
 
--- Drop existing Fact_SalesOrder view if it exists
-IF OBJECT_ID('dbo.Fact_SalesOrder', 'V') IS NOT NULL
-    DROP VIEW dbo.Fact_SalesOrder;
-GO
-
-CREATE VIEW dbo.Fact_SalesOrder AS
-SELECT 
-    -- Explode Kit components into individual product rows, or keep standard product ID
-    ISNULL(KC.C_PRODUCT, SOL.C_PRODUCT)          AS ProductID,
-    SOL.C_ID                                     AS SalesOrderLineID,    -- Unique Line ID / Foreign Key
-    SO.C_ID                                      AS SalesOrderID,        -- Header ID
-    LTRIM(RTRIM(SO.C_NUMBER))                    AS OrderNumber,         -- Business Document Reference
-    
-    -- Foreign Keys to Conformed Dimensions (for Power BI relationships)
-    CAST(SO.C_DATE AS DATE)                      AS SODateKey,           -- Order Date -> Dim_Date[Date]
-    SO.C_CUSTOMER                                AS CustomerID,          -- Customer -> Dim_Customer[CustomerID]
-    SO.C_BRANCH                                  AS BranchID,            -- Branch -> Dim_Branch[BranchID]
-    SO.C_SALESREP                                AS SalesRepID,          -- Sales Representative -> Dim_SalesRep[SalesRepID]
-    SO.C_SOURCEFORECASTORDER                     AS ForecastOrder,       -- Source Forecast Order reference
-    
-    -- Status & Business Category Logic
-    SO.C_ORDERTYPE                               AS OrderTypeID,
-    SO.C_WORKFLOWSTATUS                          AS WorkflowStatusID,
-
-    -- Fact Metrics (Multiplied by kit component quantity if applicable)
-    ISNULL(SOL.C_QUANTITY, 0) * ISNULL(KC.C_QUANTITY, 1)                  AS QuantityOrdered,
-    ISNULL(SOL.C_QUANTITYOUTSTANDING, 0) * ISNULL(KC.C_QUANTITY, 1)       AS QuantityOutstanding,
-    ISNULL(SOL.C_NETAMOUNT, 0)                   AS LineNetAmount,
-    COALESCE(SOL.C_DUEDATE, SO.C_DUEDATE)        AS EffectiveDueDate
+ CREATE VIEW dbo.Fact_SalesOrder AS
+SELECT
+    COALESCE(KC.C_PRODUCT, P.C_ID) AS ProductID,
+    COALESCE(KP.C_CODE, P.C_CODE) AS C_CODE,
+    COALESCE(KP.C_DESCRIPTION, P.C_DESCRIPTION) AS C_DESCRIPTION,
+    CASE
+        WHEN P.C_TYPE = 3 THEN 'Yes'
+        ELSE 'No'
+    END AS IsKit,
+    SO.C_ID AS SalesOrderID,
+    LTRIM(RTRIM(SO.C_NUMBER)) AS OrderNumber,
+    CAST(SO.C_DATE AS DATE) AS SODateKey,
+    SO.C_CUSTOMER AS CustomerID,
+    SO.C_BRANCH AS BranchID,
+    SO.C_SALESREP AS SalesRepID,
+    SO.C_SOURCEFORECASTORDER AS ForecastOrder,
+    SO.C_ORDERTYPE AS OrderTypeID,
+    SO.C_WORKFLOWSTATUS AS WorkflowStatusID,
+    ISNULL(SOL.C_QUANTITY, 0) * ISNULL(KC.C_QUANTITY, 1) AS QuantityOrdered,
+    ISNULL(SOL.C_QUANTITYOUTSTANDING, 0) * ISNULL(KC.C_QUANTITY, 1) AS QuantityOutstanding,
+    ISNULL(SOL.C_NETAMOUNT, 0) AS LineNetAmount,
+    COALESCE(SOL.C_DUEDATE, SO.C_DUEDATE) AS EffectiveDueDate
 
 FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_SALESORDER] SO WITH (NOLOCK)
-INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_SALESORDER_LINE] SOL WITH (NOLOCK)
-    ON SOL.C__OWNER_ = SO.C_ID
-INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT] P WITH (NOLOCK)
-    ON P.C_ID = SOL.C_PRODUCT
--- Dynamically expand Kit components (Type 3) or keep regular products as 1-to-1
-OUTER APPLY (
-    SELECT C_PRODUCT, C_QUANTITY 
-    FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_KITCOMPONENT] 
-    WHERE C__OWNER_ = P.C_ID AND P.C_TYPE = 3
+    INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_SALESORDER_LINE] SOL WITH (NOLOCK)
+        ON SOL.C__OWNER_ = SO.C_ID
+    INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT] P WITH (NOLOCK)
+        ON P.C_ID = SOL.C_PRODUCT
+
+    OUTER APPLY
+    (
+        SELECT
+            K.C_PRODUCT,
+            K.C_QUANTITY
+        FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_KITCOMPONENT] K
+        WHERE K.C__OWNER_ = P.C_ID
+        AND P.C_TYPE = 3
     
-    UNION ALL
+        UNION ALL
     
-    SELECT P.C_ID, 1.0 
-    WHERE P.C_TYPE <> 3
-) KC
-LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENT] PD WITH (NOLOCK)
-    ON PD.C_ID = P.C_DEPARTMENT
-LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENTGROUP] PDG WITH (NOLOCK)
-    ON PD.C_GROUP = PDG.C_ID
-WHERE 1=1
-    -- AND PDG.C_CODE = 'AQUAI'; -- Uncomment to filter strictly for AQUAI department group
-GO
+        SELECT P.C_ID, 1.0
+        WHERE P.C_TYPE <> 3
+
+    ) KC
+    LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT] KP WITH (NOLOCK)
+       ON KP.C_ID = KC.C_PRODUCT
+    LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENT] PD WITH (NOLOCK)
+        ON PD.C_ID = P.C_DEPARTMENT
+    LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENTGROUP] PDG WITH (NOLOCK)
+        ON PD.C_GROUP = PDG.C_ID
+    WHERE 1=1
+    AND PDG.C_CODE = 'AQUAI';
+    -- AND SO.C_NUMBER = 'Ai--SO0000822';
+
+ GO
+
+
+
+
+
+
+
+
+-- SELECT
+--     SOL.C_PRODUCT                                AS ProductID,
+--     SOL.C_ID                                     AS SalesOrderLineID,
+--     SO.C_ID                                      AS SalesOrderID,
+--     LTRIM(RTRIM(SO.C_NUMBER))                    AS OrderNumber,
+--     CAST(SO.C_DATE AS DATE)                      AS SODateKey,
+--     SO.C_CUSTOMER                                AS CustomerID,
+--     SO.C_BRANCH                                  AS BranchID,
+--     SO.C_SALESREP                                AS SalesRepID,
+--     SO.C_SOURCEFORECASTORDER                     AS ForecastOrder,
+--     SO.C_ORDERTYPE                               AS OrderTypeID,
+--     SO.C_WORKFLOWSTATUS                          AS WorkflowStatusID,
+--     CASE WHEN P.C_TYPE = 3 THEN 1 ELSE 0 END     AS IsKit,
+--     ISNULL(SOL.C_QUANTITY, 0)                    AS QuantityOrdered,
+--     ISNULL(SOL.C_QUANTITYOUTSTANDING, 0)         AS QuantityOutstanding,
+--     ISNULL(SOL.C_NETAMOUNT, 0)                   AS LineNetAmount,
+--     COALESCE(SOL.C_DUEDATE, SO.C_DUEDATE)        AS EffectiveDueDate
+-- FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_SALESORDER] SO WITH (NOLOCK)
+-- INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_SALESORDER_LINE] SOL WITH (NOLOCK)
+--     ON SOL.C__OWNER_ = SO.C_ID
+-- INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT] P WITH (NOLOCK)
+--     ON P.C_ID = SOL.C_PRODUCT
+-- INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENT] PD WITH (NOLOCK)
+--     ON PD.C_ID = P.C_DEPARTMENT
+-- INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENTGROUP] PDG WITH (NOLOCK)
+--     ON PDG.C_ID = PD.C_GROUP
+-- WHERE PDG.C_CODE = 'AQUAI';
+-- GO

@@ -154,13 +154,12 @@ table Dim_Product
 
 	column USDListPrice
 		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: 4f97f369-29b0-4ac1-9187-cf182c18ea89
 		summarizeBy: sum
 		sourceColumn: USDListPrice
 
 		annotation SummarizationSetBy = Automatic
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column DutyRatePercentage
 		dataType: double

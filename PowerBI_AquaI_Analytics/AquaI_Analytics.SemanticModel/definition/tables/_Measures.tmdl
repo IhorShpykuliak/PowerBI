@@ -25,11 +25,14 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Forecast Orders Outstanding' =
+	measure 'Forecast Orders Outstanding QTY' =
 			
-			CALCULATE(
-			    SUM('Fact_SalesOrder'[QuantityOutstanding]),
-			    'Dim_OrderType'[C_DESCRIPTION] <> "7. Forecast Order"
+			COALESCE(
+			    CALCULATE(
+			        SUM('Fact_SalesOrder'[QuantityOutstanding]),
+			        KEEPFILTERS('Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order")
+			    ),
+			    0
 			)
 		lineageTag: ea4261be-0dea-425c-946c-e1e99f453c95
 
@@ -44,10 +47,9 @@ table _Measures
 
 	measure 'Ideal Stocking Level' =
 			
-			[Monthly Average Sales] * [Required Months Stock]
+			[Monthly Average Sales for 6 month period] * [Required Months Stock]
+		formatString: 0
 		lineageTag: 907fe47f-f71e-4b36-868d-b92962ac0f38
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Required Months Stock' = ```
 			
@@ -63,13 +65,16 @@ table _Measures
 		formatString: 0
 		lineageTag: e4bd71d0-016a-48f6-b99d-98614e6d1d77
 
-	measure 'Monthly Average Sales' =
+	measure 'Monthly Average Sales for 6 month period' =
 			
-			CALCULATE(
-			    SUM('Fact_SalesAnalysis'[QuantitySold]),
-			    DATESINPERIOD('Dim_Date'[Date], MAX('Dim_Date'[Date]), -6, MONTH),
-			    ISBLANK('fact_salesOrder'[forecastOrder])
-			) / 6
+			COALESCE(
+			    CALCULATE(
+			        SUM('Fact_SalesAnalysis'[QuantitySold]),
+			        DATESINPERIOD('Dim_Date'[Date], MAX('Dim_Date'[Date]), -6, MONTH),
+			        KEEPFILTERS('Fact_SalesAnalysis'[SalesOrderType] <> "7. Forecast Order")
+			    ) / 6
+			    ,0
+			)
 		lineageTag: c37ad331-1180-4b85-b823-70c988e18ac0
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -77,8 +82,8 @@ table _Measures
 	measure 'Months Stock Remaining' = ```
 			
 			DIVIDE(
-			    SUM('Dim_Product'[StockLevel]) - [Forecast Orders Outstanding],
-			    [Monthly Average Sales]
+			    SUM('Dim_Product'[StockLevel]) - [Forecast Orders Outstanding QTY],
+			    [Monthly Average Sales for 6 month period]
 			    
 			)
 			```
@@ -98,8 +103,8 @@ table _Measures
 
 	measure 'Forecasted Sales' = ```
 			
-			([Monthly Average Sales] * SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)) 
-			+ [Forecast Orders Outstanding]
+			([Monthly Average Sales for 6 month period] * SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)) 
+			+ [Forecast Orders Outstanding QTY]
 			```
 		lineageTag: 9751013f-2ea9-40f1-a5f5-939418b6ece6
 
@@ -132,8 +137,8 @@ table _Measures
 	measure 'Months Stock Remaining M1' =
 			
 			DIVIDE(
-			    [Predicted Stock M1] - [Forecast Orders Outstanding],
-			    [Monthly Average Sales],
+			    [Predicted Stock M1] - [Forecast Orders Outstanding QTY],
+			    [Monthly Average Sales for 6 month period],
 			    0
 			)
 		lineageTag: 7a699889-befc-46b0-b582-fb89e02d5c20
@@ -177,6 +182,52 @@ table _Measures
 
 	measure 'Current Stock' = SUM(Dim_Product[StockLevel])
 		lineageTag: 9e8cecb1-52a7-4f69-ac45-8181444a0943
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecast Qty Ordered Standard' =
+			
+			CALCULATE(
+			    SUM(Fact_SalesOrder[QuantityOrdered]),
+			    Fact_SalesOrder[IsKit] = 0,
+			    KEEPFILTERS(Dim_OrderType[C_DESCRIPTION] = "7. Forecast Order")
+			)
+		lineageTag: 2e874a25-6bc9-4f31-acc1-b61088171d71
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'orecast Qty Outstanding Standard' =
+			
+			CALCULATE(
+			    SUM(Fact_SalesOrder[QuantityOutstanding]),
+			    Fact_SalesOrder[IsKit] = 0,
+			    KEEPFILTERS(Dim_OrderType[C_DESCRIPTION] = "7. Forecast Order")
+			)
+		lineageTag: eda18c7f-0233-4311-82cf-757423c2b244
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecast Qty Outstanding Standard' =
+			
+			CALCULATE(
+			    SUM(Fact_SalesOrder[QuantityOutstanding]),
+			    Fact_SalesOrder[IsKit] = 0,
+			    KEEPFILTERS(Dim_OrderType[C_DESCRIPTION] = "7. Forecast Order")
+			)
+		lineageTag: eca85336-b0ef-44ad-8002-64de4d828704
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Orders Outstanding QTY' =
+			
+			COALESCE(
+			    CALCULATE(
+			        SUM('Fact_SalesOrder'[QuantityOutstanding]),
+			        KEEPFILTERS('Dim_OrderType'[C_DESCRIPTION] <> "7. Forecast Order")
+			    ),
+			    0
+			)
+		lineageTag: bdc7a078-13de-4736-9d0c-aa8181d0dfc0
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 

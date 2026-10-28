@@ -311,13 +311,24 @@ table Fact_SalesAnalysis
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column SalesOrderType
+		dataType: string
+		sourceProviderType: nvarchar(30)
+		lineageTag: 7db4b10b-de33-4205-b33e-b640205c38a8
+		summarizeBy: none
+		sourceColumn: SalesOrderType
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Fact_SalesAnalysis = m
 		mode: directQuery
 		source =
 				let
-				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [SalesAnalysisLineID]#(lf)      ,[DocumentHeaderID]#(lf)      ,[DocumentNumber]#(lf)      ,[DocType]#(lf)      ,[SalesDateKey]#(lf)      ,[ProductID]#(lf)      ,[CustomerID]#(lf)      ,[BranchID]#(lf)      ,[SalesRepID]#(lf)      ,[StockBranchID]#(lf)      ,[OriginalBranchID]#(lf)      ,[CustomerCode]#(lf)      ,[ProductCode]#(lf)      ,[CostCentre]#(lf)      ,[DepartmentID]#(lf)      ,[OrderSource]#(lf)      ,[SalesOrderNumber]#(lf)      ,[QuantitySold]#(lf)      ,[NetSalesAmount]#(lf)      ,[NetCostAmount]#(lf)      ,[GrossProfitValue]#(lf)      ,[NetSellingCostAmount]#(lf)      ,[AverageCost]#(lf)      ,[AveragePerUnitCost]#(lf)      ,[PotentialRebateAmount]#(lf)      ,[SellingCostRebate]#(lf)      ,[SupplierPriceSupportAmount]#(lf)      ,[OriginalPricePerUnit]#(lf)      ,[SellingPricePerUnit]#(lf)  FROM [Tippers].[dbo].[Fact_SalesAnalysis]"])
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [SalesAnalysisLineID]#(lf)      ,[DocumentHeaderID]#(lf)      ,[DocumentNumber]#(lf)      ,[DocType]#(lf)      ,[SalesDateKey]#(lf)      ,[ProductID]#(lf)      ,[CustomerID]#(lf)      ,[BranchID]#(lf)      ,[SalesRepID]#(lf)      ,[StockBranchID]#(lf)      ,[OriginalBranchID]#(lf)      ,[CustomerCode]#(lf)      ,[ProductCode]#(lf)      ,[CostCentre]#(lf)      ,[DepartmentID]#(lf)      ,[OrderSource]#(lf)      ,[SalesOrderNumber]#(lf),SalesOrderType#(lf)      ,[QuantitySold]#(lf)      ,[NetSalesAmount]#(lf)      ,[NetCostAmount]#(lf)      ,[GrossProfitValue]#(lf)      ,[NetSellingCostAmount]#(lf)      ,[AverageCost]#(lf)      ,[AveragePerUnitCost]#(lf)      ,[PotentialRebateAmount]#(lf)      ,[SellingCostRebate]#(lf)      ,[SupplierPriceSupportAmount]#(lf)      ,[OriginalPricePerUnit]#(lf)      ,[SellingPricePerUnit]#(lf)  FROM [Tippers].[dbo].[Fact_SalesAnalysis]"])
 				in
 				    Source
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 

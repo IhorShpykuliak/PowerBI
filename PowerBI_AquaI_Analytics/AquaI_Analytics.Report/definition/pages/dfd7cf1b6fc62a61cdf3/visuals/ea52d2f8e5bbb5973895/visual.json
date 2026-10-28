@@ -1,0 +1,636 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "ea52d2f8e5bbb5973895",
+  "position": {
+    "x": 0,
+    "y": 336.14091273018414,
+    "z": 1000,
+    "height": 384.30744595676538,
+    "width": 1280
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "ProdCode"
+                }
+              },
+              "queryRef": "Dim_Product.ProdCode",
+              "nativeQueryRef": "ProdCode"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "AquaICode"
+                }
+              },
+              "queryRef": "Dim_Product.AquaICode",
+              "nativeQueryRef": "AquaICode"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "AquaIDescription"
+                }
+              },
+              "queryRef": "Dim_Product.AquaIDescription",
+              "nativeQueryRef": "AquaIDescription"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "WyndamCode"
+                }
+              },
+              "queryRef": "Dim_Product.WyndamCode",
+              "nativeQueryRef": "WyndamCode"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "SupplierCode"
+                }
+              },
+              "queryRef": "Dim_Product.SupplierCode",
+              "nativeQueryRef": "SupplierCode"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "SupplierName"
+                }
+              },
+              "queryRef": "Dim_Product.SupplierName",
+              "nativeQueryRef": "SupplierName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "StandardCost"
+                }
+              },
+              "queryRef": "Sum(Dim_Product.StandardCost)",
+              "nativeQueryRef": "StandardCost"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "USDListPrice"
+                }
+              },
+              "queryRef": "Sum(Dim_Product.USDListPrice)",
+              "nativeQueryRef": "USDListPrice"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "MOQ"
+                }
+              },
+              "queryRef": "Sum(Dim_Product.MOQ)",
+              "nativeQueryRef": "MOQ"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Product"
+                        }
+                      },
+                      "Property": "StockLevel"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Dim_Product.StockLevel)",
+              "nativeQueryRef": "Sum of StockLevel"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Monthly Average Sales for 6 month period"
+                }
+              },
+              "queryRef": "_Measures.Monthly Average Sales",
+              "nativeQueryRef": "Monthly Average Sales for 6 month period"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "CartonQTY"
+                }
+              },
+              "queryRef": "Sum(Dim_Product.CartonQTY)",
+              "nativeQueryRef": "CartonQTY"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "CBM"
+                }
+              },
+              "queryRef": "Sum(Dim_Product.CBM)",
+              "nativeQueryRef": "CBM"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Required Months Stock"
+                }
+              },
+              "queryRef": "_Measures.Required Months Stock",
+              "nativeQueryRef": "Required Months Stock"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Ideal Stocking Level"
+                }
+              },
+              "queryRef": "_Measures.Ideal Stocking Level",
+              "nativeQueryRef": "Ideal Stocking Level"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Current Space Requirements CBM"
+                }
+              },
+              "queryRef": "_Measures.Current Space Requirements CBM",
+              "nativeQueryRef": "Current Space Requirements CBM"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Ideal Space Requirements"
+                }
+              },
+              "queryRef": "_Measures.Ideal Space Requirements",
+              "nativeQueryRef": "Ideal Space Requirements"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Months Stock Remaining"
+                }
+              },
+              "queryRef": "_Measures.Months Stock Remaining",
+              "nativeQueryRef": "Months Stock Remaining"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Ordered Stock"
+                }
+              },
+              "queryRef": "_Measures.Ordered Stock",
+              "nativeQueryRef": "Ordered Stock"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Product"
+                        }
+                      },
+                      "Property": "OutstandingPO"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Dim_Product.OutstandingPO)",
+              "nativeQueryRef": "Sum of OutstandingPO"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecasted Sales"
+                }
+              },
+              "queryRef": "_Measures.Forecasted Sales",
+              "nativeQueryRef": "Forecasted Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecast Orders Outstanding QTY"
+                }
+              },
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Suggested Order Amount"
+                }
+              },
+              "queryRef": "_Measures.Suggested Order Amount",
+              "nativeQueryRef": "Suggested Order Amount"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Months Stock Remaining"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "80.45386163214057D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Product.ProdCode"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "224.0583925355038D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Product.AquaIDescription"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "92.66438331122151D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Monthly Average Sales"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "90.08856360146518D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "83.46115812057096D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Dim_Product.OutstandingPO)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "71.88311626353705D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Dim_Product.StockLevel)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "81.1240995957189D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Product.AquaICode"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "66.01442538922602D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Required Months Stock"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "69.61007676418237D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ideal Stocking Level"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "70.74571299885707D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Current Space Requirements CBM"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "63.68457867593999D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ideal Space Requirements"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "103.70935900143027D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "95.38669907943316D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Suggested Order Amount"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "00080777e5311a642c80",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "Department"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "Dim_Product",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "Department"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isLockedInViewMode": true,
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

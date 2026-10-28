@@ -1,15 +1,6 @@
 table Fact_SalesOrder
 	lineageTag: bed62fb1-2396-4360-914c-8fe8bdf3391d
 
-	column SalesOrderLineID
-		dataType: int64
-		formatString: 0
-		lineageTag: 31726582-da61-4b3e-b66b-0f807959c7d2
-		summarizeBy: count
-		sourceColumn: SalesOrderLineID
-
-		annotation SummarizationSetBy = Automatic
-
 	column SalesOrderID
 		dataType: int64
 		formatString: 0
@@ -143,11 +134,35 @@ table Fact_SalesOrder
 
 		annotation SummarizationSetBy = Automatic
 
+	column IsKit
+		dataType: string
+		lineageTag: 752bd324-6474-4050-8876-2cdae86c39d8
+		summarizeBy: none
+		sourceColumn: IsKit
+
+		annotation SummarizationSetBy = Automatic
+
+	column C_CODE
+		dataType: string
+		lineageTag: fa292fa4-e349-4cb8-815f-feae0c8c469c
+		summarizeBy: none
+		sourceColumn: C_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column C_DESCRIPTION
+		dataType: string
+		lineageTag: 758b9bc3-e425-4464-9e3f-8d976ef08548
+		summarizeBy: none
+		sourceColumn: C_DESCRIPTION
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Fact_SalesOrder = m
 		mode: import
 		source =
 				let
-				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [SalesOrderLineID]#(lf)      ,[SalesOrderID]#(lf)      ,[OrderNumber]#(lf)      ,[SODateKey]#(lf)      ,[ProductID]#(lf)      ,[CustomerID]#(lf)      ,[BranchID]#(lf)      ,[SalesRepID]#(lf)      ,[OrderTypeID]#(lf)      ,[WorkflowStatusID]#(lf)      ,[QuantityOrdered]#(lf)      ,[LineNetAmount]#(lf),[EffectiveDueDate]#(lf),QuantityOutstanding#(lf),ForecastOrder#(lf)  FROM [Tippers].[dbo].[Fact_SalesOrder]"])
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT#(lf)    COALESCE(KC.C_PRODUCT, P.C_ID) AS ProductID,#(lf)    COALESCE(KP.C_CODE, P.C_CODE) AS C_CODE,#(lf)    COALESCE(KP.C_DESCRIPTION, P.C_DESCRIPTION) AS C_DESCRIPTION,#(lf)    CASE#(lf)        WHEN P.C_TYPE = 3 THEN 'Yes'#(lf)        ELSE 'No'#(lf)    END AS IsKit,#(lf)    SO.C_ID AS SalesOrderID,#(lf)    LTRIM(RTRIM(SO.C_NUMBER)) AS OrderNumber,#(lf)    CAST(SO.C_DATE AS DATE) AS SODateKey,#(lf)    SO.C_CUSTOMER AS CustomerID,#(lf)    SO.C_BRANCH AS BranchID,#(lf)    SO.C_SALESREP AS SalesRepID,#(lf)    SO.C_SOURCEFORECASTORDER AS ForecastOrder,#(lf)    SO.C_ORDERTYPE AS OrderTypeID,#(lf)    SO.C_WORKFLOWSTATUS AS WorkflowStatusID,#(lf)    ISNULL(SOL.C_QUANTITY, 0) * ISNULL(KC.C_QUANTITY, 1) AS QuantityOrdered,#(lf)    ISNULL(SOL.C_QUANTITYOUTSTANDING, 0) * ISNULL(KC.C_QUANTITY, 1) AS QuantityOutstanding,#(lf)    ISNULL(SOL.C_NETAMOUNT, 0) AS LineNetAmount,#(lf)    COALESCE(SOL.C_DUEDATE, SO.C_DUEDATE) AS EffectiveDueDate#(lf)#(lf)FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_SALESORDER] SO WITH (NOLOCK)#(lf)    INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_SALESORDER_LINE] SOL WITH (NOLOCK)#(lf)        ON SOL.C__OWNER_ = SO.C_ID#(lf)    INNER JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT] P WITH (NOLOCK)#(lf)        ON P.C_ID = SOL.C_PRODUCT#(lf)#(lf)    OUTER APPLY#(lf)    (#(lf)        SELECT#(lf)            K.C_PRODUCT,#(lf)            K.C_QUANTITY#(lf)        FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT_KITCOMPONENT] K#(lf)        WHERE K.C__OWNER_ = P.C_ID#(lf)        AND P.C_TYPE = 3#(lf)    #(lf)        UNION ALL#(lf)    #(lf)        SELECT P.C_ID, 1.0#(lf)        WHERE P.C_TYPE <> 3#(lf)#(lf)    ) KC#(lf)    LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT] KP WITH (NOLOCK)#(lf)       ON KP.C_ID = KC.C_PRODUCT#(lf)    LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENT] PD WITH (NOLOCK)#(lf)        ON PD.C_ID = P.C_DEPARTMENT#(lf)    LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTDEPARTMENTGROUP] PDG WITH (NOLOCK)#(lf)        ON PD.C_GROUP = PDG.C_ID#(lf)    WHERE 1=1#(lf)    AND PDG.C_CODE = 'AQUAI';#(lf)    -- AND SO.C_NUMBER = 'Ai--SO0000822';"])
 				in
 				    Source
 
