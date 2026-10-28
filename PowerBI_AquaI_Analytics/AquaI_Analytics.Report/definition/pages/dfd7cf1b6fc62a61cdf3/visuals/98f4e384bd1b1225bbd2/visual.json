@@ -94,5 +94,84 @@
       }
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8c7d4f36287e5bbd099b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_SalesAnalysis"
+              }
+            },
+            "Property": "ProductCode"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "95b448ff1c8c1428db25",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_SalesAnalysis"
+                  }
+                },
+                "Property": "QuantitySold"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "11bf80628de4b9726e45",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_SalesAnalysis"
+              }
+            },
+            "Property": "SalesDateKey"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1750054f1c2205300b03",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_SalesAnalysis"
+              }
+            },
+            "Property": "SalesOrderNumber"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b468ba1f66532ec66ce0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_SalesAnalysis"
+              }
+            },
+            "Property": "SalesOrderType"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }
