@@ -1,0 +1,65 @@
+table 'Dynamic Product Information'
+	lineageTag: 2d186e49-f71f-4a3b-a533-5c95a5a230df
+
+	column 'Dynamic Product Info'
+		lineageTag: f7682554-1eb0-45e7-914b-658689cfc117
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Product Information Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Product Information Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Information Fields'
+		isHidden
+		lineageTag: 1e22cd26-0ff4-4ba9-87bc-fd91538fb3a2
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Product Information Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Information Order'
+		isHidden
+		formatString: 0
+		lineageTag: 6cea1620-07ab-409c-b2ad-1820cf33f11a
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dynamic Product Information' = calculated
+		mode: import
+		source = ```
+				{
+				
+				    ("SupplierCode", NAMEOF('Dim_Product'[SupplierCode]), 1),
+				    ("SupplierName", NAMEOF('Dim_Product'[SupplierName]), 2),
+				    ("Stocking Status", NAMEOF(Dim_Product[StockingStatus]), 3),
+				    ("USDListPrice", NAMEOF('Dim_Product'[USDListPrice]), 4),
+				    ("List Price Actual", NAMEOF('Dim_Product'[ListPriceActual]), 5),
+				    ("Calculated Landed Cost", NAMEOF('Dim_Product'[CalculatedLandedCost]), 6),
+				    ("AltListPriceActual", NAMEOF('Dim_AlternateSupplierDoNotUse'[AltListPriceActual]), 7),
+				    ("MOQ", NAMEOF('Dim_Product'[MOQ]), 8),
+				    ("Pack Size", NAMEOF('Dim_Product'[PackSize]), 9),
+				    ("CBM", NAMEOF('Dim_Product'[CBM]), 10),
+				    ("Growth Factor", NAMEOF('Dim_Product'[GrowthFactor]), 11),
+				    ("Required Months Stock", NAMEOF([Required Months Stock]), 12),
+				    ("Ideal Stocking Level", NAMEOF([Ideal Stocking Level]), 13),
+				    ("Current Space Requirements CBM", NAMEOF([Current Space Requirements CBM]), 14),
+				    ("Ideal Space Requirements", NAMEOF([Ideal Space Requirements]), 15),
+				    ("Monthly AVG Sales QTY (6 months)", NAMEOF([Monthly Average Sales for 6 month period]), 16)
+				    
+				}
+				```
+
+	annotation PBI_Id = c59075bffc75463c81d71b34321a7484
+

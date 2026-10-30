@@ -10,7 +10,7 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["DevMode"]
 
-annotation PBI_QueryOrder = ["Dim_Product","Fact_PurchaseOrder","Dim_Date","Dim_Supplier","RangeStart","RangeEnd","Fact_SalesOrder","Dim_Customer","Dim_Branch","Dim_SalesRep","Dim_AlternateSupplier","Fact_SalesAnalysis","Dim_OrderType"]
+annotation PBI_QueryOrder = ["Dim_Product","Fact_PurchaseOrder","Dim_Date","Dim_Supplier","RangeStart","RangeEnd","Fact_SalesOrder","Dim_Customer","Dim_Branch","Dim_SalesRep","Dim_AlternateSupplierDoNotUse","Fact_SalesAnalysis","Dim_OrderType"]
 
 ref table Dim_Product
 ref table Fact_PurchaseOrder
@@ -20,12 +20,17 @@ ref table Fact_SalesOrder
 ref table Dim_Customer
 ref table Dim_Branch
 ref table Dim_SalesRep
-ref table Dim_AlternateSupplier
+ref table Dim_AlternateSupplierDoNotUse
 ref table _Measures
 ref table Fact_SalesAnalysis
 ref table Dim_OrderType
 ref table DateTableTemplate_7d44ccd3-1829-4264-b1f5-1e0137715188
 ref table LocalDateTable_472aa295-5a1f-453b-a77a-246ecde6e519
+ref table 'Dynamic Product Label Selector'
+ref table 'Dynamic Product Information'
+ref table 'Dynamic Current Month'
+ref table 'Dynamic Month +1'
+ref table LocalDateTable_fd7d3c41-4970-48d8-a169-c362e0852591
 
 ref cultureInfo en-US
 

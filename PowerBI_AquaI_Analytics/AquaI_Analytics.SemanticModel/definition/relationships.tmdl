@@ -1,4 +1,5 @@
 relationship AutoDetected_d5ad01f9-2e03-46d3-8ba5-736634c4083e
+	crossFilteringBehavior: bothDirections
 	fromColumn: Fact_PurchaseOrder.ProductID
 	toColumn: Dim_Product.ProductID
 
@@ -30,10 +31,6 @@ relationship AutoDetected_71d56218-acaf-4163-8984-a74bfe2a7e53
 	fromColumn: Fact_SalesOrder.SalesRepID
 	toColumn: Dim_SalesRep.SalesRepID
 
-relationship d7f7e456-2e14-a2dd-4559-c7a9256f275f
-	fromColumn: Dim_AlternateSupplier.ProductID
-	toColumn: Dim_Product.ProductID
-
 relationship 06b43039-1a06-452f-8cb8-9b996ecee13b
 	joinOnDateBehavior: datePartOnly
 	fromColumn: Fact_SalesOrder.EffectiveDueDate
@@ -46,4 +43,18 @@ relationship 95d28067-3ecd-297c-6a22-2d34fcf3a0e7
 relationship 235ac3fc-23d7-8eb0-87fd-c4284f36b73e
 	fromColumn: Fact_SalesOrder.OrderTypeID
 	toColumn: Dim_OrderType.C_ID
+
+relationship e1682270-72ee-f1c9-cbe5-3082b0be59bc
+	fromColumn: Dim_AlternateSupplierDoNotUse.ProductID
+	toColumn: Dim_Product.ProductID
+
+relationship a1379e32-803d-4ea0-9ffc-1edfff66ce5d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_SalesOrder.LineDueDate
+	toColumn: LocalDateTable_fd7d3c41-4970-48d8-a169-c362e0852591.Date
+
+relationship 5b59af77-702c-c0ca-de63-504e17a8ef85
+	isActive: false
+	fromColumn: Fact_SalesAnalysis.SalesDateKey
+	toColumn: Dim_Date.Date
 

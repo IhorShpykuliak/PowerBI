@@ -1,0 +1,54 @@
+table 'Dynamic Product Label Selector'
+	lineageTag: 6a5d3862-c13b-469a-95d8-2103fbbc217c
+
+	column 'Dynamic Product Label Selector'
+		lineageTag: 4ba839e5-1a62-4a40-a1c1-db7a815c8152
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'dede Order'
+
+		relatedColumnDetails
+			groupByColumn: 'dede Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'dede Fields'
+		isHidden
+		lineageTag: 3c7f178b-66ac-4c4c-96be-6b71e614aaea
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'dede Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'dede Order'
+		isHidden
+		formatString: 0
+		lineageTag: 2c504fb1-32c8-4db4-841e-643989ca4aa1
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dynamic Product Label Selector' = calculated
+		mode: import
+		source = ```
+				{
+				    ("Tippers Code", NAMEOF('Dim_Product'[ProdCode]), 0),
+				    ("Tippers Description", NAMEOF('Dim_Product'[ProdDescription]), 1),
+				    ("AquaI Code", NAMEOF('Dim_Product'[AquaICode]), 2),
+				    ("AquaI Description", NAMEOF('Dim_Product'[AquaIDescription]), 3),
+				    ("Wyndam Code", NAMEOF('Dim_Product'[WyndamCode]), 4),
+				    ("Wyndam Description", NAMEOF('Dim_Product'[WyndamDescription]), 5),
+				    ("Manufacturer Stock Code", NAMEOF('Dim_Product'[ManufacturerStockCode]), 6)  
+				}
+				```
+
+	annotation PBI_Id = 8435aa8ffa4649a7aa0ea6d2edf7d0af
+

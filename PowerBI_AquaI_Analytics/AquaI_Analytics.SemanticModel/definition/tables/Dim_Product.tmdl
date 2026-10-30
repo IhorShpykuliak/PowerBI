@@ -280,16 +280,6 @@ table Dim_Product
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	column CartonQTY
-		dataType: double
-		lineageTag: 170a73b8-3ba1-46b1-b03d-a8122b4b20f9
-		summarizeBy: sum
-		sourceColumn: CartonQTY
-
-		annotation SummarizationSetBy = Automatic
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	column CoreProduct
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""
@@ -339,14 +329,6 @@ table Dim_Product
 
 		annotation SummarizationSetBy = Automatic
 
-	column SupplierStockCode
-		dataType: string
-		lineageTag: 254ae345-b876-45ec-a844-61672bfd3a47
-		summarizeBy: none
-		sourceColumn: SupplierStockCode
-
-		annotation SummarizationSetBy = Automatic
-
 	column MOQ
 		dataType: double
 		lineageTag: 8a6e00c3-5a5e-4e59-ad56-ab9d52dad8e5
@@ -357,11 +339,29 @@ table Dim_Product
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column ManufacturerStockCode
+		dataType: string
+		lineageTag: c85c2a0f-d12c-4f54-85a8-443fab1066a7
+		summarizeBy: none
+		sourceColumn: ManufacturerStockCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column PackSize
+		dataType: double
+		lineageTag: a07b9233-045d-47fe-b2a3-9dc1a00c3891
+		summarizeBy: sum
+		sourceColumn: PackSize
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	partition Dim_Product = m
 		mode: import
 		source =
 				let
-				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [ProductID]#(lf)      ,[ProdCode]#(lf)      ,[ProdDescription]#(lf)      ,[Department]#(lf)      ,[ProductType]#(lf)      ,[SupplierName]#(lf)      ,[SupplierCode]#(lf)      ,[StockingStatus]#(lf)      ,[SearchKeywords]#(lf)      ,[SupplierProductCode]#(lf)      ,[KitComponents]#(lf)      ,[Length]#(lf)      ,[Width]#(lf)      ,[Height]#(lf)      ,[GrossWeight]#(lf)      ,[CBM]#(lf)      ,[StockLevel]#(lf)      ,[OutstandingSO]#(lf)      ,[OutstandingPO]#(lf)      ,[EffectiveStockLevel]#(lf)      ,[SalesYtdQty]#(lf)      ,[SalesYtdAmount]#(lf)      ,[QtyPurchasedYtd]#(lf)      ,[ExchangeRateUSD]#(lf)      ,[ListPriceActual]#(lf)      ,[USDListPrice]#(lf)      ,[DutyRatePercentage]#(lf)      ,[StandardCost]#(lf)      ,[AvgCost]#(lf)      ,[CalculatedLandedCost]#(lf)      ,[AquaICode]#(lf)      ,[AquaIDescription]#(lf)      ,[WyndamCode]#(lf)      ,[WyndamDescription]#(lf)      ,[SupplierStockCode]#(lf)      ,[MOQ]#(lf)      ,[GrowthFactor]#(lf)      ,[CartonQTY]#(lf)      ,[CoreProduct]#(lf)  FROM [Tippers].[dbo].[Dim_Product]"])
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [ProductID]#(lf)      ,[ProdCode]#(lf)      ,[ProdDescription]#(lf)      ,[Department]#(lf)      ,[ProductType]#(lf)      ,[SupplierName]#(lf)      ,[SupplierCode]#(lf)      ,[StockingStatus]#(lf)      ,[SearchKeywords]#(lf)      ,[SupplierProductCode]#(lf)      ,[KitComponents]#(lf)      ,[Length]#(lf)      ,[Width]#(lf)      ,[Height]#(lf)      ,[GrossWeight]#(lf)      ,[CBM]#(lf)      ,[StockLevel]#(lf)      ,[OutstandingSO]#(lf)      ,[OutstandingPO]#(lf)      ,[EffectiveStockLevel]#(lf)      ,[SalesYtdQty]#(lf)      ,[SalesYtdAmount]#(lf)      ,[QtyPurchasedYtd]#(lf)      ,[ExchangeRateUSD]#(lf)      ,[ListPriceActual]#(lf)      ,[USDListPrice]#(lf)      ,[DutyRatePercentage]#(lf)      ,[StandardCost]#(lf)      ,[AvgCost]#(lf)      ,[CalculatedLandedCost]#(lf)      ,[AquaICode]#(lf)      ,[AquaIDescription]#(lf)      ,[WyndamCode]#(lf)      ,[WyndamDescription]#(lf)      ,[ManufacturerStockCode]#(lf)      ,[MOQ]#(lf)      ,[GrowthFactor]#(lf)      ,[PackSize]#(lf)      ,[CoreProduct]#(lf)#(lf)  FROM [Tippers].[dbo].[Dim_Product]"])
 				in
 				    Source
 

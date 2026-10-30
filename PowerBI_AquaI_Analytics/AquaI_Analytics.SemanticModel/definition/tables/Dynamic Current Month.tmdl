@@ -1,0 +1,55 @@
+table 'Dynamic Current Month'
+	lineageTag: 7dbeb2cd-361e-48fe-aaa4-86cc113b1a9b
+
+	column 'Dynamic Current Month'
+		lineageTag: d442289e-070b-4715-bde2-d1cb7d755b3f
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Current Month Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Current Month Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Month Fields'
+		isHidden
+		lineageTag: c3171057-d975-438b-979d-d60db89a1240
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Current Month Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Month Order'
+		isHidden
+		formatString: 0
+		lineageTag: b7bcaf36-b98e-4cde-9b76-b912d47c714f
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dynamic Current Month' = calculated
+		mode: import
+		source = ```
+				{
+				 
+				    ("Stock Level", NAMEOF('Dim_Product'[StockLevel]), 1),
+				    ("Forecast Orders Outstanding QTY (M+0)", NAMEOF('_Measures'[Forecast Orders Outstanding QTY (M+0)]), 2),
+				    ("Months Stock Remaining", NAMEOF('_Measures'[Months Stock Remaining inc FO + 0]), 3),
+				    ("Ordered Stock", NAMEOF('_Measures'[Ordered Stock]), 4),
+				    ("Outstanding PO", NAMEOF('Dim_Product'[OutstandingPO]), 5),
+				    ("Forecasted Sales", NAMEOF('_Measures'[Forecasted Sales]), 6),
+				    ("Suggested Order Amount", NAMEOF('_Measures'[Suggested Order Amount]), 7)
+				}
+				```
+
+	annotation PBI_Id = 6d4ab5973eaf483c89ef0efb4d8d2523
+

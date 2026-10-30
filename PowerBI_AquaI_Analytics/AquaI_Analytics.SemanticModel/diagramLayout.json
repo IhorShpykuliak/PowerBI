@@ -5,7 +5,7 @@
       "ordinal": 0,
       "scrollPosition": {
         "x": 0,
-        "y": 499.03723500571397
+        "y": 502.80829723497629
       },
       "nodes": [
         {
@@ -19,7 +19,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 9
+          "zIndex": 11
         },
         {
           "location": {
@@ -32,12 +32,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 6
+          "zIndex": 9
         },
         {
           "location": {
-            "x": 1285.2277068489955,
-            "y": 772.911245904347
+            "x": 531.01526099653108,
+            "y": 605.72748707371738
           },
           "nodeIndex": "Dim_Date",
           "nodeLineageTag": "ac616092-e90d-45fb-a17f-73dd4fc4d6f4",
@@ -45,7 +45,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 7
+          "zIndex": 16
         },
         {
           "location": {
@@ -58,7 +58,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 5
+          "zIndex": 14
         },
         {
           "location": {
@@ -71,7 +71,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 10
+          "zIndex": 15
         },
         {
           "location": {
@@ -84,7 +84,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 8
+          "zIndex": 10
         },
         {
           "location": {
@@ -97,7 +97,7 @@
             "height": 176,
             "width": 234
           },
-          "zIndex": 1
+          "zIndex": 6
         },
         {
           "location": {
@@ -110,25 +110,12 @@
             "height": 152,
             "width": 234
           },
-          "zIndex": 2
+          "zIndex": 7
         },
         {
           "location": {
-            "x": 786.59621659925631,
-            "y": 393.54200886519254
-          },
-          "nodeIndex": "Dim_AlternateSupplier",
-          "nodeLineageTag": "608f4989-374c-474a-9228-0d571e8f571f",
-          "size": {
-            "height": 272,
-            "width": 234
-          },
-          "zIndex": 3
-        },
-        {
-          "location": {
-            "x": 1294.3459088688205,
-            "y": 548.95897945849947
+            "x": 1244.0650791453229,
+            "y": 284.984623410137
           },
           "nodeIndex": "_Measures",
           "nodeLineageTag": "3927fa90-3c9c-455f-a8c4-6da16e4bdac2",
@@ -136,7 +123,7 @@
             "height": 200,
             "width": 234
           },
-          "zIndex": 4
+          "zIndex": 8
         },
         {
           "location": {
@@ -149,7 +136,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 12
+          "zIndex": 13
         },
         {
           "location": {
@@ -162,7 +149,68 @@
             "height": 152,
             "width": 234
           },
-          "zIndex": 11
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 1578.3459088688205,
+            "y": 608.45955613961951
+          },
+          "nodeIndex": "Dynamic Product Label Selector",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1862.3459088688205,
+            "y": 608.45955613961951
+          },
+          "nodeIndex": "Dynamic Product Information",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 786.59621659925631,
+            "y": 393.54200886519254
+          },
+          "nodeIndex": "Dim_AlternateSupplierDoNotUse",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 2146.3459088688205,
+            "y": 608.45955613961951
+          },
+          "nodeIndex": "Dynamic Current Month",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 2430.3459088688205,
+            "y": 608.45955613961951
+          },
+          "nodeIndex": "Dynamic Month +1",
+          "nodeLineageTag": "a50bd42f-26fb-4840-ab29-b18cd9e08842",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 3
         }
       ],
       "name": "All tables",

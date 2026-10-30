@@ -1,0 +1,65 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "fbe9f5841d02cc5ce4a2",
+  "position": {
+    "x": 465.55956678700358,
+    "y": 414.72924187725636,
+    "z": 3006,
+    "height": 272.63537906137179,
+    "width": 339.24480081991175
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_SalesAnalysis"
+                        }
+                      },
+                      "Property": "QuantitySold"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_SalesAnalysis.QuantitySold)",
+              "nativeQueryRef": "Sum of QuantitySold"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d5c2ce5229c0a8721164",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_SalesAnalysis"
+                  }
+                },
+                "Property": "QuantitySold"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

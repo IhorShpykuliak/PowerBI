@@ -1,4 +1,4 @@
-table Dim_AlternateSupplier
+table Dim_AlternateSupplierDoNotUse
 	lineageTag: 608f4989-374c-474a-9228-0d571e8f571f
 
 	column AlternatePurchasingID
@@ -70,7 +70,7 @@ table Dim_AlternateSupplier
 
 		annotation SummarizationSetBy = User
 
-	partition Dim_AlternateSupplier = m
+	partition Dim_AlternateSupplierDoNotUse = m
 		mode: import
 		source =
 				let

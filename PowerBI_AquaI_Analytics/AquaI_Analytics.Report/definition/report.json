@@ -9,6 +9,15 @@
         "page": "2.3.0"
       },
       "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "AccessibleDefault",
+      "reportVersionAtImport": {
+        "visual": "2.4.0",
+        "report": "3.0.0",
+        "page": "2.3.0"
+      },
+      "type": "SharedResources"
     }
   },
   "objects": {
@@ -26,9 +35,6 @@
       }
     ]
   },
-  "publicCustomVisuals": [
-    "advanceCardE03760C5AB684758B56AA29F9E6C257B"
-  ],
   "resourcePackages": [
     {
       "name": "SharedResources",
@@ -38,6 +44,11 @@
           "name": "CY25SU11",
           "path": "BaseThemes/CY25SU11.json",
           "type": "BaseTheme"
+        },
+        {
+          "name": "AccessibleDefault",
+          "path": "BuiltInThemes/AccessibleDefault.json",
+          "type": "CustomTheme"
         }
       ]
     }

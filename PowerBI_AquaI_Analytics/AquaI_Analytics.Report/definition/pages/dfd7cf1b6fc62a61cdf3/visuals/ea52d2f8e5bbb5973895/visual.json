@@ -100,6 +100,25 @@
             },
             {
               "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Product"
+                        }
+                      },
+                      "Property": "CalculatedLandedCost"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Dim_Product.CalculatedLandedCost)",
+              "nativeQueryRef": "Sum of CalculatedLandedCost"
+            },
+            {
+              "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
@@ -181,20 +200,6 @@
                       "Entity": "Dim_Product"
                     }
                   },
-                  "Property": "CartonQTY"
-                }
-              },
-              "queryRef": "Sum(Dim_Product.CartonQTY)",
-              "nativeQueryRef": "CartonQTY"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_Product"
-                    }
-                  },
                   "Property": "CBM"
                 }
               },
@@ -265,7 +270,7 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Months Stock Remaining"
+                  "Property": "Months Stock Remaining inc FO + 0"
                 }
               },
               "queryRef": "_Measures.Months Stock Remaining",
@@ -326,7 +331,7 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Forecast Orders Outstanding QTY"
+                  "Property": "Forecast Orders Outstanding QTY Total"
                 }
               },
               "queryRef": "_Measures.Forecast Orders Outstanding QTY",
@@ -345,6 +350,20 @@
               },
               "queryRef": "_Measures.Suggested Order Amount",
               "nativeQueryRef": "Suggested Order Amount"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecast Orders Outstanding QTY Total"
+                }
+              },
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY"
             }
           ]
         }
@@ -632,7 +651,7 @@
         }
       },
       {
-        "name": "adeb45764211b55bad64",
+        "name": "1c6d7f6464be0a04ea9c",
         "field": {
           "Column": {
             "Expression": {
@@ -646,7 +665,7 @@
         "type": "Categorical"
       },
       {
-        "name": "66d8b8a4cd1aca8ccb02",
+        "name": "9350400e4e125ea49da1",
         "field": {
           "Column": {
             "Expression": {
@@ -660,7 +679,7 @@
         "type": "Categorical"
       },
       {
-        "name": "6afb025270d10664601a",
+        "name": "024858058c08d1506b77",
         "field": {
           "Column": {
             "Expression": {
@@ -674,40 +693,91 @@
         "type": "Categorical"
       },
       {
-        "name": "7069f8030415901e0980",
+        "name": "b3f1829f9365e5a9a525",
         "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Dim_Product"
-                  }
-                },
-                "Property": "OutstandingPO"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "c7f43579425777d01939",
-        "field": {
-          "Measure": {
+          "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "_Measures"
+                "Entity": "Dim_Product"
               }
             },
-            "Property": "Forecast Orders Outstanding QTY"
+            "Property": "WyndamCode"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ad873761c52c7bca23e0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "SupplierCode"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "86206093c50b83d9e6d1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "SupplierName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a7cab1757aec0a96b97a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "StandardCost"
           }
         },
         "type": "Advanced"
       },
       {
-        "name": "c3a25f925279479a180d",
+        "name": "b52d08d6e31eaaa9ee4e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "USDListPrice"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8ef806769a40056c9643",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "MOQ"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b71a949ac888a652b5de",
         "field": {
           "Aggregation": {
             "Expression": {
@@ -726,7 +796,7 @@
         "type": "Advanced"
       },
       {
-        "name": "a4791b9012200b043a3b",
+        "name": "f34961760d09532b00e7",
         "field": {
           "Measure": {
             "Expression": {
@@ -740,105 +810,7 @@
         "type": "Advanced"
       },
       {
-        "name": "4ee277e4ca35c7b09219",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "WyndamCode"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "fb2c008b056061d6ac4d",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "StandardCost"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "c7869b748803aa71660b",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "SupplierCode"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "72a8993098a6ad20a909",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "SupplierName"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "4ef74b4100011696c7db",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "USDListPrice"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "6af897a0489d3d88339e",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "MOQ"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "4944c72f9899d8a349ec",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "CartonQTY"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "d8a30ba3ac2c92bd7d2c",
+        "name": "00af152ed01215070bd4",
         "field": {
           "Column": {
             "Expression": {
@@ -852,7 +824,7 @@
         "type": "Advanced"
       },
       {
-        "name": "0e34971a1864c5d870d2",
+        "name": "d69306536dda761cc88d",
         "field": {
           "Measure": {
             "Expression": {
@@ -866,7 +838,7 @@
         "type": "Advanced"
       },
       {
-        "name": "ffdf9fb357d358e488d7",
+        "name": "3c9bc103e128a73c9d90",
         "field": {
           "Measure": {
             "Expression": {
@@ -880,7 +852,7 @@
         "type": "Advanced"
       },
       {
-        "name": "3cc1504e383d04743d0b",
+        "name": "5d14e119ce5e5075dc86",
         "field": {
           "Measure": {
             "Expression": {
@@ -894,7 +866,7 @@
         "type": "Advanced"
       },
       {
-        "name": "86de8f810e20d919917b",
+        "name": "f7f596cf69b0a0344a7b",
         "field": {
           "Measure": {
             "Expression": {
@@ -908,7 +880,7 @@
         "type": "Advanced"
       },
       {
-        "name": "5db4c475010c22e34a88",
+        "name": "f955791701d9a70cc9be",
         "field": {
           "Measure": {
             "Expression": {
@@ -916,13 +888,13 @@
                 "Entity": "_Measures"
               }
             },
-            "Property": "Months Stock Remaining"
+            "Property": "Months Stock Remaining inc FO + 0"
           }
         },
         "type": "Advanced"
       },
       {
-        "name": "6ac402accc3304310da0",
+        "name": "1125c287e90a5929d57d",
         "field": {
           "Measure": {
             "Expression": {
@@ -936,7 +908,26 @@
         "type": "Advanced"
       },
       {
-        "name": "edfab9370b13a4110ada",
+        "name": "f89ff8b31d571535eb00",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_Product"
+                  }
+                },
+                "Property": "OutstandingPO"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a34861b2667edb1e1e04",
         "field": {
           "Measure": {
             "Expression": {
@@ -950,7 +941,21 @@
         "type": "Advanced"
       },
       {
-        "name": "5e54c86a6a42b2b41904",
+        "name": "5a3bcecf16517a0060ea",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY Total"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8af7e58f286116d3e79b",
         "field": {
           "Measure": {
             "Expression": {
@@ -959,6 +964,25 @@
               }
             },
             "Property": "Suggested Order Amount"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b760e6aa05297a0cbe88",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_Product"
+                  }
+                },
+                "Property": "CalculatedLandedCost"
+              }
+            },
+            "Function": 0
           }
         },
         "type": "Advanced"
