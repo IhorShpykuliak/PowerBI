@@ -30,13 +30,25 @@ table Dim_OrderType
 
 		annotation SummarizationSetBy = Automatic
 
+	column IsForecastOrder
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(3)
+		lineageTag: b10e6055-f438-48b3-9071-23d445757863
+		summarizeBy: none
+		sourceColumn: IsForecastOrder
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Dim_OrderType = m
 		mode: directQuery
 		source =
 				let
-				    Source = Sql.Database("SER-SQL-01\SQL", "Intact_IQ_Walter_Tipper_Ltd", [Query="SELECT [C_ID]#(lf)      ,[C_CODE]#(lf)      ,[C_DESCRIPTION]#(lf)     #(lf)  FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_SALESORDERTYPE]"])
+				    Source = Sql.Database("SER-SQL-01\SQL", "Intact_IQ_Walter_Tipper_Ltd", [Query="SELECT [C_ID]#(lf)      ,[C_CODE]#(lf)      ,[C_DESCRIPTION]#(lf)      ,CASE WHEN [C_CODE] = 7 THEN 'Yes' ELSE 'No' END AS IsForecastOrder#(lf)     #(lf)  FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_SALESORDERTYPE]"])
 				in
 				    Source
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 

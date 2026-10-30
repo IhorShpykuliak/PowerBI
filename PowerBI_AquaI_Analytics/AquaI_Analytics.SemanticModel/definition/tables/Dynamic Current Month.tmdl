@@ -41,13 +41,15 @@ table 'Dynamic Current Month'
 		source = ```
 				{
 				 
-				    ("Stock Level", NAMEOF('Dim_Product'[StockLevel]), 1),
+				
 				    ("Forecast Orders Outstanding QTY (M+0)", NAMEOF('_Measures'[Forecast Orders Outstanding QTY (M+0)]), 2),
-				    ("Months Stock Remaining", NAMEOF('_Measures'[Months Stock Remaining inc FO + 0]), 3),
-				    ("Ordered Stock", NAMEOF('_Measures'[Ordered Stock]), 4),
-				    ("Outstanding PO", NAMEOF('Dim_Product'[OutstandingPO]), 5),
-				    ("Forecasted Sales", NAMEOF('_Measures'[Forecasted Sales]), 6),
-				    ("Suggested Order Amount", NAMEOF('_Measures'[Suggested Order Amount]), 7)
+				    ("Months Stock Remaining M0", NAMEOF('_Measures'[Months Stock Remaining inc FO + 0]), 3),
+				
+				    ("Ordered Stock M0", NAMEOF('_Measures'[Ordered Stock M0]), 5),
+				    
+				    ("Forecasted Sales M0", NAMEOF('_Measures'[Forecasted Sales M0]), 7),
+				    ("Suggested Order Amount M0", NAMEOF('_Measures'[Suggested Order Amount M0]), 8),
+				    (" ", NAMEOF('_Measures'[Empty Column]), 0)
 				}
 				```
 

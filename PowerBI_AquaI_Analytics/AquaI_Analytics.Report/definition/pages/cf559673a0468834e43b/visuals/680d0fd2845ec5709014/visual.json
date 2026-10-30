@@ -4,10 +4,10 @@
   "position": {
     "x": 0,
     "y": 58.981406628940988,
-    "z": 3001,
+    "z": 4000,
     "height": 72.433306386418749,
     "width": 212.12611156022635,
-    "tabOrder": 3001
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "slicer",
@@ -87,14 +87,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''Dim_Product''[StockLevel]'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'''_Measures''[Forecast Orders Outstanding QTY (M+0)]'"
+                                "Value": "'''_Measures''[Empty Column]'"
                               }
                             }
                           ]
@@ -122,18 +115,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''Dim_Product''[StockLevel]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'''_Measures''[Forecast Orders Outstanding QTY (M+0)]'"
+                                      "Value": "'''_Measures''[Empty Column]'"
                                     }
                                   }
                                 ]
@@ -157,10 +139,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "Stock Level"
-                          },
-                          {
-                            "0": "Forecast Orders Outstanding QTY (M+0)"
+                            "0": " "
                           }
                         ]
                       }
@@ -198,7 +177,7 @@
             "singleSelect": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -258,7 +237,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "b4a4bfed114ec3de7c08",
+        "name": "848e2c65660e078803a2",
         "field": {
           "Column": {
             "Expression": {

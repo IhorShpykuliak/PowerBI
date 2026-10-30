@@ -2,11 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "9865dcfc26ed104c00e7",
   "position": {
-    "x": 10.397111913357401,
-    "y": 414.72924187725636,
-    "z": 3003,
-    "height": 272.63537906137185,
-    "width": 455.1624548736462
+    "x": 10.44424297370807,
+    "y": 531.49592021758838,
+    "z": 6000,
+    "height": 187.99637352674526,
+    "width": 454.90480507706258,
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "tableEx",
@@ -22,36 +23,189 @@
                       "Entity": "Fact_PurchaseOrder"
                     }
                   },
-                  "Property": "PONumber"
+                  "Property": "PO Number"
                 }
               },
               "queryRef": "Fact_PurchaseOrder.PONumber",
-              "nativeQueryRef": "PONumber"
+              "nativeQueryRef": "PO Number"
             },
             {
               "field": {
-                "Column": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_PurchaseOrder"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_PurchaseOrder"
+                        }
+                      },
+                      "Property": "Qty Ordered"
                     }
                   },
-                  "Property": "ProductID"
+                  "Function": 0
                 }
               },
-              "queryRef": "Fact_PurchaseOrder.ProductID",
-              "nativeQueryRef": "ProductID"
+              "queryRef": "Sum(Fact_PurchaseOrder.QtyOrdered)",
+              "nativeQueryRef": "Sum of Qty Ordered"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_PurchaseOrder"
+                        }
+                      },
+                      "Property": "Qty Outstanding"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_PurchaseOrder.QtyOutstanding)",
+              "nativeQueryRef": "Sum of Qty Outstanding"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_PurchaseOrder"
+                        }
+                      },
+                      "Property": "Qty Written Off"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_PurchaseOrder.QtyWrittenOff)",
+              "nativeQueryRef": "Sum of Qty Written Off"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_PurchaseOrder"
+                        }
+                      },
+                      "Property": "Qty Supplied"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_PurchaseOrder.Qty Supplied)",
+              "nativeQueryRef": "Sum of Qty Supplied"
             }
           ]
         }
       }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "90.2982477329229D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_PurchaseOrder.PONumber"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "78.94841745656328D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fact_PurchaseOrder.QtyOrdered)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "89.32511812382201D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fact_PurchaseOrder.QtyOutstanding)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "84.30559329432944D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fact_PurchaseOrder.QtyWrittenOff)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "98.25027413774582D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fact_PurchaseOrder.Qty Supplied)"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#DAEDFF'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   },
   "filterConfig": {
     "filters": [
       {
-        "name": "4afcbef5283c23b3a89c",
+        "name": "5d548a9709523993b2da",
         "field": {
           "Column": {
             "Expression": {
@@ -59,21 +213,83 @@
                 "Entity": "Fact_PurchaseOrder"
               }
             },
-            "Property": "PONumber"
+            "Property": "PO Number"
           }
         },
         "type": "Categorical"
       },
       {
-        "name": "a0bcf150c17e0c7060e0",
+        "name": "f327465227d1ebb08c56",
         "field": {
-          "Column": {
+          "Aggregation": {
             "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_PurchaseOrder"
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_PurchaseOrder"
+                  }
+                },
+                "Property": "Qty Ordered"
               }
             },
-            "Property": "ProductID"
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "675923477d2150d08642",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_PurchaseOrder"
+                  }
+                },
+                "Property": "Qty Outstanding"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "60301ebc07c0a0e02208",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_PurchaseOrder"
+                  }
+                },
+                "Property": "Qty Written Off"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "aaf7c78f5a14d1dca20b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_PurchaseOrder"
+                  }
+                },
+                "Property": "Qty Supplied"
+              }
+            },
+            "Function": 0
           }
         },
         "type": "Advanced"

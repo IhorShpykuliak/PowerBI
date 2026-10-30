@@ -2,11 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "c9f4b72cb1e8b72e3c00",
   "position": {
-    "x": 804.80436760691532,
-    "y": 414.631483166515,
-    "z": 3004,
-    "height": 305.15013648771611,
-    "width": 475.19563239308462
+    "x": 465.34904805077065,
+    "y": 531.49592021758838,
+    "z": 7000,
+    "height": 187.99637352674526,
+    "width": 814.65095194922935,
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "tableEx",
@@ -66,14 +67,14 @@
                           "Entity": "Fact_SalesOrder"
                         }
                       },
-                      "Property": "QuantityOrdered"
+                      "Property": "Quantity Ordered"
                     }
                   },
                   "Function": 0
                 }
               },
               "queryRef": "Sum(Fact_SalesOrder.QuantityOrdered)",
-              "nativeQueryRef": "Sum of QuantityOrdered"
+              "nativeQueryRef": "Sum of Quantity Ordered"
             },
             {
               "field": {
@@ -85,14 +86,14 @@
                           "Entity": "Fact_SalesOrder"
                         }
                       },
-                      "Property": "QuantityOutstanding"
+                      "Property": "Quantity Outstanding"
                     }
                   },
                   "Function": 0
                 }
               },
               "queryRef": "Sum(Fact_SalesOrder.QuantityOutstanding)",
-              "nativeQueryRef": "Sum of QuantityOutstanding"
+              "nativeQueryRef": "Sum of Quantity Outstanding"
             },
             {
               "field": {
@@ -107,6 +108,20 @@
               },
               "queryRef": "Fact_SalesOrder.LineDueDate",
               "nativeQueryRef": "LineDueDate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_OrderType"
+                    }
+                  },
+                  "Property": "IsForecastOrder"
+                }
+              },
+              "queryRef": "Dim_OrderType.IsForecastOrder",
+              "nativeQueryRef": "IsForecastOrder"
             }
           ]
         }
@@ -123,13 +138,13 @@
                         "Entity": "Fact_SalesOrder"
                       }
                     },
-                    "Property": "QuantityOrdered"
+                    "Property": "Quantity Outstanding"
                   }
                 },
                 "Function": 0
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ]
       }
@@ -141,7 +156,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "145.83620895174758D"
+                  "Value": "143.40710023803751D"
                 }
               }
             }
@@ -155,13 +170,83 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "122.07097724728123D"
+                  "Value": "110.45067938153664D"
                 }
               }
             }
           },
           "selector": {
             "metadata": "Sum(Fact_SalesOrder.QuantityOrdered)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "105.64188544056506D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_SalesOrder.OrderNumber"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "74.52950369357575D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Customer.CustomerCode"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "121.48798026667293D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fact_SalesOrder.QuantityOutstanding)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "93.93925657298277D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_SalesOrder.LineDueDate"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "128.0018192346899D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_OrderType.IsForecastOrder"
           }
         }
       ],
@@ -184,7 +269,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "10D"
                 }
               }
             }
@@ -197,7 +282,18 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "10D"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FBD9FF'"
+                    }
+                  }
                 }
               }
             }
@@ -210,7 +306,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "4d1b6b197d2e8c0ba500",
+        "name": "fe60851c5c330bc81db4",
         "field": {
           "Column": {
             "Expression": {
@@ -224,7 +320,7 @@
         "type": "Categorical"
       },
       {
-        "name": "859c7804060c6c0be8e2",
+        "name": "305e54e0c6cb56213266",
         "field": {
           "Column": {
             "Expression": {
@@ -238,7 +334,7 @@
         "type": "Categorical"
       },
       {
-        "name": "1ad5d040813868e2b029",
+        "name": "c3d8bbc175070a17327d",
         "field": {
           "Column": {
             "Expression": {
@@ -252,7 +348,7 @@
         "type": "Categorical"
       },
       {
-        "name": "24f18487255593ab4113",
+        "name": "2370b2fc3592546810b0",
         "field": {
           "Aggregation": {
             "Expression": {
@@ -262,7 +358,7 @@
                     "Entity": "Fact_SalesOrder"
                   }
                 },
-                "Property": "QuantityOrdered"
+                "Property": "Quantity Ordered"
               }
             },
             "Function": 0
@@ -271,7 +367,7 @@
         "type": "Advanced"
       },
       {
-        "name": "3460df0bcce3b378003d",
+        "name": "71055787ac520bad23e6",
         "field": {
           "Aggregation": {
             "Expression": {
@@ -281,7 +377,7 @@
                     "Entity": "Fact_SalesOrder"
                   }
                 },
-                "Property": "QuantityOutstanding"
+                "Property": "Quantity Outstanding"
               }
             },
             "Function": 0
@@ -290,7 +386,7 @@
         "type": "Advanced"
       },
       {
-        "name": "00218a2d93986e17274d",
+        "name": "128d5e4c2333e0db4c42",
         "field": {
           "Column": {
             "Expression": {
@@ -299,6 +395,20 @@
               }
             },
             "Property": "LineDueDate"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5329b2c12e53794c4799",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_OrderType"
+              }
+            },
+            "Property": "IsForecastOrder"
           }
         },
         "type": "Categorical"

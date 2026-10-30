@@ -63,6 +63,13 @@
                 }
               }
             },
+            "outlineWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
             "filter": {
               "filter": {
                 "Version": 2,
@@ -96,6 +103,13 @@
                                 "Value": "'''Dim_Product''[ProdCode]'"
                               }
                             }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'''Dim_Product''[AquaIDescription]'"
+                              }
+                            }
                           ]
                         ]
                       }
@@ -126,6 +140,17 @@
                                   }
                                 ]
                               }
+                            ],
+                            [
+                              {
+                                "0": [
+                                  {
+                                    "Literal": {
+                                      "Value": "'''Dim_Product''[AquaIDescription]'"
+                                    }
+                                  }
+                                ]
+                              }
                             ]
                           ],
                           "columns": [
@@ -146,19 +171,15 @@
                         "valueMap": [
                           {
                             "0": "Tippers Code"
+                          },
+                          {
+                            "0": "AquaI Description"
                           }
                         ]
                       }
                     }
                   }
                 ]
-              }
-            },
-            "outlineWeight": {
-              "expr": {
-                "Literal": {
-                  "Value": "2D"
-                }
               }
             }
           }
@@ -239,23 +260,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "7b68e60fb960c9ac8408",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dynamic Product Label Selector"
-              }
-            },
-            "Property": "Dynamic Product Label Selector"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

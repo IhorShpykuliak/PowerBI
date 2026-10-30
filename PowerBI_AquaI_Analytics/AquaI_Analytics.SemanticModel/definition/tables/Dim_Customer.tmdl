@@ -98,9 +98,10 @@ table Dim_Customer
 		mode: import
 		source =
 				let
-				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [CustomerID]#(lf)      ,[CustomerCode]#(lf)      ,[CustomerName]#(lf)      ,[TradingName]#(lf)      ,[WorkflowStatusID]#(lf)      ,[CreditStatusID]#(lf)      ,[CustomerCategoryID]#(lf)      ,[HomeBranchID]#(lf)      ,[Address]#(lf)      ,[Phone]#(lf)      ,[EmailAddress]#(lf)  FROM [Tippers].[dbo].[Dim_Customer]"])
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [CustomerID]#(lf)      ,[CustomerCode]#(lf)      ,[CustomerName]#(lf)      ,[TradingName]#(lf)      ,[WorkflowStatusID]#(lf)      ,[CreditStatusID]#(lf)      ,[CustomerCategoryID]#(lf)      ,[HomeBranchID]#(lf)      ,[Address]#(lf)      ,[Phone]#(lf)      ,[EmailAddress]#(lf)  FROM [Tippers].[dbo].[Dim_Customer]"]),
+				    #"Renamed Columns" = Table.RenameColumns(Source,{{"CustomerCode", "CustomerCode"}})
 				in
-				    Source
+				    #"Renamed Columns"
 
 	annotation PBI_NavigationStepName = Navigation
 

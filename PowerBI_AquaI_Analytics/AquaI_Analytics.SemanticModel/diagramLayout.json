@@ -4,8 +4,8 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 0,
-        "y": 502.80829723497629
+        "x": 1244.0650791453229,
+        "y": 284.984623410137
       },
       "nodes": [
         {
@@ -204,13 +204,50 @@
             "x": 2430.3459088688205,
             "y": 608.45955613961951
           },
-          "nodeIndex": "Dynamic Month +1",
-          "nodeLineageTag": "a50bd42f-26fb-4840-ab29-b18cd9e08842",
+          "nodeIndex": "Dynamic Current Month +1",
           "size": {
             "height": 152,
             "width": 234
           },
-          "zIndex": 3
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2714.3459088688205,
+            "y": 608.45955613961951
+          },
+          "nodeIndex": "Dynamic Current Month +2",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2998.3459088688205,
+            "y": 608.45955613961951
+          },
+          "nodeIndex": "Dynamic Current Month +3",
+          "nodeLineageTag": "595eca78-211a-40b9-82c1-17c45ac0ec81",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3282.3459088688205,
+            "y": 608.45955613961951
+          },
+          "nodeIndex": "Dynamic Current Month 4+",
+          "nodeLineageTag": "11851992-0b0c-43bf-8bde-74959fe4bb97",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",

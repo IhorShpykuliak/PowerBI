@@ -4,7 +4,7 @@ table _Measures
 	measure 'Sales YTD Qty' =
 			
 			CALCULATE (
-			    SUM ( Fact_SalesOrder[QuantityOrdered] ),
+			    SUM ( Fact_SalesOrder[Quantity Ordered] ),
 			    DATESYTD ( Dim_Date[Date] )
 			)
 		lineageTag: 2b2f8eb7-66c5-4844-89a6-87752cafb2f8
@@ -29,7 +29,7 @@ table _Measures
 			
 			COALESCE(
 			    CALCULATE(
-			        SUM('Fact_SalesOrder'[QuantityOutstanding]),
+			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
 			        KEEPFILTERS('Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order")
 			    ),
 			    0
@@ -93,17 +93,22 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Ordered Stock' =
+	measure 'Ordered Stock context' = ```
 			
 			CALCULATE(
-			    SUM(Fact_PurchaseOrder[QtyOutstanding]),
-			    DATESBETWEEN('Dim_Date'[Date], STARTOFMONTH('Dim_Date'[Date]), ENDOFMONTH('Dim_Date'[Date]))
+			    SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			    DATESBETWEEN(
+			        'Dim_Date'[Date], 
+			        MIN('Dim_Date'[Date]), 
+			        MAX('Dim_Date'[Date])
+			    )
 			)
+			```
 		lineageTag: 53f31d78-4fd6-4883-a6ba-f2553592072e
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Forecasted Sales' = ```
+	measure 'Forecasted Sales Total' = ```
 			
 			([Monthly Average Sales for 6 month period] * SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)) 
 			+ [Forecast Orders Outstanding QTY Total]
@@ -112,26 +117,25 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Suggested Order Amount' =
+	measure 'Suggested Order Amount M0' =
 			
-			VAR RawOrderNeeded = [Ideal Stocking Level] - SUM(Dim_Product[StockLevel]) - [Ordered Stock] + [Forecasted Sales]
+			VAR RawQty = [Ideal Stocking Level] - [Predicted Stock M0]
 			VAR MOQ = SELECTEDVALUE('Dim_Product'[MOQ], 0)
-			VAR CartonQty = SELECTEDVALUE('Dim_Product'[PackSize], 1)
+			VAR PackSize = SELECTEDVALUE('Dim_Product'[PackSize], 1)
 			RETURN
 			    IF(
-			        RawOrderNeeded < MOQ,
+			        RawQty < MOQ,
 			        0,
-			        CEILING(RawOrderNeeded / CartonQty, 1) * CartonQty
+			        CEILING(RawQty / PackSize, 1) * PackSize
 			    )
 		lineageTag: a0a80868-a83c-4c5a-add3-41044224abca
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Predicted Stock M1' =
+	measure 'Predicted Stock M1' = ```
 			
-			VAR FinalOrderPrev = [Suggested Order Amount]
-			RETURN
-			    (SUM(Dim_Product[StockLevel]) - [Forecasted Sales]) + [Ordered Stock] + FinalOrderPrev
+			    ( SUM('Dim_Product'[StockLevel]) - [Forecasted Sales M1] ) + [Ordered Stock M1]
+			```
 		lineageTag: fa4e1b4c-d023-4390-980b-f627f1c94fc5
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -149,14 +153,14 @@ table _Measures
 
 	measure 'Suggested Order Amount M1' =
 			
-			VAR RawQty = [Ideal Stocking Level] - ([Predicted Stock M1] + [Ordered Stock] - [Forecasted Sales])
+			VAR RawQty = [Ideal Stocking Level] - [Predicted Stock M1]
 			VAR MOQ = SELECTEDVALUE('Dim_Product'[MOQ], 0)
-			VAR CartonQty = SELECTEDVALUE('Dim_Product'[PackSize], 1)
+			VAR PackSize = SELECTEDVALUE('Dim_Product'[PackSize], 1)
 			RETURN
 			    IF(
 			        RawQty < MOQ,
 			        0,
-			        CEILING(RawQty / CartonQty, 1) * CartonQty
+			        CEILING(RawQty / PackSize, 1) * PackSize
 			    )
 		lineageTag: 581b5a43-3a97-480f-8d1e-1b34e9924a65
 
@@ -166,7 +170,7 @@ table _Measures
 			
 			SUMX(
 			    'Dim_Product',
-			    [Suggested Order Amount] * 'Dim_Product'[ListPriceActual]
+			    [Suggested Order Amount M0] * 'Dim_Product'[ListPriceActual]
 			)
 		lineageTag: ceb7b5a5-92ad-475e-b247-52d6c1076d91
 
@@ -176,7 +180,7 @@ table _Measures
 			
 			SUMX(
 			    'Dim_Product',
-			    [Suggested Order Amount] * 'Dim_Product'[CBM]
+			    [Suggested Order Amount M0] * 'Dim_Product'[CBM]
 			)
 		lineageTag: 99dbd817-10f6-42bc-a76c-afdb167ec4d5
 
@@ -185,7 +189,7 @@ table _Measures
 	measure 'Forecast Qty Ordered Standard' =
 			
 			CALCULATE(
-			    SUM(Fact_SalesOrder[QuantityOrdered]),
+			    SUM(Fact_SalesOrder[Quantity Ordered]),
 			    Fact_SalesOrder[IsKit] = 0,
 			    KEEPFILTERS(Dim_OrderType[C_DESCRIPTION] = "7. Forecast Order")
 			)
@@ -193,21 +197,10 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'orecast Qty Outstanding Standard' =
-			
-			CALCULATE(
-			    SUM(Fact_SalesOrder[QuantityOutstanding]),
-			    Fact_SalesOrder[IsKit] = 0,
-			    KEEPFILTERS(Dim_OrderType[C_DESCRIPTION] = "7. Forecast Order")
-			)
-		lineageTag: eda18c7f-0233-4311-82cf-757423c2b244
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	measure 'Forecast Qty Outstanding Standard' =
 			
 			CALCULATE(
-			    SUM(Fact_SalesOrder[QuantityOutstanding]),
+			    SUM(Fact_SalesOrder[Quantity Outstanding]),
 			    Fact_SalesOrder[IsKit] = 0,
 			    KEEPFILTERS(Dim_OrderType[C_DESCRIPTION] = "7. Forecast Order")
 			)
@@ -219,7 +212,7 @@ table _Measures
 			
 			COALESCE(
 			    CALCULATE(
-			        SUM('Fact_SalesOrder'[QuantityOutstanding]),
+			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
 			        KEEPFILTERS('Dim_OrderType'[C_DESCRIPTION] <> "7. Forecast Order")
 			    ),
 			    0
@@ -250,7 +243,7 @@ table _Measures
 			RETURN
 			COALESCE(
 			    CALCULATE(
-			        SUM('Fact_SalesOrder'[QuantityOutstanding]),
+			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
 			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
 			        'Fact_SalesOrder'[LineDueDate] >= StartDate,
 			        'Fact_SalesOrder'[LineDueDate] <= EndDate
@@ -267,7 +260,7 @@ table _Measures
 			RETURN
 			COALESCE(
 			    CALCULATE(
-			        SUM('Fact_SalesOrder'[QuantityOutstanding]),
+			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
 			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
 			        'Dim_Date'[Year] = YEAR(TargetDate),
 			        'Dim_Date'[MonthNumber] = MONTH(TargetDate)
@@ -284,7 +277,7 @@ table _Measures
 			RETURN
 			COALESCE(
 			    CALCULATE(
-			        SUM('Fact_SalesOrder'[QuantityOutstanding]),
+			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
 			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
 			        'Dim_Date'[Year] = YEAR(TargetDate),
 			        'Dim_Date'[MonthNumber] = MONTH(TargetDate)
@@ -294,6 +287,293 @@ table _Measures
 		lineageTag: d76156b2-a944-43b3-9e97-faf6b0afecbb
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Months Stock Remaining inc FO + 2' =
+			
+			DIVIDE(
+			    [Predicted Stock M1] - [Forecast Orders Outstanding QTY (M+0)] - [Forecast Orders Outstanding QTY (M+1)] - [Forecast Orders Outstanding QTY (M+2)],
+			    [Monthly Average Sales for 6 month period],
+			    0
+			)
+		lineageTag: d559b7c9-437b-4278-9e19-baa1143e745a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecast Orders Outstanding QTY (M+3)' =
+			
+			VAR TargetDate = EDATE(TODAY(), 3)
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
+			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
+			        'Dim_Date'[Year] = YEAR(TargetDate),
+			        'Dim_Date'[MonthNumber] = MONTH(TargetDate)
+			    ),
+			    0
+			)
+		lineageTag: 4d01b80a-fef3-4c0d-97d8-b16dc5270a73
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecast Orders Outstanding QTY (M4+)' =
+			
+			VAR StartDate = EOMONTH(TODAY(), 3) + 1
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
+			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
+			        'Dim_Date'[Date] >= StartDate
+			    ),
+			    0
+			)
+		lineageTag: 92b3a7ac-f6d7-4675-a209-8a1ac8efe8dd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Months Stock Remaining inc FO + 3' =
+			
+			DIVIDE(
+			    [Predicted Stock M1] - [Forecast Orders Outstanding QTY (M+0)] - [Forecast Orders Outstanding QTY (M+1)] - [Forecast Orders Outstanding QTY (M+2)]- [Forecast Orders Outstanding QTY (M+3)],
+			    [Monthly Average Sales for 6 month period],
+			    0
+			)
+		lineageTag: 15121ae0-7740-4ae3-93fb-3a17940bf1a9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Months Stock Remaining inc FO 4+' =
+			
+			DIVIDE(
+			    [Predicted Stock M1] - [Forecast Orders Outstanding QTY (M+0)] - [Forecast Orders Outstanding QTY (M+1)] - [Forecast Orders Outstanding QTY (M+2)]- [Forecast Orders Outstanding QTY (M+3)]- [Forecast Orders Outstanding QTY (M4+)],
+			    [Monthly Average Sales for 6 month period],
+			    0
+			)
+		lineageTag: b4015c92-15e1-4b65-8bc5-20c17b91448b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecasted Sales M0' = ```
+			
+			    ([Monthly Average Sales for 6 month period] * SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)) 
+			    + [Forecast Orders Outstanding QTY (M+0)]
+			```
+		lineageTag: 0216c007-5e81-4493-a41b-a1b0160791dd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecasted Sales M1' = ```
+			
+			    ([Monthly Average Sales for 6 month period] * SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)) 
+			    + [Forecast Orders Outstanding QTY (M+1)]
+			```
+		lineageTag: 2acf7e7b-a214-45e4-9d36-e7f0808036cf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecasted Sales M2' = ```
+			
+			    ([Monthly Average Sales for 6 month period] * SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)) 
+			    + [Forecast Orders Outstanding QTY (M+2)]
+			```
+		lineageTag: 7819d4bf-4cc8-429d-8c47-fd5c16e20665
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecasted Sales M3' = ```
+			
+			    ([Monthly Average Sales for 6 month period] * SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)) 
+			    + [Forecast Orders Outstanding QTY (M+3)]
+			```
+		lineageTag: 503df906-10a5-4cbf-b916-4f32ecfc0512
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecasted Sales M4+' = ```
+			
+			    ([Monthly Average Sales for 6 month period] * SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)) 
+			    + [Forecast Orders Outstanding QTY (M4+)]
+			```
+		lineageTag: 0046d0f3-9a89-4bea-8dba-adf8fbde9814
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ordered Stock M0' = ```
+			
+			VAR TargetDate = EDATE(TODAY(), 0) -- shift X month
+			
+			VAR Result =    
+			    CALCULATE(
+			        SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			        'Dim_Date'[Year] = YEAR(TargetDate),
+			        'Dim_Date'[MonthNumber] = MONTH(TargetDate)
+			    )
+			RETURN
+			    COALESCE(Result, 0)
+			```
+		lineageTag: e7870121-d307-4b48-bd74-e675b3df7ba4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ordered Stock M1' = ```
+			
+			VAR TargetDate = EDATE(TODAY(), 1) -- shift X month
+			
+			VAR Result =    
+			    CALCULATE(
+			        SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			        'Dim_Date'[Year] = YEAR(TargetDate),
+			        'Dim_Date'[MonthNumber] = MONTH(TargetDate)
+			    )
+			RETURN
+			    COALESCE(Result, 0)
+			```
+		lineageTag: 13604db2-8276-4c56-ac3b-7f4b454b3b44
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ordered Stock M2' = ```
+			
+			VAR TargetDate = EDATE(TODAY(), 2) -- shift X month
+			
+			VAR Result =    
+			    CALCULATE(
+			        SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			        'Dim_Date'[Year] = YEAR(TargetDate),
+			        'Dim_Date'[MonthNumber] = MONTH(TargetDate)
+			    )
+			RETURN
+			    COALESCE(Result, 0)
+			```
+		lineageTag: 2dd74a06-74c1-43b9-b54a-82ecc50d20fc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ordered Stock M3' = ```
+			
+			VAR TargetDate = EDATE(TODAY(), 3) -- shift X month
+			
+			VAR Result =    
+			    CALCULATE(
+			        SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			        'Dim_Date'[Year] = YEAR(TargetDate),
+			        'Dim_Date'[MonthNumber] = MONTH(TargetDate)
+			    )
+			RETURN
+			    COALESCE(Result, 0)
+			```
+		lineageTag: 9948a472-04b6-453b-b08d-c307b76b0b35
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ordered Stock M4+' =
+			
+			VAR StartDateM4 = EOMONTH(TODAY(), 3) + 1
+			VAR Result =
+			    CALCULATE(
+			        SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			        'Dim_Date'[Date] >= StartDateM4
+			    )
+			RETURN
+			    COALESCE(Result, 0)
+		lineageTag: 9fedc824-0a38-4b3b-82b3-0fdcf5b71e54
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Predicted Stock M0' = ```
+			
+			    ( SUM('Dim_Product'[StockLevel]) - [Forecasted Sales M0] ) + [Ordered Stock M0]
+			```
+		lineageTag: f4f86c00-7949-4f62-a056-e3380f26ac74
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Predicted Stock M2' = ```
+			
+			    ( SUM('Dim_Product'[StockLevel]) - [Forecasted Sales M2] ) + [Ordered Stock M2]
+			```
+		lineageTag: 8a7b1235-15fd-4ab8-965c-6316059e4789
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Predicted Stock M3' = ```
+			
+			    ( SUM('Dim_Product'[StockLevel]) - [Forecasted Sales M3]) + [Ordered Stock M3]
+			```
+		lineageTag: bda02672-ab61-4367-90b7-0825698f50c7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Predicted Stock M4+' = ```
+			
+			    ( SUM('Dim_Product'[StockLevel]) - [Forecasted Sales M4+] ) + [Ordered Stock M4+]
+			```
+		lineageTag: b303c211-c8c8-434e-86bf-d7729affaee6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Suggested Order Amount M2' =
+			
+			VAR RawQty = [Ideal Stocking Level] - [Predicted Stock M2]
+			VAR MOQ = SELECTEDVALUE('Dim_Product'[MOQ], 0)
+			VAR PackSize = SELECTEDVALUE('Dim_Product'[PackSize], 1)
+			RETURN
+			    IF(
+			        RawQty < MOQ,
+			        0,
+			        CEILING(RawQty / PackSize, 1) * PackSize
+			    )
+		lineageTag: 70980385-d62a-4659-98b9-7bc96f7e387e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Suggested Order Amount M3' =
+			
+			VAR RawQty = [Ideal Stocking Level] - [Predicted Stock M3]
+			VAR MOQ = SELECTEDVALUE('Dim_Product'[MOQ], 0)
+			VAR PackSize = SELECTEDVALUE('Dim_Product'[PackSize], 1)
+			RETURN
+			    IF(
+			        RawQty < MOQ,
+			        0,
+			        CEILING(RawQty / PackSize, 1) * PackSize
+			    )
+		lineageTag: 543817ff-ebea-449b-b8ef-f8ba6280b543
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Suggested Order Amount M4+' =
+			
+			VAR RawQty = [Ideal Stocking Level] - [Predicted Stock M4+]
+			VAR MOQ = SELECTEDVALUE('Dim_Product'[MOQ], 0)
+			VAR PackSize = SELECTEDVALUE('Dim_Product'[PackSize], 1)
+			RETURN
+			    IF(
+			        RawQty < MOQ,
+			        0,
+			        CEILING(RawQty / PackSize, 1) * PackSize
+			    )
+		lineageTag: 3a173161-50d9-4197-9bf8-8b1fdf673fcf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ordered Stock M-1' =
+			
+			VAR TargetDate = EDATE(TODAY(), -1)
+			RETURN
+			CALCULATE(
+			    SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			    'Dim_Date'[Year] = YEAR(TargetDate),
+			    'Dim_Date'[MonthNumber] = MONTH(TargetDate)
+			)
+		lineageTag: cd46b309-4423-4713-9911-f86f1f5e8daf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Empty Column' = BLANK()
+		formatString: 0
+		lineageTag: e0076ee3-1daf-4748-96a2-e29e93a7c0d3
 
 	column Name
 		lineageTag: 4f044140-a3c4-4f8d-b7fd-cf2cab527079

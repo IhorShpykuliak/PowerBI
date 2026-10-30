@@ -56,7 +56,9 @@ table 'Dynamic Product Information'
 				    ("Ideal Stocking Level", NAMEOF([Ideal Stocking Level]), 13),
 				    ("Current Space Requirements CBM", NAMEOF([Current Space Requirements CBM]), 14),
 				    ("Ideal Space Requirements", NAMEOF([Ideal Space Requirements]), 15),
-				    ("Monthly AVG Sales QTY (6 months)", NAMEOF([Monthly Average Sales for 6 month period]), 16)
+				    ("Monthly AVG Sales QTY (6 months)", NAMEOF([Monthly Average Sales for 6 month period]), 16),
+				    ("Outstanding PO", NAMEOF('Dim_Product'[OutstandingPO]),20),
+				    ("Stock Level", NAMEOF('Dim_Product'[StockLevel]), 21)
 				    
 				}
 				```
