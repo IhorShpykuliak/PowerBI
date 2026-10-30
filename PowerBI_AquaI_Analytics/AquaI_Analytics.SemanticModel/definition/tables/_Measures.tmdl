@@ -132,10 +132,9 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Predicted Stock M1' = ```
+	measure 'Predicted Stock M1' =
 			
-			    ( SUM('Dim_Product'[StockLevel]) - [Forecasted Sales M1] ) + [Ordered Stock M1]
-			```
+			[Predicted Stock M0] + [Ordered Stock M1] - [Forecasted Sales M1]
 		lineageTag: fa4e1b4c-d023-4390-980b-f627f1c94fc5
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -354,15 +353,6 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Forecasted Sales M0' = ```
-			
-			    ([Monthly Average Sales for 6 month period] * SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)) 
-			    + [Forecast Orders Outstanding QTY (M+0)]
-			```
-		lineageTag: 0216c007-5e81-4493-a41b-a1b0160791dd
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	measure 'Forecasted Sales M1' = ```
 			
 			    ([Monthly Average Sales for 6 month period] * SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)) 
@@ -489,25 +479,23 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Predicted Stock M2' = ```
+	measure 'Predicted Stock M2' =
 			
-			    ( SUM('Dim_Product'[StockLevel]) - [Forecasted Sales M2] ) + [Ordered Stock M2]
-			```
+			[Predicted Stock M1] + [Ordered Stock M2] - [Forecasted Sales M2]
 		lineageTag: 8a7b1235-15fd-4ab8-965c-6316059e4789
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Predicted Stock M3' = ```
+	measure 'Predicted Stock M3' =
 			
-			    ( SUM('Dim_Product'[StockLevel]) - [Forecasted Sales M3]) + [Ordered Stock M3]
-			```
+			[Predicted Stock M2] + [Ordered Stock M3] - [Forecasted Sales M3]
 		lineageTag: bda02672-ab61-4367-90b7-0825698f50c7
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Predicted Stock M4+' = ```
 			
-			    ( SUM('Dim_Product'[StockLevel]) - [Forecasted Sales M4+] ) + [Ordered Stock M4+]
+			    ( [Predicted Stock M3] - [Forecasted Sales M4+] ) + [Ordered Stock M4+]
 			```
 		lineageTag: b303c211-c8c8-434e-86bf-d7729affaee6
 
@@ -574,6 +562,15 @@ table _Measures
 	measure 'Empty Column' = BLANK()
 		formatString: 0
 		lineageTag: e0076ee3-1daf-4748-96a2-e29e93a7c0d3
+
+	measure 'Forecasted Sales M0' = ```
+			
+			    ([Monthly Average Sales for 6 month period] * SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)) 
+			    + [Forecast Orders Outstanding QTY (M+0)]
+			```
+		lineageTag: a562d398-d655-417e-9fd6-8bba57b19e6d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column Name
 		lineageTag: 4f044140-a3c4-4f8d-b7fd-cf2cab527079

@@ -173,12 +173,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Empty Column"
+                  "Property": "Forecast Orders Outstanding QTY (M+0)"
                 }
               },
-              "queryRef": "_Measures.Empty Column",
-              "nativeQueryRef": " ",
-              "displayName": " "
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+0)",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+0)",
+              "displayName": "Forecast Orders Outstanding QTY (M+0)"
             },
             {
               "field": {
@@ -188,12 +188,132 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Empty Column"
+                  "Property": "Months Stock Remaining inc FO + 0"
                 }
               },
-              "queryRef": "_Measures.Empty Column",
-              "nativeQueryRef": " ",
-              "displayName": " "
+              "queryRef": "_Measures.Months Stock Remaining inc FO + 0",
+              "nativeQueryRef": "Months Stock Remaining M0",
+              "displayName": "Months Stock Remaining M0"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Ordered Stock M0"
+                }
+              },
+              "queryRef": "_Measures.Ordered Stock M0",
+              "nativeQueryRef": "Ordered Stock M0",
+              "displayName": "Ordered Stock M0"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecasted Sales M0"
+                }
+              },
+              "queryRef": "_Measures.Forecasted Sales M0",
+              "nativeQueryRef": "Forecasted Sales M0",
+              "displayName": "Forecasted Sales M0"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Suggested Order Amount M0"
+                }
+              },
+              "queryRef": "_Measures.Suggested Order Amount M0",
+              "nativeQueryRef": "Suggested Order Amount M0",
+              "displayName": "Suggested Order Amount M0"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Predicted Stock M1"
+                }
+              },
+              "queryRef": "_Measures.Predicted Stock M1",
+              "nativeQueryRef": "Predicted Stock M1",
+              "displayName": "Predicted Stock M1"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecast Orders Outstanding QTY (M+1)"
+                }
+              },
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+1)",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+1)",
+              "displayName": "Forecast Orders Outstanding QTY (M+1)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Months Stock Remaining inc FO + 1"
+                }
+              },
+              "queryRef": "_Measures.Months Stock Remaining inc FO + 1",
+              "nativeQueryRef": "Months Stock Remaining M1",
+              "displayName": "Months Stock Remaining M1"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Ordered Stock M1"
+                }
+              },
+              "queryRef": "_Measures.Ordered Stock M1",
+              "nativeQueryRef": "Ordered Stock M1",
+              "displayName": "Ordered Stock M1"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecasted Sales M1"
+                }
+              },
+              "queryRef": "_Measures.Forecasted Sales M1",
+              "nativeQueryRef": "Forecasted Sales M1",
+              "displayName": "Forecasted Sales M1"
             },
             {
               "field": {
@@ -314,7 +434,7 @@
                 }
               },
               "index": 3,
-              "length": 1
+              "length": 5
             },
             {
               "parameterExpr": {
@@ -328,7 +448,7 @@
                 }
               },
               "index": 2,
-              "length": 1
+              "length": 5
             },
             {
               "parameterExpr": {
@@ -744,6 +864,146 @@
           },
           "selector": {
             "metadata": "Dim_Product.ProdCode"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "82.03700499887714D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M1"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "97.09778686923269D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+1)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "80.19949530026408D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 1"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "77.38351905074035D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M1"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "74.13688706738542D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M1"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "87.85493192222572D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+0)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "82.52041809104547D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 0"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "82.0253809940269D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M0"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "76.45785994243883D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M0"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "89.83010863893165D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Suggested Order Amount M0"
           }
         }
       ],
@@ -2764,90 +3024,6 @@
         }
       },
       {
-        "name": "a5c685a0c03d2087044a",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Predicted Stock M4+"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "f608b00f70075b0b3997",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M4+)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "fd1eca4c24064e410501",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Months Stock Remaining inc FO 4+"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ae4390b779dbcca702c2",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Ordered Stock M4+"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "0d23f5e7b08b05dd9e01",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecasted Sales M4+"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "98af0aa729863d9eca59",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Empty Column"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "24ffcbf2070a3d0ee18b",
         "field": {
           "Column": {
@@ -2969,6 +3145,230 @@
               }
             },
             "Property": "Ideal Space Requirements"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7cb46580d0de835130c0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Predicted Stock M1"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4212cf4b69004a720198",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY (M+1)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4edfb1752c5c87c019ee",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Months Stock Remaining inc FO + 1"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0382b01fade4a73ae10b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Ordered Stock M1"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "12edc4471689040ea4bc",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecasted Sales M1"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "463990151eb0d9ae9330",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Predicted Stock M4+"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1b21c560204e2c6bc07e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY (M4+)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "75c171ffb2bb3c36240d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Months Stock Remaining inc FO 4+"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "eb47aea9cbd584c9bc75",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Ordered Stock M4+"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b814e3d2ac0c75068068",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecasted Sales M4+"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d4d9d9758ddd49b07492",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY (M+0)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "066ab8c41300b987e0c4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Months Stock Remaining inc FO + 0"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a16ec5b47c5c809adad2",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Ordered Stock M0"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7b0c1beb4b825d20999d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecasted Sales M0"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5f90ed06ce69a5705a2b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Suggested Order Amount M0"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "942cb065eadb1812421e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Empty Column"
           }
         },
         "type": "Advanced"

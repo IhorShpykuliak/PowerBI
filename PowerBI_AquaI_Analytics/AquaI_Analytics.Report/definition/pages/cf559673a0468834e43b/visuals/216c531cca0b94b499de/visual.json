@@ -136,5 +136,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1caa6ed543a5bcaa1865",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_OrderType"
+              }
+            },
+            "Property": "IsForecastOrder"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }
