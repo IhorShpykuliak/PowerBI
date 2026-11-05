@@ -96,19 +96,7 @@ cultureInfo en-US
 			          "ConceptualProperty": "Monthly Average Sales for 6 month period"
 			        }
 			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "Monthly AVG Sales QTY (6 months)": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
-			        }
-			      ]
+			      "State": "Generated"
 			    },
 			    "table_measures.forecast_orders_outstanding_qty_m0": {
 			      "Definition": {
@@ -138,19 +126,7 @@ cultureInfo en-US
 			          "ConceptualProperty": "Predicted Stock M1"
 			        }
 			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "Predicted Stock M1": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
-			        }
-			      ]
+			      "State": "Generated"
 			    },
 			    "table_measures.forecast_orders_outstanding_qty_m1": {
 			      "Definition": {
@@ -180,19 +156,7 @@ cultureInfo en-US
 			          "ConceptualProperty": "Months Stock Remaining inc FO + 1"
 			        }
 			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "Months Stock Remaining M1": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
-			        }
-			      ]
+			      "State": "Generated"
 			    },
 			    "table_measures.ordered_stock": {
 			      "Definition": {
@@ -201,10 +165,28 @@ cultureInfo en-US
 			          "ConceptualProperty": "Ordered Stock context"
 			        }
 			      },
+			      "State": "Generated"
+			    },
+			    "table_measures.forecasted_sales": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecasted Sales Total"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dim_product.aquaidescription": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Dim_Product",
+			          "ConceptualProperty": "AquaIDescription"
+			        }
+			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Ordered Stock": {
+			          "AquaI Description": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -215,17 +197,446 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "table_measures.forecasted_sales": {
+			    "dim_product.suppliername": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "_Measures",
-			          "ConceptualProperty": "Forecasted Sales Total"
+			          "ConceptualEntity": "Dim_Product",
+			          "ConceptualProperty": "SupplierName"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dim_product.outstandingpo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Dim_Product",
+			          "ConceptualProperty": "OutstandingPO"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Forecasted Sales": {
+			          "Outstanding PO": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.ideal_stocking_level": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Ideal Stocking Level"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "table_measures.ideal_space_requirements": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Ideal Space Requirements"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "table_measures.months_stock_remaining_inc_fo__0": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Months Stock Remaining inc FO + 0"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "table_measures.ordered_stock_m0": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Ordered Stock M0"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "table_measures.forecasted_sales_m0": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecasted Sales M0"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "table_measures.suggested_order_amount_m0": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Suggested Order Amount M0"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "table_measures.ordered_stock_m1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Ordered Stock M1"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "table_measures.forecasted_sales_m1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecasted Sales M1"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "table_measures.empty_column": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Empty Column"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "table_measures.predicted_stock_m4": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Predicted Stock M4+"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "table_measures.forecast_orders_outstanding_qty_m4": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecast Orders Outstanding QTY (M4+)"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "table_measures.months_stock_remaining_inc_fo_4": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Months Stock Remaining inc FO 4+"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "table_measures.ordered_stock_m4": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Ordered Stock M4+"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "table_measures.forecasted_sales_m4": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecasted Sales M4+"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dim_product.calculatedlandedcost": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Dim_Product",
+			          "ConceptualProperty": "CalculatedLandedCost"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Calculated Landed Cost": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_product.moq": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Dim_Product",
+			          "ConceptualProperty": "MOQ"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MOQ": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_product.growthfactor": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Dim_Product",
+			          "ConceptualProperty": "GrowthFactor"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Growth Factor": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecast_orders_outstanding_qty_m2": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecast Orders Outstanding QTY (M+2)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecast Orders Outstanding QTY (M+2)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecast_orders_outstanding_qty_m3": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecast Orders Outstanding QTY (M+3)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecast Orders Outstanding QTY (M+3)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecast_orders_outstanding_qty_m41": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecast Orders Outstanding QTY (M+4)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecast Orders Outstanding QTY (M+4)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecast_orders_outstanding_qty_m5": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecast Orders Outstanding QTY (M+5)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecast Orders Outstanding QTY (M+5)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecast_orders_outstanding_qty_m6": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecast Orders Outstanding QTY (M+6)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecast Orders Outstanding QTY (M+6)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecast_orders_outstanding_qty_m7": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecast Orders Outstanding QTY (M+7)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecast Orders Outstanding QTY (M+7)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecast_orders_outstanding_qty_m8": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecast Orders Outstanding QTY (M+8)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecast Orders Outstanding QTY (M+8)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecast_orders_outstanding_qty_m9": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecast Orders Outstanding QTY (M+9)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecast Orders Outstanding QTY (M+9)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecast_orders_outstanding_qty_m10": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecast Orders Outstanding QTY (M+10)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecast Orders Outstanding QTY (M+10)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecast_orders_outstanding_qty_m11": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecast Orders Outstanding QTY (M+11)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecast Orders Outstanding QTY (M+11)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecast_orders_outstanding_qty_m12": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecast Orders Outstanding QTY (M+12)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecast Orders Outstanding QTY (M+12)": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",

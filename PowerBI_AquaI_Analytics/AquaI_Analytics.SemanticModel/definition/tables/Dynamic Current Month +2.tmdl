@@ -1,7 +1,7 @@
 table 'Dynamic Current Month +2'
 	lineageTag: fc7615d0-b176-4ffd-a298-9e23f80eceeb
 
-	column 'Dynamic Current Month +2'
+	column 'Current Month +2'
 		lineageTag: 738a7ac5-8229-42fc-a81b-d4cecba2499f
 		summarizeBy: none
 		sourceColumn: [Value1]

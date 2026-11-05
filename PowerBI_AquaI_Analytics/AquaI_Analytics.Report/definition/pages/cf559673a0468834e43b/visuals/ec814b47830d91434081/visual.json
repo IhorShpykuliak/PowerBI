@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "ec814b47830d91434081",
   "position": {
-    "x": 207.98706548100242,
-    "y": 58.981406628940988,
+    "x": 0,
+    "y": 59.981255857544518,
     "z": 5000,
-    "height": 72.433306386418749,
-    "width": 220.40420371867421,
+    "height": 67.179006560449864,
+    "width": 207.535145267104,
     "tabOrder": 5000
   },
   "visual": {
@@ -23,11 +23,11 @@
                       "Entity": "Dynamic Current Month +1"
                     }
                   },
-                  "Property": "Dynamic Current Month +1"
+                  "Property": "Current Month +1"
                 }
               },
               "queryRef": "Dynamic Current Month +1.Dynamic Month +1",
-              "nativeQueryRef": "Dynamic Current Month +1",
+              "nativeQueryRef": "Current Month +1",
               "active": true
             }
           ]
@@ -70,32 +70,35 @@
                 "Where": [
                   {
                     "Condition": {
-                      "Not": {
-                        "Expression": {
-                          "In": {
-                            "Expressions": [
-                              {
-                                "Column": {
-                                  "Expression": {
-                                    "SourceRef": {
-                                      "Source": "d"
-                                    }
-                                  },
-                                  "Property": "Dynamic Month +1 Fields"
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "d"
                                 }
-                              }
-                            ],
-                            "Values": [
-                              [
-                                {
-                                  "Literal": {
-                                    "Value": "'''_Measures''[Empty Column]'"
-                                  }
-                                }
-                              ]
-                            ]
+                              },
+                              "Property": "Dynamic Month +1 Fields"
+                            }
                           }
-                        }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'''_Measures''[Forecasted Sales M1]'"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'''_Measures''[Forecast Orders Outstanding QTY (M+1)]'"
+                              }
+                            }
+                          ]
+                        ]
                       }
                     },
                     "Annotations": {
@@ -108,7 +111,7 @@
                                   "Entity": "Dynamic Current Month +1"
                                 }
                               },
-                              "Property": "Dynamic Current Month +1"
+                              "Property": "Current Month +1"
                             }
                           }
                         ],
@@ -119,7 +122,18 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''_Measures''[Empty Column]'"
+                                      "Value": "'''_Measures''[Forecasted Sales M1]'"
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "0": [
+                                  {
+                                    "Literal": {
+                                      "Value": "'''_Measures''[Forecast Orders Outstanding QTY (M+1)]'"
                                     }
                                   }
                                 ]
@@ -143,7 +157,10 @@
                         },
                         "valueMap": [
                           {
-                            "0": " "
+                            "0": "Forecasted Sales M1"
+                          },
+                          {
+                            "0": "Forecast Orders Outstanding QTY (M+1)"
                           }
                         ]
                       }
@@ -164,13 +181,6 @@
                   "Value": "'Dropdown'"
                 }
               }
-            },
-            "isInvertedSelectionMode": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
             }
           }
         }
@@ -181,7 +191,7 @@
             "singleSelect": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -237,23 +247,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "f0d0e4b39880750d2430",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dynamic Current Month +1"
-              }
-            },
-            "Property": "Dynamic Current Month +1"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

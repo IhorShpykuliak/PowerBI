@@ -58,3 +58,8 @@ relationship 5b59af77-702c-c0ca-de63-504e17a8ef85
 	fromColumn: Fact_SalesAnalysis.SalesDateKey
 	toColumn: Dim_Date.Date
 
+relationship 863d201d-832b-466c-a622-59719d90d9ea
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_PurchaseOrder.EffectiveDueDate
+	toColumn: LocalDateTable_47f1a306-f18e-4adf-99ee-03aae086d43e.Date
+

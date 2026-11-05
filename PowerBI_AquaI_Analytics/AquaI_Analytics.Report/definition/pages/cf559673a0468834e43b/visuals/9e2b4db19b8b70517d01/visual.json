@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "9e2b4db19b8b70517d01",
   "position": {
-    "x": 420.090661831369,
-    "y": 59.184043517679058,
-    "z": 10000,
-    "height": 71.949229374433372,
-    "width": 220.48957388939257,
+    "x": 207.535145267104,
+    "y": 61.180880974695405,
+    "z": 9000,
+    "height": 65.979381443298962,
+    "width": 220.73102155576382,
     "tabOrder": 6000
   },
   "visual": {
@@ -23,11 +23,11 @@
                       "Entity": "Dynamic Current Month +2"
                     }
                   },
-                  "Property": "Dynamic Current Month +2"
+                  "Property": "Current Month +2"
                 }
               },
               "queryRef": "Dynamic Current Month+2.Dynamic Current Month+2",
-              "nativeQueryRef": "Dynamic Current Month +2",
+              "nativeQueryRef": "Current Month +2",
               "active": true
             }
           ]
@@ -68,7 +68,7 @@
             "singleSelect": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -127,7 +127,14 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''_Measures''[Empty Column]'"
+                                "Value": "'''_Measures''[Forecasted Sales M2]'"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'''_Measures''[Forecast Orders Outstanding QTY (M+2)]'"
                               }
                             }
                           ]
@@ -144,7 +151,7 @@
                                   "Entity": "Dynamic Current Month +2"
                                 }
                               },
-                              "Property": "Dynamic Current Month +2"
+                              "Property": "Current Month +2"
                             }
                           }
                         ],
@@ -155,7 +162,18 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''_Measures''[Empty Column]'"
+                                      "Value": "'''_Measures''[Forecasted Sales M2]'"
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "0": [
+                                  {
+                                    "Literal": {
+                                      "Value": "'''_Measures''[Forecast Orders Outstanding QTY (M+2)]'"
                                     }
                                   }
                                 ]
@@ -179,7 +197,10 @@
                         },
                         "valueMap": [
                           {
-                            "0": " "
+                            "0": "Forecasted Sales M2"
+                          },
+                          {
+                            "0": "Forecast Orders Outstanding QTY (M+2)"
                           }
                         ]
                       }
@@ -233,23 +254,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "95008fd5099877bc8054",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dynamic Current Month +2"
-              }
-            },
-            "Property": "Dynamic Current Month +2"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "6fb74d4933e03501e846",
   "position": {
-    "x": 634.777878513146,
-    "y": 59.184043517679058,
-    "z": 12000,
-    "height": 71.949229374433372,
-    "width": 220.48957388939257,
+    "x": 428.26616682286783,
+    "y": 59.981255857544518,
+    "z": 11000,
+    "height": 67.179006560449864,
+    "width": 212.33364573570759,
     "tabOrder": 7000
   },
   "visual": {
@@ -23,11 +23,11 @@
                       "Entity": "Dynamic Current Month +3"
                     }
                   },
-                  "Property": "Dynamic Current Month +3"
+                  "Property": "Current Month +3"
                 }
               },
               "queryRef": "Dynamic Current Month +3.Dynamic Current Month +3",
-              "nativeQueryRef": "Dynamic Current Month +3",
+              "nativeQueryRef": "Current Month +3",
               "active": true
             }
           ]
@@ -42,13 +42,6 @@
               "expr": {
                 "Literal": {
                   "Value": "'Dropdown'"
-                }
-              }
-            },
-            "isInvertedSelectionMode": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
                 }
               }
             }
@@ -116,60 +109,35 @@
                 "Where": [
                   {
                     "Condition": {
-                      "Not": {
-                        "Expression": {
-                          "In": {
-                            "Expressions": [
-                              {
-                                "Column": {
-                                  "Expression": {
-                                    "SourceRef": {
-                                      "Source": "d"
-                                    }
-                                  },
-                                  "Property": "Dynamic Current Month +3 Fields"
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "d"
                                 }
-                              }
-                            ],
-                            "Values": [
-                              [
-                                {
-                                  "Literal": {
-                                    "Value": "'''_Measures''[Predicted Stock M3]'"
-                                  }
-                                }
-                              ],
-                              [
-                                {
-                                  "Literal": {
-                                    "Value": "'''_Measures''[Forecast Orders Outstanding QTY (M+3)]'"
-                                  }
-                                }
-                              ],
-                              [
-                                {
-                                  "Literal": {
-                                    "Value": "'''_Measures''[Months Stock Remaining inc FO + 3]'"
-                                  }
-                                }
-                              ],
-                              [
-                                {
-                                  "Literal": {
-                                    "Value": "'''_Measures''[Ordered Stock M3]'"
-                                  }
-                                }
-                              ],
-                              [
-                                {
-                                  "Literal": {
-                                    "Value": "'''_Measures''[Forecasted Sales M3]'"
-                                  }
-                                }
-                              ]
-                            ]
+                              },
+                              "Property": "Dynamic Current Month +3 Fields"
+                            }
                           }
-                        }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'''_Measures''[Forecasted Sales M3]'"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'''_Measures''[Forecast Orders Outstanding QTY (M+3)]'"
+                              }
+                            }
+                          ]
+                        ]
                       }
                     },
                     "Annotations": {
@@ -182,7 +150,7 @@
                                   "Entity": "Dynamic Current Month +3"
                                 }
                               },
-                              "Property": "Dynamic Current Month +3"
+                              "Property": "Current Month +3"
                             }
                           }
                         ],
@@ -193,7 +161,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''_Measures''[Predicted Stock M3]'"
+                                      "Value": "'''_Measures''[Forecasted Sales M3]'"
                                     }
                                   }
                                 ]
@@ -205,39 +173,6 @@
                                   {
                                     "Literal": {
                                       "Value": "'''_Measures''[Forecast Orders Outstanding QTY (M+3)]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'''_Measures''[Months Stock Remaining inc FO + 3]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'''_Measures''[Ordered Stock M3]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'''_Measures''[Forecasted Sales M3]'"
                                     }
                                   }
                                 ]
@@ -261,19 +196,10 @@
                         },
                         "valueMap": [
                           {
-                            "0": "Predicted Stock M3"
+                            "0": "Forecasted Sales M3"
                           },
                           {
                             "0": "Forecast Orders Outstanding QTY (M+3)"
-                          },
-                          {
-                            "0": "Months Stock Remaining M3"
-                          },
-                          {
-                            "0": "Ordered Stock M3"
-                          },
-                          {
-                            "0": "Forecasted Sales M3"
                           }
                         ]
                       }
@@ -327,23 +253,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "02a083d65cbce1023bab",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dynamic Current Month +3"
-              }
-            },
-            "Property": "Dynamic Current Month +3"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

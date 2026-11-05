@@ -2,11 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "7871282c00a886886a0a",
   "position": {
-    "x": 640.58023572076161,
+    "x": 640.50117462803439,
     "y": 0,
-    "z": 12002,
-    "height": 59.184043517679058,
-    "width": 189.15684496826836
+    "z": 12000,
+    "height": 59.13860610806578,
+    "width": 189.44400939702427,
+    "tabOrder": 13000
   },
   "visual": {
     "visualType": "slicer",
@@ -19,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Supplier"
+                      "Entity": "Dim_Product"
                     }
                   },
                   "Property": "SupplierName"
                 }
               },
-              "queryRef": "Dim_Supplier.SupplierName",
-              "nativeQueryRef": "SupplierName",
+              "queryRef": "Dim_Product.SupplierName",
+              "nativeQueryRef": "SupplierName1",
               "active": true
             }
           ]
@@ -76,85 +77,6 @@
                   "Value": "true"
                 }
               }
-            },
-            "selfFilter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "d",
-                    "Entity": "Dim_Supplier",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "Contains": {
-                        "Left": {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Source": "d"
-                              }
-                            },
-                            "Property": "SupplierName"
-                          }
-                        },
-                        "Right": {
-                          "Literal": {
-                            "Value": "'shower'"
-                          }
-                        }
-                      }
-                    },
-                    "Annotations": {
-                      "PowerBI.MParameterBehavior": 1
-                    }
-                  }
-                ]
-              }
-            },
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "d",
-                    "Entity": "Dim_Supplier",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "In": {
-                        "Expressions": [
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Source": "d"
-                                }
-                              },
-                              "Property": "SupplierName"
-                            }
-                          }
-                        ],
-                        "Values": [
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'Shower Enclosure Supplier'"
-                              }
-                            }
-                          ]
-                        ]
-                      }
-                    }
-                  }
-                ]
-              }
             }
           }
         }
@@ -187,23 +109,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "22b73c45e58bd9a58b9a",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Supplier"
-              }
-            },
-            "Property": "SupplierName"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

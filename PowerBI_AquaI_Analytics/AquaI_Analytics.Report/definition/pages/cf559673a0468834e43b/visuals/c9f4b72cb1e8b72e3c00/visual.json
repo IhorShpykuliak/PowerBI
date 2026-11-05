@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "c9f4b72cb1e8b72e3c00",
   "position": {
-    "x": 465.34904805077065,
-    "y": 531.49592021758838,
+    "x": 527.2357086922475,
+    "y": 551.29209083790136,
     "z": 7000,
-    "height": 187.99637352674526,
-    "width": 814.65095194922935,
+    "height": 168.39467501957714,
+    "width": 752.7642913077525,
     "tabOrder": 10000
   },
   "visual": {
@@ -28,6 +28,20 @@
               },
               "queryRef": "Fact_SalesOrder.OrderNumber",
               "nativeQueryRef": "OrderNumber"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_SalesOrder"
+                    }
+                  },
+                  "Property": "EffectiveDueDate"
+                }
+              },
+              "queryRef": "Fact_SalesOrder.EffectiveDueDate",
+              "nativeQueryRef": "EffectiveDueDate"
             },
             {
               "field": {
@@ -100,20 +114,6 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Fact_SalesOrder"
-                    }
-                  },
-                  "Property": "LineDueDate"
-                }
-              },
-              "queryRef": "Fact_SalesOrder.LineDueDate",
-              "nativeQueryRef": "LineDueDate"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
                       "Entity": "Dim_OrderType"
                     }
                   },
@@ -130,21 +130,16 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Column": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Fact_SalesOrder"
-                      }
-                    },
-                    "Property": "Quantity Outstanding"
+                  "SourceRef": {
+                    "Entity": "Fact_SalesOrder"
                   }
                 },
-                "Function": 0
+                "Property": "OrderNumber"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ]
       }
@@ -156,7 +151,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "143.40710023803751D"
+                  "Value": "123.16504660086838D"
                 }
               }
             }
@@ -170,7 +165,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "110.45067938153664D"
+                  "Value": "108.2216015540013D"
                 }
               }
             }
@@ -184,7 +179,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "105.64188544056506D"
+                  "Value": "115.01375652205991D"
                 }
               }
             }
@@ -198,7 +193,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "74.52950369357575D"
+                  "Value": "67.4674521222742D"
                 }
               }
             }
@@ -212,7 +207,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "121.48798026667293D"
+                  "Value": "118.66157018320325D"
                 }
               }
             }
@@ -226,13 +221,13 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "93.93925657298277D"
+                  "Value": "119.40029622809494D"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "Fact_SalesOrder.LineDueDate"
+            "metadata": "Dim_OrderType.IsForecastOrder"
           }
         },
         {
@@ -240,13 +235,13 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "128.0018192346899D"
+                  "Value": "64.87243292245843D"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "Dim_OrderType.IsForecastOrder"
+            "metadata": "Fact_SalesOrder.EffectiveDueDate"
           }
         }
       ],
@@ -269,7 +264,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "8D"
                 }
               }
             }
@@ -306,7 +301,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "fe60851c5c330bc81db4",
+        "name": "a34df000c38977d3b3cc",
         "field": {
           "Column": {
             "Expression": {
@@ -320,7 +315,7 @@
         "type": "Categorical"
       },
       {
-        "name": "305e54e0c6cb56213266",
+        "name": "fcabc40d093923b67315",
         "field": {
           "Column": {
             "Expression": {
@@ -334,7 +329,7 @@
         "type": "Categorical"
       },
       {
-        "name": "c3d8bbc175070a17327d",
+        "name": "499a4b9289d67a630677",
         "field": {
           "Column": {
             "Expression": {
@@ -348,7 +343,7 @@
         "type": "Categorical"
       },
       {
-        "name": "2370b2fc3592546810b0",
+        "name": "d8c28d1ea6a009c9e506",
         "field": {
           "Aggregation": {
             "Expression": {
@@ -367,7 +362,7 @@
         "type": "Advanced"
       },
       {
-        "name": "71055787ac520bad23e6",
+        "name": "7e01ed235ea9a31e5d20",
         "field": {
           "Aggregation": {
             "Expression": {
@@ -386,21 +381,7 @@
         "type": "Advanced"
       },
       {
-        "name": "128d5e4c2333e0db4c42",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_SalesOrder"
-              }
-            },
-            "Property": "LineDueDate"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "5329b2c12e53794c4799",
+        "name": "20fc5c1ddc560904b965",
         "field": {
           "Column": {
             "Expression": {
@@ -409,6 +390,20 @@
               }
             },
             "Property": "IsForecastOrder"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "bef62aafc5c0c690d25c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_SalesOrder"
+              }
+            },
+            "Property": "EffectiveDueDate"
           }
         },
         "type": "Categorical"

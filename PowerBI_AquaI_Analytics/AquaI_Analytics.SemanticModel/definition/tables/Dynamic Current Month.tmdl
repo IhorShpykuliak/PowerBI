@@ -1,7 +1,7 @@
 table 'Dynamic Current Month'
 	lineageTag: 7dbeb2cd-361e-48fe-aaa4-86cc113b1a9b
 
-	column 'Dynamic Current Month'
+	column 'Current Month'
 		lineageTag: d442289e-070b-4715-bde2-d1cb7d755b3f
 		summarizeBy: none
 		sourceColumn: [Value1]
@@ -42,6 +42,7 @@ table 'Dynamic Current Month'
 				{
 				 
 				
+				    ("Predicted Stock M0", NAMEOF('_Measures'[Predicted Stock M0]), 1),
 				    ("Forecast Orders Outstanding QTY (M+0)", NAMEOF('_Measures'[Forecast Orders Outstanding QTY (M+0)]), 2),
 				    ("Months Stock Remaining M0", NAMEOF('_Measures'[Months Stock Remaining inc FO + 0]), 3),
 				

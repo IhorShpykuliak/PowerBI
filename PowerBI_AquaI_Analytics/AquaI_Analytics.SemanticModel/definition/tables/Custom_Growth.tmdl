@@ -1,0 +1,28 @@
+table Custom_Growth
+	lineageTag: 3933274b-29e1-4d0e-87f0-21d12319ae29
+
+	measure 'Custom_Growth Value' = SELECTEDVALUE('Custom_Growth'[Custom_Growth], 0)
+		lineageTag: 436faeba-28cd-410c-890e-db2e65927584
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Custom_Growth
+		lineageTag: 84e52ece-2696-4211-8a4a-7f6189fea904
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Custom_Growth = calculated
+		mode: import
+		source = GENERATESERIES(-2, 20, 0.01)
+
+	annotation PBI_Id = 54b7eab51c6e4845b09201e1fb12bbb2
+

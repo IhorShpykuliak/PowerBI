@@ -34,6 +34,17 @@ ref table LocalDateTable_fd7d3c41-4970-48d8-a169-c362e0852591
 ref table 'Dynamic Current Month +2'
 ref table 'Dynamic Current Month +3'
 ref table 'Dynamic Current Month 4+'
+ref table 'Dynamic Current Month +4'
+ref table LocalDateTable_47f1a306-f18e-4adf-99ee-03aae086d43e
+ref table 'Dynamic Current Month +5'
+ref table 'Dynamic Current Month +6'
+ref table 'Dynamic Current Month +7'
+ref table 'Dynamic Current Month +8'
+ref table 'Dynamic Current Month +9'
+ref table 'Dynamic Current Month +10'
+ref table 'Dynamic Current Month +11'
+ref table 'Dynamic Current Month +12'
+ref table Custom_Growth
 
 ref cultureInfo en-US
 

@@ -3,10 +3,10 @@
   "name": "6958f05406e00340a597",
   "position": {
     "x": 0,
-    "y": 131.13327289211242,
+    "y": 194.45575567736884,
     "z": 2000,
-    "height": 400.36264732547596,
-    "width": 1269.555757026292,
+    "height": 356.83633516053249,
+    "width": 1280,
     "tabOrder": 2000
   },
   "visual": {
@@ -92,6 +92,111 @@
             },
             {
               "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "USDListPrice"
+                }
+              },
+              "queryRef": "Dim_Product.USDListPrice",
+              "nativeQueryRef": "USDListPrice",
+              "displayName": "USDListPrice"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "CalculatedLandedCost"
+                }
+              },
+              "queryRef": "Dim_Product.CalculatedLandedCost",
+              "nativeQueryRef": "Calculated Landed Cost",
+              "displayName": "Calculated Landed Cost"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "MOQ"
+                }
+              },
+              "queryRef": "Dim_Product.MOQ",
+              "nativeQueryRef": "MOQ",
+              "displayName": "MOQ"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "PackSize"
+                }
+              },
+              "queryRef": "Dim_Product.PackSize",
+              "nativeQueryRef": "Pack Size",
+              "displayName": "Pack Size"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "CBM"
+                }
+              },
+              "queryRef": "Dim_Product.CBM",
+              "nativeQueryRef": "CBM",
+              "displayName": "CBM"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "GrowthFactor"
+                }
+              },
+              "queryRef": "Dim_Product.GrowthFactor",
+              "nativeQueryRef": "Growth Factor",
+              "displayName": "Growth Factor"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Required Months Stock"
+                }
+              },
+              "queryRef": "_Measures.Required Months Stock",
+              "nativeQueryRef": "Required Months Stock",
+              "displayName": "Required Months Stock"
+            },
+            {
+              "field": {
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
@@ -107,48 +212,18 @@
             },
             {
               "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_Product"
-                    }
-                  },
-                  "Property": "StockLevel"
-                }
-              },
-              "queryRef": "Dim_Product.StockLevel",
-              "nativeQueryRef": "Stock Level",
-              "displayName": "Stock Level"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_Product"
-                    }
-                  },
-                  "Property": "OutstandingPO"
-                }
-              },
-              "queryRef": "Dim_Product.OutstandingPO",
-              "nativeQueryRef": "Outstanding PO",
-              "displayName": "Outstanding PO"
-            },
-            {
-              "field": {
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Monthly Average Sales for 6 month period"
+                  "Property": "Current Space Requirements CBM"
                 }
               },
-              "queryRef": "_Measures.Monthly Average Sales for 6 month period",
-              "nativeQueryRef": "Monthly AVG Sales QTY (6 months)",
-              "displayName": "Monthly AVG Sales QTY (6 months)"
+              "queryRef": "_Measures.Current Space Requirements CBM",
+              "nativeQueryRef": "Current Space Requirements CBM",
+              "displayName": "Current Space Requirements CBM"
             },
             {
               "field": {
@@ -173,12 +248,42 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Forecast Orders Outstanding QTY (M+0)"
+                  "Property": "Monthly Average Sales for 6 month period"
                 }
               },
-              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+0)",
-              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+0)",
-              "displayName": "Forecast Orders Outstanding QTY (M+0)"
+              "queryRef": "_Measures.Monthly Average Sales for 6 month period",
+              "nativeQueryRef": "Monthly AVG Sales QTY (6 months)",
+              "displayName": "Monthly AVG Sales QTY (6 months)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "OutstandingPO"
+                }
+              },
+              "queryRef": "Dim_Product.OutstandingPO",
+              "nativeQueryRef": "Outstanding PO",
+              "displayName": "Outstanding PO"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "StockLevel"
+                }
+              },
+              "queryRef": "Dim_Product.StockLevel",
+              "nativeQueryRef": "Stock Level",
+              "displayName": "Stock Level"
             },
             {
               "field": {
@@ -203,102 +308,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Ordered Stock M0"
+                  "Property": "Forecast Orders Outstanding QTY (M+0)"
                 }
               },
-              "queryRef": "_Measures.Ordered Stock M0",
-              "nativeQueryRef": "Ordered Stock M0",
-              "displayName": "Ordered Stock M0"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Forecasted Sales M0"
-                }
-              },
-              "queryRef": "_Measures.Forecasted Sales M0",
-              "nativeQueryRef": "Forecasted Sales M0",
-              "displayName": "Forecasted Sales M0"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Suggested Order Amount M0"
-                }
-              },
-              "queryRef": "_Measures.Suggested Order Amount M0",
-              "nativeQueryRef": "Suggested Order Amount M0",
-              "displayName": "Suggested Order Amount M0"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Predicted Stock M1"
-                }
-              },
-              "queryRef": "_Measures.Predicted Stock M1",
-              "nativeQueryRef": "Predicted Stock M1",
-              "displayName": "Predicted Stock M1"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Forecast Orders Outstanding QTY (M+1)"
-                }
-              },
-              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+1)",
-              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+1)",
-              "displayName": "Forecast Orders Outstanding QTY (M+1)"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Months Stock Remaining inc FO + 1"
-                }
-              },
-              "queryRef": "_Measures.Months Stock Remaining inc FO + 1",
-              "nativeQueryRef": "Months Stock Remaining M1",
-              "displayName": "Months Stock Remaining M1"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Ordered Stock M1"
-                }
-              },
-              "queryRef": "_Measures.Ordered Stock M1",
-              "nativeQueryRef": "Ordered Stock M1",
-              "displayName": "Ordered Stock M1"
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+0)",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+0)",
+              "displayName": "Forecast Orders Outstanding QTY (M+0)"
             },
             {
               "field": {
@@ -323,12 +338,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Empty Column"
+                  "Property": "Forecast Orders Outstanding QTY (M+1)"
                 }
               },
-              "queryRef": "_Measures.Empty Column",
-              "nativeQueryRef": " ",
-              "displayName": " "
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+1)",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+1)",
+              "displayName": "Forecast Orders Outstanding QTY (M+1)"
             },
             {
               "field": {
@@ -338,12 +353,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Empty Column"
+                  "Property": "Forecasted Sales M2"
                 }
               },
-              "queryRef": "_Measures.Empty Column",
-              "nativeQueryRef": " ",
-              "displayName": " "
+              "queryRef": "_Measures.Forecasted Sales M2",
+              "nativeQueryRef": "Forecasted Sales M2",
+              "displayName": "Forecasted Sales M2"
             },
             {
               "field": {
@@ -353,12 +368,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Predicted Stock M4+"
+                  "Property": "Forecast Orders Outstanding QTY (M+2)"
                 }
               },
-              "queryRef": "_Measures.Predicted Stock M4+",
-              "nativeQueryRef": "Predicted Stock M4+",
-              "displayName": "Predicted Stock M4+"
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+2)",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+2)",
+              "displayName": "Forecast Orders Outstanding QTY (M+2)"
             },
             {
               "field": {
@@ -368,12 +383,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Forecast Orders Outstanding QTY (M4+)"
+                  "Property": "Forecasted Sales M3"
                 }
               },
-              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M4+)",
-              "nativeQueryRef": "Forecast Orders Outstanding QTY (M4+)",
-              "displayName": "Forecast Orders Outstanding QTY (M4+)"
+              "queryRef": "_Measures.Forecasted Sales M3",
+              "nativeQueryRef": "Forecasted Sales M3",
+              "displayName": "Forecasted Sales M3"
             },
             {
               "field": {
@@ -383,12 +398,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Months Stock Remaining inc FO 4+"
+                  "Property": "Forecast Orders Outstanding QTY (M+3)"
                 }
               },
-              "queryRef": "_Measures.Months Stock Remaining inc FO 4+",
-              "nativeQueryRef": "Months Stock Remaining M4+",
-              "displayName": "Months Stock Remaining M4+"
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+3)",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+3)",
+              "displayName": "Forecast Orders Outstanding QTY (M+3)"
             },
             {
               "field": {
@@ -398,12 +413,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Ordered Stock M4+"
+                  "Property": "Forecasted Sales M4"
                 }
               },
-              "queryRef": "_Measures.Ordered Stock M4+",
-              "nativeQueryRef": "Ordered Stock M4+",
-              "displayName": "Ordered Stock M4+"
+              "queryRef": "_Measures.Forecasted Sales M4",
+              "nativeQueryRef": "Forecasted Sales M4",
+              "displayName": "Forecasted Sales M4"
             },
             {
               "field": {
@@ -413,12 +428,252 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Forecasted Sales M4+"
+                  "Property": "Forecast Orders Outstanding QTY (M+4)"
                 }
               },
-              "queryRef": "_Measures.Forecasted Sales M4+",
-              "nativeQueryRef": "Forecasted Sales M4+",
-              "displayName": "Forecasted Sales M4+"
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+4)",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+4)",
+              "displayName": "Forecast Orders Outstanding QTY (M+4)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecasted Sales M5"
+                }
+              },
+              "queryRef": "_Measures.Forecasted Sales M5",
+              "nativeQueryRef": "Forecasted Sales M5",
+              "displayName": "Forecasted Sales M5"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecast Orders Outstanding QTY (M+5)"
+                }
+              },
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+5)",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+5)",
+              "displayName": "Forecast Orders Outstanding QTY (M+5)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecasted Sales M6"
+                }
+              },
+              "queryRef": "_Measures.Forecasted Sales M6",
+              "nativeQueryRef": "Forecasted Sales M6",
+              "displayName": "Forecasted Sales M6"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecast Orders Outstanding QTY (M+6)"
+                }
+              },
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+6)",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+6)",
+              "displayName": "Forecast Orders Outstanding QTY (M+6)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecasted Sales M7"
+                }
+              },
+              "queryRef": "_Measures.Forecasted Sales M7",
+              "nativeQueryRef": "Forecasted Sales M7",
+              "displayName": "Forecasted Sales M7"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecast Orders Outstanding QTY (M+7)"
+                }
+              },
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+7)",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+7)",
+              "displayName": "Forecast Orders Outstanding QTY (M+7)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecasted Sales M8"
+                }
+              },
+              "queryRef": "_Measures.Forecasted Sales M8",
+              "nativeQueryRef": "Forecasted Sales M8",
+              "displayName": "Forecasted Sales M8"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecast Orders Outstanding QTY (M+8)"
+                }
+              },
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+8)",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+8)",
+              "displayName": "Forecast Orders Outstanding QTY (M+8)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecasted Sales M9"
+                }
+              },
+              "queryRef": "_Measures.Forecasted Sales M9",
+              "nativeQueryRef": "Forecasted Sales M9",
+              "displayName": "Forecasted Sales M9"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecast Orders Outstanding QTY (M+9)"
+                }
+              },
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+9)",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+9)",
+              "displayName": "Forecast Orders Outstanding QTY (M+9)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecasted Sales M10"
+                }
+              },
+              "queryRef": "_Measures.Forecasted Sales M10",
+              "nativeQueryRef": "Forecasted Sales M10",
+              "displayName": "Forecasted Sales M10"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecast Orders Outstanding QTY (M+10)"
+                }
+              },
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+10)",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+10)",
+              "displayName": "Forecast Orders Outstanding QTY (M+10)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecasted Sales M11"
+                }
+              },
+              "queryRef": "_Measures.Forecasted Sales M11",
+              "nativeQueryRef": "Forecasted Sales M11",
+              "displayName": "Forecasted Sales M11"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecast Orders Outstanding QTY (M+11)"
+                }
+              },
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+11)",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+11)",
+              "displayName": "Forecast Orders Outstanding QTY (M+11)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecasted Sales M12"
+                }
+              },
+              "queryRef": "_Measures.Forecasted Sales M12",
+              "nativeQueryRef": "Forecasted Sales M12",
+              "displayName": "Forecasted Sales M12"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Forecast Orders Outstanding QTY (M+12)"
+                }
+              },
+              "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+12)",
+              "nativeQueryRef": "Forecast Orders Outstanding QTY (M+12)",
+              "displayName": "Forecast Orders Outstanding QTY (M+12)"
             }
           ],
           "fieldParameters": [
@@ -430,11 +685,11 @@
                       "Entity": "Dynamic Current Month +1"
                     }
                   },
-                  "Property": "Dynamic Current Month +1"
+                  "Property": "Current Month +1"
                 }
               },
               "index": 3,
-              "length": 5
+              "length": 2
             },
             {
               "parameterExpr": {
@@ -444,11 +699,11 @@
                       "Entity": "Dynamic Current Month"
                     }
                   },
-                  "Property": "Dynamic Current Month"
+                  "Property": "Current Month"
                 }
               },
               "index": 2,
-              "length": 5
+              "length": 2
             },
             {
               "parameterExpr": {
@@ -476,8 +731,7 @@
                 }
               },
               "index": 1,
-              "length": 8,
-              "sortDirection": "Descending"
+              "length": 16
             },
             {
               "parameterExpr": {
@@ -487,11 +741,11 @@
                       "Entity": "Dynamic Current Month +2"
                     }
                   },
-                  "Property": "Dynamic Current Month +2"
+                  "Property": "Current Month +2"
                 }
               },
               "index": 4,
-              "length": 1
+              "length": 2
             },
             {
               "parameterExpr": {
@@ -501,45 +755,140 @@
                       "Entity": "Dynamic Current Month +3"
                     }
                   },
-                  "Property": "Dynamic Current Month +3"
+                  "Property": "Current Month +3"
                 }
               },
               "index": 5,
-              "length": 1
+              "length": 2
             },
             {
               "parameterExpr": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dynamic Current Month 4+"
+                      "Entity": "Dynamic Current Month +4"
                     }
                   },
-                  "Property": "Dynamic Current Month 4+"
+                  "Property": "Current Month +4 "
                 }
               },
               "index": 6,
-              "length": 5
+              "length": 2
+            },
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dynamic Current Month +5"
+                    }
+                  },
+                  "Property": "Current Month +5"
+                }
+              },
+              "index": 7,
+              "length": 2
+            },
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dynamic Current Month +6"
+                    }
+                  },
+                  "Property": "Current Month +6"
+                }
+              },
+              "index": 8,
+              "length": 2
+            },
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dynamic Current Month +7"
+                    }
+                  },
+                  "Property": "Current Month +7"
+                }
+              },
+              "index": 9,
+              "length": 2
+            },
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dynamic Current Month +8"
+                    }
+                  },
+                  "Property": "Current Month +8"
+                }
+              },
+              "index": 10,
+              "length": 2
+            },
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dynamic Current Month +9"
+                    }
+                  },
+                  "Property": "Current Month +9"
+                }
+              },
+              "index": 11,
+              "length": 2
+            },
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dynamic Current Month +10"
+                    }
+                  },
+                  "Property": "Current Month +10"
+                }
+              },
+              "index": 12,
+              "length": 2
+            },
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dynamic Current Month +11"
+                    }
+                  },
+                  "Property": "Current Month +11"
+                }
+              },
+              "index": 13,
+              "length": 2
+            },
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dynamic Current Month +12"
+                    }
+                  },
+                  "Property": "Current Month +12"
+                }
+              },
+              "index": 14,
+              "length": 2
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "_Measures"
-                  }
-                },
-                "Property": "Ideal Space Requirements"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "objects": {
@@ -647,90 +996,6 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "4D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "_Measures.Empty Column"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "77.14644567336465D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "_Measures.Predicted Stock M4+"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "94.94426903025962D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "_Measures.Forecast Orders Outstanding QTY (M4+)"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "81.10069085812887D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "_Measures.Months Stock Remaining inc FO 4+"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "65.56627379273559D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "_Measures.Ordered Stock M4+"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "78.44946231569897D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "_Measures.Forecasted Sales M4+"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
                   "Value": "62.14868540344515D"
                 }
               }
@@ -745,7 +1010,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "154.45450503360476D"
+                  "Value": "519.0572093300776D"
                 }
               }
             }
@@ -773,7 +1038,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "70.53037578527615D"
+                  "Value": "59.659596250971966D"
                 }
               }
             }
@@ -787,7 +1052,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "64.38352694523125D"
+                  "Value": "61.99825428237597D"
                 }
               }
             }
@@ -815,7 +1080,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "77.32216400114527D"
+                  "Value": "71.94693134614786D"
                 }
               }
             }
@@ -829,7 +1094,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "98.53992237108466D"
+                  "Value": "177.09508199638105D"
                 }
               }
             }
@@ -843,7 +1108,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "63.864916475479475D"
+                  "Value": "224.53965794127564D"
                 }
               }
             }
@@ -899,7 +1164,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "80.19949530026408D"
+                  "Value": "96.19958074993917D"
                 }
               }
             }
@@ -955,7 +1220,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "82.52041809104547D"
+                  "Value": "97.6439197781419D"
                 }
               }
             }
@@ -1004,6 +1269,888 @@
           },
           "selector": {
             "metadata": "_Measures.Suggested Order Amount M0"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "93.65917962072993D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+2)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "87.81231246048806D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+3)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Empty Column"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "89.75584417556759D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+4)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "96.64606562170768D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 4"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "71.21462623720447D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M4"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "79.41610266356275D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M4"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "84.87827060871459D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M5"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "84.85811686886451D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+5)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "114.62326002494105D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 5"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "75.41611401458044D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M5"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "80.01685792937943D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M6"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "89.71852823248494D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+6)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "105.42009031788842D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 6"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "59.820985693407096D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M6"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "80.01874414245549D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M6"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "82.41610868807366D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M7"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "95.69079111716472D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+7)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "107.04564736424446D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 7"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "73.0168635036307D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M7"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "82.03771847983073D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M7"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "75.21835641199092D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M8"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "90.85308021249368D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+8)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "106.42809534431224D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 8"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "77.801923794038D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M8"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "81.21833851708861D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M8"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "81.21648330872654D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M9"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "88.45729126839538D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+9)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "106.2257460557899D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 9"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "76.61576831807835D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M9"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "84.61761656605069D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M10"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "88.39586316895775D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+10)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "116.93316592744576D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 10"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "78.61761949390817D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M10"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "93.21240193574772D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M10"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "96.6138798850509D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M11"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "85.95931215418204D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+11)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "115.27064598604844D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 11"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "97.81160119862781D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M11"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "91.98257638816928D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M11"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "96.6138568359591D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M12"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "89.35877536602526D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+12)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "112.70852121270728D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 12"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "87.01499531396439D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M12"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "94.21651587812327D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M12"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "55.57792444931639D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Product.GrowthFactor"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "80.98629136090155D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Product.CalculatedLandedCost"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "87.89896991182349D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M2"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "83.88957176408613D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M3"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "83.86844166014096D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M5"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "90.89307130138043D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M9"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "74.88252493209791D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M0"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "74.88631588403972D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M3"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "71.89191509658956D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M2"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "75.89921422603774D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M2"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "72.8778386844166D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M3"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "77.90007026197493D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M4"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "99.8120458873142D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 2"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "110.83791308467772D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 3"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "69.74279110193118D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Required Months Stock"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "91.29126462762382D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Current Space Requirements CBM"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "47.0098383696416D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Product.PackSize"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "60.72313819637074D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Product.ListPriceActual"
           }
         }
       ],
@@ -2737,6 +3884,166 @@
         },
         {
           "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#6C6966'"
+                    }
+                  }
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M4"
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#6C6966'"
+                    }
+                  }
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+4)"
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#6C6966'"
+                    }
+                  }
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 4"
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#6C6966'"
+                    }
+                  }
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M4"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#6C6966'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M4"
+          }
+        },
+        {
+          "properties": {
             "styleHeader": {
               "expr": {
                 "Literal": {
@@ -2756,8 +4063,8 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 9,
-                      "Percent": 0.2
+                      "ColorId": 4,
+                      "Percent": -0.5
                     }
                   }
                 }
@@ -2765,7 +4072,916 @@
             }
           },
           "selector": {
-            "metadata": "_Measures.Predicted Stock M4+"
+            "metadata": "_Measures.Predicted Stock M5"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+5)"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 5"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M5"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M5"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#36003e'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M6"
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#36003e'"
+                    }
+                  }
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+6)"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#36003e'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 6"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#36003e'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M6"
+          }
+        },
+        {
+          "properties": {
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#36003e'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M6"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M7"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+7)"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 7"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M7"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M7"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+8)"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 8"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M8"
+          }
+        },
+        {
+          "properties": {
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M8"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#58390B'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M9"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#58390B'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+9)"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#58390B'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 9"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#58390B'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M9"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#58390B'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M9"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0E355A'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M10"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0E355A'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+10)"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0E355A'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 10"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0E355A'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M10"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0E355A'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M10"
           }
         },
         {
@@ -2790,7 +5006,7 @@
                   "expr": {
                     "ThemeDataColor": {
                       "ColorId": 9,
-                      "Percent": 0.2
+                      "Percent": 0.6
                     }
                   }
                 }
@@ -2798,7 +5014,7 @@
             }
           },
           "selector": {
-            "metadata": "_Measures.Forecast Orders Outstanding QTY (M4+)"
+            "metadata": "_Measures.Predicted Stock M11"
           }
         },
         {
@@ -2823,7 +5039,7 @@
                   "expr": {
                     "ThemeDataColor": {
                       "ColorId": 9,
-                      "Percent": 0.2
+                      "Percent": 0.6
                     }
                   }
                 }
@@ -2831,7 +5047,7 @@
             }
           },
           "selector": {
-            "metadata": "_Measures.Months Stock Remaining inc FO 4+"
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+11)"
           }
         },
         {
@@ -2856,7 +5072,7 @@
                   "expr": {
                     "ThemeDataColor": {
                       "ColorId": 9,
-                      "Percent": 0.2
+                      "Percent": 0.6
                     }
                   }
                 }
@@ -2864,7 +5080,7 @@
             }
           },
           "selector": {
-            "metadata": "_Measures.Ordered Stock M4+"
+            "metadata": "_Measures.Months Stock Remaining inc FO + 11"
           }
         },
         {
@@ -2889,6 +5105,232 @@
                   "expr": {
                     "ThemeDataColor": {
                       "ColorId": 9,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M11"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 9,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M11"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#59326F'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Predicted Stock M12"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#59326F'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecast Orders Outstanding QTY (M+12)"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#59326F'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Months Stock Remaining inc FO + 12"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#59326F'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Ordered Stock M12"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#59326F'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Forecasted Sales M12"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 5,
                       "Percent": 0.2
                     }
                   }
@@ -2897,7 +5339,7 @@
             }
           },
           "selector": {
-            "metadata": "_Measures.Forecasted Sales M4+"
+            "metadata": "_Measures.Predicted Stock M0"
           }
         }
       ],
@@ -2964,49 +5406,6 @@
           }
         },
         "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "d",
-              "Entity": "Dim_Product",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "Not": {
-                  "Expression": {
-                    "In": {
-                      "Expressions": [
-                        {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Source": "d"
-                              }
-                            },
-                            "Property": "ProdCode"
-                          }
-                        }
-                      ],
-                      "Values": [
-                        [
-                          {
-                            "Literal": {
-                              "Value": "null"
-                            }
-                          }
-                        ]
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        },
         "objects": {
           "general": [
             {
@@ -3024,35 +5423,7 @@
         }
       },
       {
-        "name": "24ffcbf2070a3d0ee18b",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "SupplierCode"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "223d59eada009e5e9664",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "SupplierName"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "cfeb87a600be41c871ec",
+        "name": "09e9303435759a0319a8",
         "field": {
           "Column": {
             "Expression": {
@@ -3066,21 +5437,35 @@
         "type": "Categorical"
       },
       {
-        "name": "58314373c50a9c6ce060",
+        "name": "e27c1025c20141066475",
         "field": {
-          "Measure": {
+          "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "_Measures"
+                "Entity": "Dim_Product"
               }
             },
-            "Property": "Ideal Stocking Level"
+            "Property": "CalculatedLandedCost"
           }
         },
         "type": "Advanced"
       },
       {
-        "name": "52dbfb5fde0102950c76",
+        "name": "713351048b709be9b0a2",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "GrowthFactor"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e785692080a140020e9d",
         "field": {
           "Column": {
             "Expression": {
@@ -3094,217 +5479,7 @@
         "type": "Categorical"
       },
       {
-        "name": "6943e26e3c92e1a25602",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "StockLevel"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "1f2259537c060898b60d",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "OutstandingPO"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "3ec632eb9e262d5c0221",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Monthly Average Sales for 6 month period"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "498fa9a0b15903818d76",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Ideal Space Requirements"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "7cb46580d0de835130c0",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Predicted Stock M1"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "4212cf4b69004a720198",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M+1)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "4edfb1752c5c87c019ee",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Months Stock Remaining inc FO + 1"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "0382b01fade4a73ae10b",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Ordered Stock M1"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "12edc4471689040ea4bc",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecasted Sales M1"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "463990151eb0d9ae9330",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Predicted Stock M4+"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "1b21c560204e2c6bc07e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M4+)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "75c171ffb2bb3c36240d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Months Stock Remaining inc FO 4+"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "eb47aea9cbd584c9bc75",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Ordered Stock M4+"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "b814e3d2ac0c75068068",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecasted Sales M4+"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "d4d9d9758ddd49b07492",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M+0)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "066ab8c41300b987e0c4",
+        "name": "67f31bf1c735961e91bb",
         "field": {
           "Measure": {
             "Expression": {
@@ -3318,7 +5493,7 @@
         "type": "Advanced"
       },
       {
-        "name": "a16ec5b47c5c809adad2",
+        "name": "1b8c73a009b595035683",
         "field": {
           "Measure": {
             "Expression": {
@@ -3326,13 +5501,13 @@
                 "Entity": "_Measures"
               }
             },
-            "Property": "Ordered Stock M0"
+            "Property": "Forecasted Sales M1"
           }
         },
         "type": "Advanced"
       },
       {
-        "name": "7b0c1beb4b825d20999d",
+        "name": "c50f531d31c3340cabe4",
         "field": {
           "Measure": {
             "Expression": {
@@ -3340,13 +5515,13 @@
                 "Entity": "_Measures"
               }
             },
-            "Property": "Forecasted Sales M0"
+            "Property": "Forecasted Sales M2"
           }
         },
         "type": "Advanced"
       },
       {
-        "name": "5f90ed06ce69a5705a2b",
+        "name": "269a944c4ee91edaac21",
         "field": {
           "Measure": {
             "Expression": {
@@ -3354,13 +5529,13 @@
                 "Entity": "_Measures"
               }
             },
-            "Property": "Suggested Order Amount M0"
+            "Property": "Forecasted Sales M3"
           }
         },
         "type": "Advanced"
       },
       {
-        "name": "942cb065eadb1812421e",
+        "name": "2d0a194f733cc9dac708",
         "field": {
           "Measure": {
             "Expression": {
@@ -3368,7 +5543,343 @@
                 "Entity": "_Measures"
               }
             },
-            "Property": "Empty Column"
+            "Property": "Forecasted Sales M4"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "769846147d7351d150c8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecasted Sales M5"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "970dd3ecd39d1256b5cc",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecasted Sales M6"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6d97c24eb2870530ad7d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecasted Sales M7"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "cadcfbbd0a54c958e6b0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecasted Sales M8"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d7121e63ba810e891974",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecasted Sales M9"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c59f68c800e2a3804b06",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecasted Sales M10"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "eaa48300be4a2208c2eb",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecasted Sales M11"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "481d8dabadba8b10e54a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecasted Sales M12"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e4a04af23020bbe32739",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY (M+0)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "24fcaa50d0ae5bd04203",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY (M+1)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "645bb4b1d20890b30ead",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY (M+2)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5e66c9f161d6bc50bc74",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY (M+3)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7055087b750d26828e72",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY (M+4)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ead9326b136228290030",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY (M+5)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2446506180b402ab38d4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY (M+6)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0b79dee402899e617a14",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY (M+7)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "97d5f653777a8984b382",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY (M+8)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "44f8913668a37a1a8d6e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY (M+9)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d274e48f4db0143134ad",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY (M+10)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e71bedc090bdac4b0a58",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY (M+11)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "de9a10870eb1e374d086",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Forecast Orders Outstanding QTY (M+12)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0095c2363c0b408b03cc",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Ideal Stocking Level"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b041781007dda9764494",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Current Space Requirements CBM"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e8fbed90d6d26239d0ed",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Ideal Space Requirements"
           }
         },
         "type": "Advanced"

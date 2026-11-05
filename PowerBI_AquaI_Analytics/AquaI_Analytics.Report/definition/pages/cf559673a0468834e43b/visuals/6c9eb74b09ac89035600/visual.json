@@ -110,77 +110,32 @@
                 "Where": [
                   {
                     "Condition": {
-                      "In": {
-                        "Expressions": [
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Source": "d"
+                      "Not": {
+                        "Expression": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "d"
+                                    }
+                                  },
+                                  "Property": "Product Information Fields"
                                 }
-                              },
-                              "Property": "Product Information Fields"
-                            }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'''Dim_Product''[ListPriceActual]'"
+                                  }
+                                }
+                              ]
+                            ]
                           }
-                        ],
-                        "Values": [
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'''Dim_Product''[SupplierCode]'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'''Dim_Product''[SupplierName]'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'''Dim_Product''[StockingStatus]'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'''_Measures''[Ideal Stocking Level]'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'''Dim_Product''[StockLevel]'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'''Dim_Product''[OutstandingPO]'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'''_Measures''[Monthly Average Sales for 6 month period]'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'''_Measures''[Ideal Space Requirements]'"
-                              }
-                            }
-                          ]
-                        ]
+                        }
                       }
                     },
                     "Annotations": {
@@ -204,84 +159,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''Dim_Product''[SupplierCode]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'''Dim_Product''[SupplierName]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'''Dim_Product''[StockingStatus]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'''_Measures''[Ideal Stocking Level]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'''Dim_Product''[StockLevel]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'''Dim_Product''[OutstandingPO]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'''_Measures''[Monthly Average Sales for 6 month period]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'''_Measures''[Ideal Space Requirements]'"
+                                      "Value": "'''Dim_Product''[ListPriceActual]'"
                                     }
                                   }
                                 ]
@@ -305,28 +183,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "SupplierCode"
-                          },
-                          {
-                            "0": "SupplierName"
-                          },
-                          {
-                            "0": "Stocking Status"
-                          },
-                          {
-                            "0": "Ideal Stocking Level"
-                          },
-                          {
-                            "0": "Stock Level"
-                          },
-                          {
-                            "0": "Outstanding PO"
-                          },
-                          {
-                            "0": "Monthly AVG Sales QTY (6 months)"
-                          },
-                          {
-                            "0": "Ideal Space Requirements"
+                            "0": "List Price Actual"
                           }
                         ]
                       }
@@ -345,6 +202,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'Dropdown'"
+                }
+              }
+            },
+            "isInvertedSelectionMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

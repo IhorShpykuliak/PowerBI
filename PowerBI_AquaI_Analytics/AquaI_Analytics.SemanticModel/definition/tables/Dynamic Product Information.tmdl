@@ -47,7 +47,6 @@ table 'Dynamic Product Information'
 				    ("USDListPrice", NAMEOF('Dim_Product'[USDListPrice]), 4),
 				    ("List Price Actual", NAMEOF('Dim_Product'[ListPriceActual]), 5),
 				    ("Calculated Landed Cost", NAMEOF('Dim_Product'[CalculatedLandedCost]), 6),
-				    ("AltListPriceActual", NAMEOF('Dim_AlternateSupplierDoNotUse'[AltListPriceActual]), 7),
 				    ("MOQ", NAMEOF('Dim_Product'[MOQ]), 8),
 				    ("Pack Size", NAMEOF('Dim_Product'[PackSize]), 9),
 				    ("CBM", NAMEOF('Dim_Product'[CBM]), 10),

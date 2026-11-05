@@ -179,7 +179,7 @@ table _Measures
 			
 			SUMX(
 			    'Dim_Product',
-			    [Suggested Order Amount M0] * 'Dim_Product'[CBM]
+			    [Suggested Order Amount M1] * 'Dim_Product'[CBM]
 			)
 		lineageTag: 99dbd817-10f6-42bc-a76c-afdb167ec4d5
 
@@ -189,7 +189,6 @@ table _Measures
 			
 			CALCULATE(
 			    SUM(Fact_SalesOrder[Quantity Ordered]),
-			    Fact_SalesOrder[IsKit] = 0,
 			    KEEPFILTERS(Dim_OrderType[C_DESCRIPTION] = "7. Forecast Order")
 			)
 		lineageTag: 2e874a25-6bc9-4f31-acc1-b61088171d71
@@ -200,7 +199,6 @@ table _Measures
 			
 			CALCULATE(
 			    SUM(Fact_SalesOrder[Quantity Outstanding]),
-			    Fact_SalesOrder[IsKit] = 0,
 			    KEEPFILTERS(Dim_OrderType[C_DESCRIPTION] = "7. Forecast Order")
 			)
 		lineageTag: eca85336-b0ef-44ad-8002-64de4d828704
@@ -244,8 +242,8 @@ table _Measures
 			    CALCULATE(
 			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
 			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
-			        'Fact_SalesOrder'[LineDueDate] >= StartDate,
-			        'Fact_SalesOrder'[LineDueDate] <= EndDate
+			        'Fact_SalesOrder'[EffectiveDueDate] >= StartDate,
+			        'Fact_SalesOrder'[EffectiveDueDate] <= EndDate
 			    ),
 			    0
 			)
@@ -255,14 +253,15 @@ table _Measures
 
 	measure 'Forecast Orders Outstanding QTY (M+1)' =
 			
-			VAR TargetDate = EDATE(TODAY(), 1)
+			VAR StartDate = EOMONTH(TODAY(), 0) + 1  -- last day current month + 1 day = 1st next month
+			VAR EndDate = EOMONTH(TODAY(), 1)        -- last day next month
 			RETURN
 			COALESCE(
 			    CALCULATE(
 			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
 			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
-			        'Dim_Date'[Year] = YEAR(TargetDate),
-			        'Dim_Date'[MonthNumber] = MONTH(TargetDate)
+			        'Fact_SalesOrder'[EffectiveDueDate] >= StartDate,
+			        'Fact_SalesOrder'[EffectiveDueDate] <= EndDate
 			    ),
 			    0
 			)
@@ -272,14 +271,15 @@ table _Measures
 
 	measure 'Forecast Orders Outstanding QTY (M+2)' =
 			
-			VAR TargetDate = EDATE(TODAY(), 2)
+			VAR StartDate = EOMONTH(TODAY(), 1) + 1  -- First day of the M+2 month (day after the end of M+1)
+			VAR EndDate = EOMONTH(TODAY(), 2)        -- Last day of the M+2 month
 			RETURN
 			COALESCE(
 			    CALCULATE(
 			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
 			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
-			        'Dim_Date'[Year] = YEAR(TargetDate),
-			        'Dim_Date'[MonthNumber] = MONTH(TargetDate)
+			        'Fact_SalesOrder'[EffectiveDueDate] >= StartDate,
+			        'Fact_SalesOrder'[EffectiveDueDate] <= EndDate
 			    ),
 			    0
 			)
@@ -298,16 +298,17 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Forecast Orders Outstanding QTY (M+3)' =
+	measure 'Forecast Orders Outstanding QTY (M+4)' =
 			
-			VAR TargetDate = EDATE(TODAY(), 3)
+			VAR StartDate = EOMONTH(TODAY(), 3) + 1  -- First day of the M+4 month (day after the end of M+1)
+			VAR EndDate = EOMONTH(TODAY(), 4)        -- Last day of the M+4 month
 			RETURN
 			COALESCE(
 			    CALCULATE(
 			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
 			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
-			        'Dim_Date'[Year] = YEAR(TargetDate),
-			        'Dim_Date'[MonthNumber] = MONTH(TargetDate)
+			        'Fact_SalesOrder'[EffectiveDueDate] >= StartDate,
+			        'Fact_SalesOrder'[EffectiveDueDate] <= EndDate
 			    ),
 			    0
 			)
@@ -323,7 +324,7 @@ table _Measures
 			    CALCULATE(
 			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
 			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
-			        'Dim_Date'[Date] >= StartDate
+			        'Fact_SalesOrder'[EffectiveDueDate] >= StartDate
 			    ),
 			    0
 			)
@@ -334,7 +335,7 @@ table _Measures
 	measure 'Months Stock Remaining inc FO + 3' =
 			
 			DIVIDE(
-			    [Predicted Stock M1] - [Forecast Orders Outstanding QTY (M+0)] - [Forecast Orders Outstanding QTY (M+1)] - [Forecast Orders Outstanding QTY (M+2)]- [Forecast Orders Outstanding QTY (M+3)],
+			    [Predicted Stock M1] - [Forecast Orders Outstanding QTY (M+0)] - [Forecast Orders Outstanding QTY (M+1)] - [Forecast Orders Outstanding QTY (M+2)]- [Forecast Orders Outstanding QTY (M+4)],
 			    [Monthly Average Sales for 6 month period],
 			    0
 			)
@@ -345,7 +346,7 @@ table _Measures
 	measure 'Months Stock Remaining inc FO 4+' =
 			
 			DIVIDE(
-			    [Predicted Stock M1] - [Forecast Orders Outstanding QTY (M+0)] - [Forecast Orders Outstanding QTY (M+1)] - [Forecast Orders Outstanding QTY (M+2)]- [Forecast Orders Outstanding QTY (M+3)]- [Forecast Orders Outstanding QTY (M4+)],
+			    [Predicted Stock M1] - [Forecast Orders Outstanding QTY (M+0)] - [Forecast Orders Outstanding QTY (M+1)] - [Forecast Orders Outstanding QTY (M+2)]- [Forecast Orders Outstanding QTY (M+4)]- [Forecast Orders Outstanding QTY (M4+)],
 			    [Monthly Average Sales for 6 month period],
 			    0
 			)
@@ -355,8 +356,10 @@ table _Measures
 
 	measure 'Forecasted Sales M1' = ```
 			
-			    ([Monthly Average Sales for 6 month period] * SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)) 
-			    + [Forecast Orders Outstanding QTY (M+1)]
+			    VAR AvgSales = [Monthly Average Sales for 6 month period]
+			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
+			RETURN
+			    (AvgSales * (1 + Growth))
 			```
 		lineageTag: 2acf7e7b-a214-45e4-9d36-e7f0808036cf
 
@@ -364,8 +367,10 @@ table _Measures
 
 	measure 'Forecasted Sales M2' = ```
 			
-			    ([Monthly Average Sales for 6 month period] * SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)) 
-			    + [Forecast Orders Outstanding QTY (M+2)]
+			    VAR PrevMonth = [Forecasted Sales M1]
+			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
+			RETURN
+			    PrevMonth * (1 + Growth)
 			```
 		lineageTag: 7819d4bf-4cc8-429d-8c47-fd5c16e20665
 
@@ -373,8 +378,10 @@ table _Measures
 
 	measure 'Forecasted Sales M3' = ```
 			
-			    ([Monthly Average Sales for 6 month period] * SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)) 
-			    + [Forecast Orders Outstanding QTY (M+3)]
+			    VAR PrevMonth = [Forecasted Sales M2]
+			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
+			RETURN
+			    PrevMonth * (1 + Growth)
 			```
 		lineageTag: 503df906-10a5-4cbf-b916-4f32ecfc0512
 
@@ -391,14 +398,15 @@ table _Measures
 
 	measure 'Ordered Stock M0' = ```
 			
-			VAR TargetDate = EDATE(TODAY(), 0) -- shift X month
-			
-			VAR Result =    
-			    CALCULATE(
-			        SUM(Fact_PurchaseOrder[Qty Outstanding]),
-			        'Dim_Date'[Year] = YEAR(TargetDate),
-			        'Dim_Date'[MonthNumber] = MONTH(TargetDate)
-			    )
+			    VAR TargetDate = EDATE(TODAY(), 0) -- shift X month
+			    VAR StartOfMon = DATE(YEAR(TargetDate), MONTH(TargetDate), 1)
+			    VAR EndOfMon = EOMONTH(TargetDate, 0)
+			    VAR Result = 
+			        CALCULATE(
+			            SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			            'Fact_PurchaseOrder'[EffectiveDueDate] >= StartOfMon,
+			            'Fact_PurchaseOrder'[EffectiveDueDate] <= EndOfMon
+			        )
 			RETURN
 			    COALESCE(Result, 0)
 			```
@@ -408,14 +416,15 @@ table _Measures
 
 	measure 'Ordered Stock M1' = ```
 			
-			VAR TargetDate = EDATE(TODAY(), 1) -- shift X month
-			
-			VAR Result =    
-			    CALCULATE(
-			        SUM(Fact_PurchaseOrder[Qty Outstanding]),
-			        'Dim_Date'[Year] = YEAR(TargetDate),
-			        'Dim_Date'[MonthNumber] = MONTH(TargetDate)
-			    )
+			    VAR TargetDate = EDATE(TODAY(), 1) -- shift X month
+			    VAR StartOfMon = DATE(YEAR(TargetDate), MONTH(TargetDate), 1)
+			    VAR EndOfMon = EOMONTH(TargetDate, 0)
+			    VAR Result = 
+			        CALCULATE(
+			            SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			            'Fact_PurchaseOrder'[EffectiveDueDate] >= StartOfMon,
+			            'Fact_PurchaseOrder'[EffectiveDueDate] <= EndOfMon
+			        )
 			RETURN
 			    COALESCE(Result, 0)
 			```
@@ -425,14 +434,15 @@ table _Measures
 
 	measure 'Ordered Stock M2' = ```
 			
-			VAR TargetDate = EDATE(TODAY(), 2) -- shift X month
-			
-			VAR Result =    
-			    CALCULATE(
-			        SUM(Fact_PurchaseOrder[Qty Outstanding]),
-			        'Dim_Date'[Year] = YEAR(TargetDate),
-			        'Dim_Date'[MonthNumber] = MONTH(TargetDate)
-			    )
+			    VAR TargetDate = EDATE(TODAY(), 2) -- shift X month
+			    VAR StartOfMon = DATE(YEAR(TargetDate), MONTH(TargetDate), 1)
+			    VAR EndOfMon = EOMONTH(TargetDate, 0)
+			    VAR Result = 
+			        CALCULATE(
+			            SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			            'Fact_PurchaseOrder'[EffectiveDueDate] >= StartOfMon,
+			            'Fact_PurchaseOrder'[EffectiveDueDate] <= EndOfMon
+			        )
 			RETURN
 			    COALESCE(Result, 0)
 			```
@@ -443,13 +453,14 @@ table _Measures
 	measure 'Ordered Stock M3' = ```
 			
 			VAR TargetDate = EDATE(TODAY(), 3) -- shift X month
-			
-			VAR Result =    
-			    CALCULATE(
-			        SUM(Fact_PurchaseOrder[Qty Outstanding]),
-			        'Dim_Date'[Year] = YEAR(TargetDate),
-			        'Dim_Date'[MonthNumber] = MONTH(TargetDate)
-			    )
+			    VAR StartOfMon = DATE(YEAR(TargetDate), MONTH(TargetDate), 1)
+			    VAR EndOfMon = EOMONTH(TargetDate, 0)
+			    VAR Result = 
+			        CALCULATE(
+			            SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			            'Fact_PurchaseOrder'[EffectiveDueDate] >= StartOfMon,
+			            'Fact_PurchaseOrder'[EffectiveDueDate] <= EndOfMon
+			        )
 			RETURN
 			    COALESCE(Result, 0)
 			```
@@ -546,15 +557,20 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Ordered Stock M-1' =
+	measure 'Ordered Stock M-1' = ```
 			
 			VAR TargetDate = EDATE(TODAY(), -1)
+			    VAR StartOfMon = DATE(YEAR(TargetDate), MONTH(TargetDate), 1)
+			    VAR EndOfMon = EOMONTH(TargetDate, 0)
+			    VAR Result = 
+			        CALCULATE(
+			            SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			            'Fact_PurchaseOrder'[EffectiveDueDate] >= StartOfMon,
+			            'Fact_PurchaseOrder'[EffectiveDueDate] <= EndOfMon
+			        )
 			RETURN
-			CALCULATE(
-			    SUM(Fact_PurchaseOrder[Qty Outstanding]),
-			    'Dim_Date'[Year] = YEAR(TargetDate),
-			    'Dim_Date'[MonthNumber] = MONTH(TargetDate)
-			)
+			    COALESCE(Result, 0)
+			```
 		lineageTag: cd46b309-4423-4713-9911-f86f1f5e8daf
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -565,10 +581,595 @@ table _Measures
 
 	measure 'Forecasted Sales M0' = ```
 			
-			    ([Monthly Average Sales for 6 month period] * SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)) 
-			    + [Forecast Orders Outstanding QTY (M+0)]
+			    VAR AvgSales = [Monthly Average Sales for 6 month period]
+			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
+			    VAR CurrentOrders = [Forecast Orders Outstanding QTY (M+0)]
+			RETURN
+			    (AvgSales * Growth) + CurrentOrders
 			```
 		lineageTag: a562d398-d655-417e-9fd6-8bba57b19e6d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecast Orders Outstanding QTY (M+3)' =
+			
+			VAR StartDate = EOMONTH(TODAY(), 2) + 1  -- First day of the M+3 month (day after the end of M+1)
+			VAR EndDate = EOMONTH(TODAY(), 3)        -- Last day of the M+3 month
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
+			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
+			        'Fact_SalesOrder'[EffectiveDueDate] >= StartDate,
+			        'Fact_SalesOrder'[EffectiveDueDate] <= EndDate
+			    ),
+			    0
+			)
+		lineageTag: 0281f0a0-3110-41ab-9963-beb6abd7b6a4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecast Orders Outstanding QTY (M+5)' =
+			
+			VAR StartDate = EOMONTH(TODAY(), 4) + 1  -- First day of the M+5 month (day after the end of M+1)
+			VAR EndDate = EOMONTH(TODAY(), 5)        -- Last day of the M+5 month
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
+			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
+			        'Fact_SalesOrder'[EffectiveDueDate] >= StartDate,
+			        'Fact_SalesOrder'[EffectiveDueDate] <= EndDate
+			    ),
+			    0
+			)
+		lineageTag: 2d751fcf-6c88-4908-86cc-0a421bfa8825
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecast Orders Outstanding QTY (M+6)' =
+			
+			VAR StartDate = EOMONTH(TODAY(), 5) + 1  -- First day of the M+6 month (day after the end of M+1)
+			VAR EndDate = EOMONTH(TODAY(), 6)        -- Last day of the M+6 month
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
+			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
+			        'Fact_SalesOrder'[EffectiveDueDate] >= StartDate,
+			        'Fact_SalesOrder'[EffectiveDueDate] <= EndDate
+			    ),
+			    0
+			)
+		lineageTag: 86318882-8c32-458f-884d-6ed5234c74e5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecast Orders Outstanding QTY (M+7)' =
+			
+			VAR StartDate = EOMONTH(TODAY(), 6) + 1  -- First day of the M+7 month (day after the end of M+1)
+			VAR EndDate = EOMONTH(TODAY(), 7)        -- Last day of the M+7 month
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
+			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
+			        'Fact_SalesOrder'[EffectiveDueDate] >= StartDate,
+			        'Fact_SalesOrder'[EffectiveDueDate] <= EndDate
+			    ),
+			    0
+			)
+		lineageTag: 4c051b04-3377-450c-833c-6a09a2459230
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecast Orders Outstanding QTY (M+8)' =
+			
+			VAR StartDate = EOMONTH(TODAY(), 7) + 1  -- First day of the M+8 month (day after the end of M+1)
+			VAR EndDate = EOMONTH(TODAY(), 8)        -- Last day of the M+8 month
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
+			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
+			        'Fact_SalesOrder'[EffectiveDueDate] >= StartDate,
+			        'Fact_SalesOrder'[EffectiveDueDate] <= EndDate
+			    ),
+			    0
+			)
+		lineageTag: c578112b-2dc1-4d5b-a2b6-37890600335f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecast Orders Outstanding QTY (M+9)' =
+			
+			VAR StartDate = EOMONTH(TODAY(), 8) + 1  -- First day of the M+9 month (day after the end of M+1)
+			VAR EndDate = EOMONTH(TODAY(), 9)        -- Last day of the M+9 month
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
+			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
+			        'Fact_SalesOrder'[EffectiveDueDate] >= StartDate,
+			        'Fact_SalesOrder'[EffectiveDueDate] <= EndDate
+			    ),
+			    0
+			)
+		lineageTag: 061eca2c-e198-426b-8a7a-784ead3836e7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecast Orders Outstanding QTY (M+10)' =
+			
+			VAR StartDate = EOMONTH(TODAY(), 9) + 1  -- First day of the M+10 month (day after the end of M+1)
+			VAR EndDate = EOMONTH(TODAY(), 10)        -- Last day of the M+10 month
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
+			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
+			        'Fact_SalesOrder'[EffectiveDueDate] >= StartDate,
+			        'Fact_SalesOrder'[EffectiveDueDate] <= EndDate
+			    ),
+			    0
+			)
+		lineageTag: 65049a67-392a-4ad9-a254-3cb6c976477e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecast Orders Outstanding QTY (M+11)' =
+			
+			VAR StartDate = EOMONTH(TODAY(), 10) + 1  -- First day of the M+11 month (day after the end of M+1)
+			VAR EndDate = EOMONTH(TODAY(), 11)        -- Last day of the M+11 month
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
+			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
+			        'Fact_SalesOrder'[EffectiveDueDate] >= StartDate,
+			        'Fact_SalesOrder'[EffectiveDueDate] <= EndDate
+			    ),
+			    0
+			)
+		lineageTag: 8c337578-fc60-4140-9c3f-e7d46f304b21
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecast Orders Outstanding QTY (M+12)' =
+			
+			VAR StartDate = EOMONTH(TODAY(), 11) + 1  -- First day of the M+12 month (day after the end of M+1)
+			VAR EndDate = EOMONTH(TODAY(), 12)        -- Last day of the M+12 month
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        SUM('Fact_SalesOrder'[Quantity Outstanding]),
+			        'Dim_OrderType'[C_DESCRIPTION] = "7. Forecast Order",
+			        'Fact_SalesOrder'[EffectiveDueDate] >= StartDate,
+			        'Fact_SalesOrder'[EffectiveDueDate] <= EndDate
+			    ),
+			    0
+			)
+		lineageTag: 44855d3b-3dda-4bd9-96fc-957e52b3dc13
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Predicted Stock M4' =
+			
+			[Predicted Stock M3] + [Ordered Stock M4] - [Forecasted Sales M4]
+		lineageTag: 1b6fd284-b333-47d8-8d5b-ee677f59c4fd
+
+	measure 'Predicted Stock M5' =
+			
+			[Predicted Stock M4] + [Ordered Stock M5] - [Forecasted Sales M5]
+		lineageTag: f83da404-6842-4e40-aa2b-cab3804530ce
+
+	measure 'Predicted Stock M6' =
+			
+			[Predicted Stock M5] + [Ordered Stock M6] - [Forecasted Sales M6]
+		lineageTag: 1c7a8322-9e71-4de8-82ee-766e506cf303
+
+	measure 'Predicted Stock M7' =
+			
+			[Predicted Stock M6] + [Ordered Stock M7] - [Forecasted Sales M7]
+		lineageTag: d840dbe1-c638-4fc8-8d99-1fd202de8f3d
+
+	measure 'Predicted Stock M8' =
+			
+			[Predicted Stock M7] + [Ordered Stock M8] - [Forecasted Sales M8]
+		lineageTag: 38417485-621e-4faf-ae96-8d4c4ed3d2b8
+
+	measure 'Predicted Stock M9' =
+			
+			[Predicted Stock M8] + [Ordered Stock M9] - [Forecasted Sales M9]
+		lineageTag: 89f0eb44-baec-4c10-a662-93371d386e71
+
+	measure 'Predicted Stock M10' =
+			
+			[Predicted Stock M9] + [Ordered Stock M10] - [Forecasted Sales M10]
+		lineageTag: c5b0e760-60f2-4cad-8065-36954741265a
+
+	measure 'Predicted Stock M11' =
+			
+			[Predicted Stock M10] + [Ordered Stock M11] - [Forecasted Sales M11]
+		lineageTag: 1a56c177-2da8-444c-a34f-553337048012
+
+	measure 'Predicted Stock M12' =
+			
+			[Predicted Stock M11] + [Ordered Stock M12] - [Forecasted Sales M12]
+		lineageTag: 0fa7808e-5f8b-4b71-84e5-a132b5acaef0
+
+	measure 'Ordered Stock M4' = ```
+			
+			VAR TargetDate = EDATE(TODAY(), 4) -- shift X month
+			    VAR StartOfMon = DATE(YEAR(TargetDate), MONTH(TargetDate), 1)
+			    VAR EndOfMon = EOMONTH(TargetDate, 0)
+			    VAR Result = 
+			        CALCULATE(
+			            SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			            'Fact_PurchaseOrder'[EffectiveDueDate] >= StartOfMon,
+			            'Fact_PurchaseOrder'[EffectiveDueDate] <= EndOfMon
+			        )
+			RETURN
+			    COALESCE(Result, 0)
+			```
+		lineageTag: bff3559e-1e87-4d02-a20e-74ea11639f6e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ordered Stock M5' = ```
+			
+			VAR TargetDate = EDATE(TODAY(), 5) -- shift X month
+			
+			    VAR StartOfMon = DATE(YEAR(TargetDate), MONTH(TargetDate), 1)
+			    VAR EndOfMon = EOMONTH(TargetDate, 0)
+			    VAR Result = 
+			        CALCULATE(
+			            SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			            'Fact_PurchaseOrder'[EffectiveDueDate] >= StartOfMon,
+			            'Fact_PurchaseOrder'[EffectiveDueDate] <= EndOfMon
+			        )
+			RETURN
+			    COALESCE(Result, 0)
+			```
+		lineageTag: a3bde163-2979-4688-b8ce-b6538b277019
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ordered Stock M6' = ```
+			
+			VAR TargetDate = EDATE(TODAY(), 6) -- shift X month
+			    VAR StartOfMon = DATE(YEAR(TargetDate), MONTH(TargetDate), 1)
+			    VAR EndOfMon = EOMONTH(TargetDate, 0)
+			    VAR Result = 
+			        CALCULATE(
+			            SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			            'Fact_PurchaseOrder'[EffectiveDueDate] >= StartOfMon,
+			            'Fact_PurchaseOrder'[EffectiveDueDate] <= EndOfMon
+			        )
+			RETURN
+			    COALESCE(Result, 0)
+			```
+		lineageTag: 233edb85-da80-4b8a-b0d9-ceaa8b951612
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ordered Stock M7' = ```
+			
+			VAR TargetDate = EDATE(TODAY(), 7) -- shift X month
+			
+			    VAR StartOfMon = DATE(YEAR(TargetDate), MONTH(TargetDate), 1)
+			    VAR EndOfMon = EOMONTH(TargetDate, 0)
+			    VAR Result = 
+			        CALCULATE(
+			            SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			            'Fact_PurchaseOrder'[EffectiveDueDate] >= StartOfMon,
+			            'Fact_PurchaseOrder'[EffectiveDueDate] <= EndOfMon
+			        )
+			RETURN
+			    COALESCE(Result, 0)
+			```
+		lineageTag: 4a483b9a-7fe2-4436-97bd-f6706200a571
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ordered Stock M8' = ```
+			
+			VAR TargetDate = EDATE(TODAY(), 8) -- shift X month
+			    VAR StartOfMon = DATE(YEAR(TargetDate), MONTH(TargetDate), 1)
+			    VAR EndOfMon = EOMONTH(TargetDate, 0)
+			    VAR Result = 
+			        CALCULATE(
+			            SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			            'Fact_PurchaseOrder'[EffectiveDueDate] >= StartOfMon,
+			            'Fact_PurchaseOrder'[EffectiveDueDate] <= EndOfMon
+			        )
+			RETURN
+			    COALESCE(Result, 0)
+			```
+		lineageTag: 25571e12-4381-45e9-9c29-1e4b1b592cb0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ordered Stock M9' = ```
+			
+			VAR TargetDate = EDATE(TODAY(), 9) -- shift X month
+			
+			    VAR StartOfMon = DATE(YEAR(TargetDate), MONTH(TargetDate), 1)
+			    VAR EndOfMon = EOMONTH(TargetDate, 0)
+			    VAR Result = 
+			        CALCULATE(
+			            SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			            'Fact_PurchaseOrder'[EffectiveDueDate] >= StartOfMon,
+			            'Fact_PurchaseOrder'[EffectiveDueDate] <= EndOfMon
+			        )
+			RETURN
+			    COALESCE(Result, 0)
+			```
+		lineageTag: b1279518-e3fa-46a7-a910-081821730d5a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ordered Stock M10' = ```
+			
+			VAR TargetDate = EDATE(TODAY(), 10) -- shift X month
+			
+			    VAR StartOfMon = DATE(YEAR(TargetDate), MONTH(TargetDate), 1)
+			    VAR EndOfMon = EOMONTH(TargetDate, 0)
+			    VAR Result = 
+			        CALCULATE(
+			            SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			            'Fact_PurchaseOrder'[EffectiveDueDate] >= StartOfMon,
+			            'Fact_PurchaseOrder'[EffectiveDueDate] <= EndOfMon
+			        )
+			RETURN
+			    COALESCE(Result, 0)
+			```
+		lineageTag: 85053a1d-8caa-4608-addd-5749cc19326d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ordered Stock M11' = ```
+			
+			VAR TargetDate = EDATE(TODAY(), 11) -- shift X month
+			
+			    VAR StartOfMon = DATE(YEAR(TargetDate), MONTH(TargetDate), 1)
+			    VAR EndOfMon = EOMONTH(TargetDate, 0)
+			    VAR Result = 
+			        CALCULATE(
+			            SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			            'Fact_PurchaseOrder'[EffectiveDueDate] >= StartOfMon,
+			            'Fact_PurchaseOrder'[EffectiveDueDate] <= EndOfMon
+			        )
+			RETURN
+			    COALESCE(Result, 0)
+			```
+		lineageTag: ae5c117a-4830-49a6-b184-f1a40b9d7c98
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecasted Sales M4' = ```
+			
+			    VAR PrevMonth = [Forecasted Sales M3]
+			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
+			RETURN
+			    PrevMonth * (1 + Growth)
+			```
+		lineageTag: 36697e6b-5757-41c6-bb15-9738a216e16e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecasted Sales M5' = ```
+			
+			    VAR PrevMonth = [Forecasted Sales M4]
+			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
+			RETURN
+			    PrevMonth * (1 + Growth)
+			```
+		lineageTag: 02bbf9c1-77a7-46dc-92be-48d9ba3684c1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecasted Sales M6' = ```
+			
+			    VAR PrevMonth = [Forecasted Sales M5]
+			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
+			RETURN
+			    PrevMonth * (1 + Growth)
+			```
+		lineageTag: df86779d-e3dd-41f9-aa56-68aeb2361a76
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecasted Sales M7' = ```
+			
+			    VAR PrevMonth = [Forecasted Sales M6]
+			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
+			RETURN
+			    PrevMonth * (1 + Growth)
+			```
+		lineageTag: 74b380ab-e237-45fa-8dc0-b9cf99ea6549
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecasted Sales M8' = ```
+			
+			    VAR PrevMonth = [Forecasted Sales M7]
+			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
+			RETURN
+			    PrevMonth * (1 + Growth)
+			```
+		lineageTag: 533b9b7a-5f9e-4c35-adc0-599786aad91f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecasted Sales M9' = ```
+			
+			    VAR PrevMonth = [Forecasted Sales M8]
+			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
+			RETURN
+			    PrevMonth * (1 + Growth)
+			```
+		lineageTag: 0a8e0cde-8c8b-4b5b-a65b-37c889f789f3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecasted Sales M10' = ```
+			
+			    VAR PrevMonth = [Forecasted Sales M9]
+			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
+			RETURN
+			    PrevMonth * (1 + Growth)
+			```
+		lineageTag: a919bcee-166e-4905-ba2e-641f7000a891
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecasted Sales M11' = ```
+			
+			    VAR PrevMonth = [Forecasted Sales M10]
+			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
+			RETURN
+			    PrevMonth * (1 + Growth)
+			```
+		lineageTag: 06e53870-7bca-49b3-a203-f0c7231621df
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecasted Sales M12' = ```
+			
+			    VAR PrevMonth = [Forecasted Sales M11]
+			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
+			RETURN
+			    PrevMonth * (1 + Growth)
+			```
+		lineageTag: 5424e5f1-f19f-41b0-9bca-4ce1575ce17d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ordered Stock M12' = ```
+			
+			VAR TargetDate = EDATE(TODAY(), 11) -- shift X month
+			
+			    VAR StartOfMon = DATE(YEAR(TargetDate), MONTH(TargetDate), 1)
+			    VAR EndOfMon = EOMONTH(TargetDate, 0)
+			    VAR Result = 
+			        CALCULATE(
+			            SUM(Fact_PurchaseOrder[Qty Outstanding]),
+			            'Fact_PurchaseOrder'[EffectiveDueDate] >= StartOfMon,
+			            'Fact_PurchaseOrder'[EffectiveDueDate] <= EndOfMon
+			        )
+			RETURN
+			    COALESCE(Result, 0)
+			```
+		lineageTag: 111be151-6913-4d5e-91c0-6ae375428518
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Months Stock Remaining inc FO + 4' = ```
+			
+			DIVIDE(
+			    SUM('Dim_Product'[StockLevel]) - [Forecast Orders Outstanding QTY (M+4)],
+			    [Monthly Average Sales for 6 month period]
+			    
+			)
+			```
+		lineageTag: 7cba6d88-6909-4e77-88f1-770a82625b65
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Months Stock Remaining inc FO + 5' = ```
+			
+			DIVIDE(
+			    SUM('Dim_Product'[StockLevel]) - [Forecast Orders Outstanding QTY (M+5)],
+			    [Monthly Average Sales for 6 month period]
+			    
+			)
+			```
+		lineageTag: 4b088e17-2d95-406b-a350-e93966921c5f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Months Stock Remaining inc FO + 6' = ```
+			
+			DIVIDE(
+			    SUM('Dim_Product'[StockLevel]) - [Forecast Orders Outstanding QTY (M+6)],
+			    [Monthly Average Sales for 6 month period]
+			    
+			)
+			```
+		lineageTag: ed837306-d99b-4217-84bf-744b5a46689f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Months Stock Remaining inc FO + 7' = ```
+			
+			DIVIDE(
+			    SUM('Dim_Product'[StockLevel]) - [Forecast Orders Outstanding QTY (M+7)],
+			    [Monthly Average Sales for 6 month period]
+			    
+			)
+			```
+		lineageTag: 3ea1469f-eac0-4223-b90a-3d146a324ccf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Months Stock Remaining inc FO + 8' = ```
+			
+			DIVIDE(
+			    SUM('Dim_Product'[StockLevel]) - [Forecast Orders Outstanding QTY (M+8)],
+			    [Monthly Average Sales for 6 month period]
+			    
+			)
+			```
+		lineageTag: c1a75aa7-f302-46cc-a696-53aa5d01671f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Months Stock Remaining inc FO + 9' = ```
+			
+			DIVIDE(
+			    SUM('Dim_Product'[StockLevel]) - [Forecast Orders Outstanding QTY (M+9)],
+			    [Monthly Average Sales for 6 month period]
+			    
+			)
+			```
+		lineageTag: a6489791-0bc1-4403-b059-85b427560be8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Months Stock Remaining inc FO + 10' = ```
+			
+			DIVIDE(
+			    SUM('Dim_Product'[StockLevel]) - [Forecast Orders Outstanding QTY (M+10)],
+			    [Monthly Average Sales for 6 month period]
+			    
+			)
+			```
+		lineageTag: 07af6a64-006d-4af7-afe4-4ca24ac4e668
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Months Stock Remaining inc FO + 11' = ```
+			
+			DIVIDE(
+			    SUM('Dim_Product'[StockLevel]) - [Forecast Orders Outstanding QTY (M+11)],
+			    [Monthly Average Sales for 6 month period]
+			    
+			)
+			```
+		lineageTag: 1c152692-b8c3-4c07-83be-5719f6fa5fe8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Months Stock Remaining inc FO + 12' = ```
+			
+			DIVIDE(
+			    SUM('Dim_Product'[StockLevel]) - [Forecast Orders Outstanding QTY (M+12)],
+			    [Monthly Average Sales for 6 month period]
+			    
+			)
+			```
+		lineageTag: cce4a589-60c1-4191-86eb-2983565013df
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 

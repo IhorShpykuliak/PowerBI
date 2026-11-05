@@ -1,0 +1,52 @@
+table 'Dynamic Current Month +6'
+	lineageTag: 78185a9d-eaac-42f5-b4ea-052d79340d49
+
+	column 'Current Month +6'
+		lineageTag: 14b350a3-cc37-41da-af12-759f9326628a
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Current Month +6 Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Current Month +6 Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Month +6 Fields'
+		isHidden
+		lineageTag: 1a1dbee8-b2ea-41a4-9cc1-1658682ffc68
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Current Month +6 Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Month +6 Order'
+		isHidden
+		formatString: 0
+		lineageTag: ef27ef81-1c8f-45a8-99a6-806a7af3f48c
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dynamic Current Month +6' = calculated
+		mode: import
+		source =
+				{
+				    ("Predicted Stock M+6", NAMEOF('_Measures'[Predicted Stock M6]), 0),
+				    ("Forecast Orders Outstanding QTY (M+6)", NAMEOF('_Measures'[Forecast Orders Outstanding QTY (M+6)]), 1),
+				    ("Months Stock Remaining M+6", NAMEOF('_Measures'[Months Stock Remaining inc FO + 6]), 2),
+				    ("Ordered Stock M+6", NAMEOF('_Measures'[Ordered Stock M6]), 3),
+				    ("Forecasted Sales M6", NAMEOF('_Measures'[Forecasted Sales M6]), 4),
+				    (" ", NAMEOF('_Measures'[Empty Column]), 0)
+				}
+
+	annotation PBI_Id = e3c43663f7c84cc88198213d4c6e1d9a
+

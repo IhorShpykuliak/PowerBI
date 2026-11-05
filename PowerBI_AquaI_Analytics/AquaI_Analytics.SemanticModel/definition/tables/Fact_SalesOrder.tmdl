@@ -103,7 +103,7 @@ table Fact_SalesOrder
 
 	column EffectiveDueDate
 		dataType: dateTime
-		formatString: General Date
+		formatString: Short Date
 		lineageTag: 4f9acb57-1b38-48b8-b11f-f4e19e8b874e
 		summarizeBy: none
 		sourceColumn: EffectiveDueDate
