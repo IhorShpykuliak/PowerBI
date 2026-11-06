@@ -1,0 +1,420 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "bf19d39e662a8e01dd46",
+  "position": {
+    "x": 0,
+    "y": 69.031078610603288,
+    "z": 0,
+    "height": 414.18647166361973,
+    "width": 1280
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Date"
+                    }
+                  },
+                  "Property": "YearMonthName"
+                }
+              },
+              "queryRef": "Dim_Date.YearMonthName",
+              "nativeQueryRef": "YearMonthName",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Customer"
+                    }
+                  },
+                  "Property": "CustomerName"
+                }
+              },
+              "queryRef": "Dim_Customer.CustomerName",
+              "nativeQueryRef": "CustomerName",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "ProdDescription"
+                }
+              },
+              "queryRef": "Dim_Product.ProdDescription",
+              "nativeQueryRef": "ProdDescription",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_SalesAnalysis"
+                    }
+                  },
+                  "Property": "ProductCode"
+                }
+              },
+              "queryRef": "Fact_SalesAnalysis.ProductCode",
+              "nativeQueryRef": "ProductCode",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_SalesAnalysis"
+                        }
+                      },
+                      "Property": "QuantitySold"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_SalesAnalysis.QuantitySold)",
+              "nativeQueryRef": "Sum of QuantitySold"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Fact_SalesAnalysis"
+                      }
+                    },
+                    "Property": "QuantitySold"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Dim_Customer.CustomerName"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Customer"
+                    }
+                  },
+                  "Property": "CustomerName"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Dim_Product.ProdDescription"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "ProdDescription"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Fact_SalesAnalysis.ProductCode"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_SalesAnalysis"
+                    }
+                  },
+                  "Property": "ProductCode"
+                }
+              }
+            ],
+            "isPinned": true
+          }
+        ],
+        "root": {
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'SAM INTERIORS BIRMINGHAM'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'F W Hipkin Ltd'"
+                  }
+                }
+              ],
+              "isToggled": true,
+              "children": [
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'1800mm Waterproof Front Bath Panel - White - New Style'"
+                      }
+                    }
+                  ],
+                  "isToggled": true
+                }
+              ]
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'MKM BS Hull - Contracts Only'"
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'Azzio Warwick Mono Basin Mixer & Click Clack - Matt Black'"
+                      }
+                    }
+                  ],
+                  "isToggled": true
+                },
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'Azzio 6mm Square Shower Screen 1400mm x 800mm - Chrome - White Box'"
+                      }
+                    }
+                  ],
+                  "isToggled": true
+                },
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'Contract Item Only'"
+                      }
+                    }
+                  ],
+                  "isToggled": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "476.1351322664846D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Customer.CustomerName"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'QTY Sold'"
+                }
+              }
+            },
+            "heading": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Heading6'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "db0253703a6c7b7cd1eb",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Customer"
+              }
+            },
+            "Property": "CustomerName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a981af0c170826bba8dd",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_SalesAnalysis"
+                  }
+                },
+                "Property": "QuantitySold"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fd86077e32961462129b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_SalesAnalysis"
+              }
+            },
+            "Property": "ProductCode"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "80232a8d53d9257c7c5a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "ProdDescription"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9cbd1886a7b16557b0d3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Date"
+              }
+            },
+            "Property": "YearMonthName"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

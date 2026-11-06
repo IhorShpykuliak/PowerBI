@@ -67,7 +67,7 @@ table Fact_SalesAnalysis
 		formatString: 0
 		sourceProviderType: bigint
 		lineageTag: fb669b0f-81c4-4f4c-9865-96f9b21d3cbe
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: CustomerID
 
 		annotation SummarizationSetBy = Automatic
@@ -324,7 +324,7 @@ table Fact_SalesAnalysis
 		mode: directQuery
 		source =
 				let
-				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [SalesAnalysisLineID]#(lf)      ,[DocumentHeaderID]#(lf)      ,[DocumentNumber]#(lf)      ,[DocType]#(lf)      ,[SalesDateKey]#(lf)      ,[ProductID]#(lf)      ,[CustomerID]#(lf)      ,[BranchID]#(lf)      ,[SalesRepID]#(lf)      ,[StockBranchID]#(lf)      ,[OriginalBranchID]#(lf)      ,[CustomerCode]#(lf)      ,[ProductCode]#(lf)      ,[CostCentre]#(lf)      ,[DepartmentID]#(lf)      ,[OrderSource]#(lf)      ,[SalesOrderNumber]#(lf),SalesOrderType#(lf)      ,[QuantitySold]#(lf)      ,[NetSalesAmount]#(lf)      ,[NetCostAmount]#(lf)      ,[GrossProfitValue]#(lf)      ,[NetSellingCostAmount]#(lf)      ,[AverageCost]#(lf)      ,[AveragePerUnitCost]#(lf)      ,[PotentialRebateAmount]#(lf)      ,[SellingCostRebate]#(lf)      ,[SupplierPriceSupportAmount]#(lf)      ,[OriginalPricePerUnit]#(lf)      ,[SellingPricePerUnit]#(lf)  FROM [Tippers].[dbo].[Fact_SalesAnalysis]"])
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [SalesAnalysisLineID]#(lf)      ,[DocumentHeaderID]#(lf)      ,[DocumentNumber]#(lf)      ,[DocType]#(lf)      ,[SalesDateKey]#(lf)      ,[ProductID]#(lf)      ,[CustomerID]#(lf)      ,[BranchID]#(lf)      ,[SalesRepID]#(lf)      ,[StockBranchID]#(lf)      ,[OriginalBranchID]#(lf)      ,[CustomerCode]#(lf)      ,[ProductCode]#(lf)      ,[CostCentre]#(lf)      ,[DepartmentID]#(lf)      ,[OrderSource]#(lf)      ,[SalesOrderNumber]#(lf),SalesOrderType#(lf)      ,[QuantitySold]#(lf)      ,[NetSalesAmount]#(lf)      ,[NetCostAmount]#(lf)      ,[GrossProfitValue]#(lf)      ,[NetSellingCostAmount]#(lf)      ,[AverageCost]#(lf)      ,[AveragePerUnitCost]#(lf)      ,[PotentialRebateAmount]#(lf)      ,[SellingCostRebate]#(lf)      ,[SupplierPriceSupportAmount]#(lf)      ,[OriginalPricePerUnit]#(lf)      ,[SellingPricePerUnit]#(lf)  FROM [Tippers].[dbo].[Fact_SalesAnalysis]#(lf)"])
 				in
 				    Source
 

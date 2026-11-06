@@ -1,0 +1,112 @@
+table Fact_AquaISales2025
+	lineageTag: 897b7cd3-1807-4c9a-979e-6c49e97375e0
+
+	column customer_code
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(100)
+		lineageTag: 4048d5f2-cad9-4a6e-ae34-4e6ec04ca180
+		summarizeBy: none
+		sourceColumn: customer_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_name
+		dataType: string
+		sourceProviderType: nvarchar(255)
+		lineageTag: b37d02be-f64e-4581-9a19-af2429fa6a79
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		sourceProviderType: nvarchar(255)
+		lineageTag: 872af1e3-96d5-4cd8-9b0c-46786dc2d293
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column sales_date
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 23088c16-a19b-40a1-ac61-ade320f0ca0f
+		summarizeBy: none
+		sourceColumn: sales_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column daily_sales
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 4c8e1018-c58c-41ad-bef4-22aeedd7e2ba
+		summarizeBy: sum
+		sourceColumn: daily_sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column daily_cost
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 26ef7c80-bd27-4a94-acab-3269d842c710
+		summarizeBy: sum
+		sourceColumn: daily_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column gp_value
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 21162b5e-a8fc-4bff-a0d9-dae3bf754ea6
+		summarizeBy: sum
+		sourceColumn: gp_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column gp_margin_pct
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 916b40e7-51e6-4d25-a93a-ca039b88f148
+		summarizeBy: sum
+		sourceColumn: gp_margin_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column segment
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(20)
+		lineageTag: ed139233-9490-4343-83d1-8014a1059ff6
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_AquaISales2025 = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [customer_code]#(lf)      ,[customer_name]#(lf)      ,[description]#(lf)      ,[sales_date]#(lf)      ,[daily_sales]#(lf)      ,[daily_cost]#(lf)      ,[gp_value]#(lf)      ,[gp_margin_pct]#(lf)      ,[segment]#(lf)  FROM [Tippers].[dbo].[CustomerDailyMetricsAquaI]"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

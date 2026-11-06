@@ -12,6 +12,7 @@ relationship AutoDetected_a83af2ab-750a-4e0d-9c4d-dce1d644871b
 	toColumn: Dim_Supplier.SupplierID
 
 relationship 96c1829f-6229-90ca-5363-0e6fb799007d
+	isActive: false
 	fromColumn: Fact_SalesOrder.SODateKey
 	toColumn: Dim_Date.Date
 
@@ -31,11 +32,6 @@ relationship AutoDetected_71d56218-acaf-4163-8984-a74bfe2a7e53
 	fromColumn: Fact_SalesOrder.SalesRepID
 	toColumn: Dim_SalesRep.SalesRepID
 
-relationship 06b43039-1a06-452f-8cb8-9b996ecee13b
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Fact_SalesOrder.EffectiveDueDate
-	toColumn: LocalDateTable_472aa295-5a1f-453b-a77a-246ecde6e519.Date
-
 relationship 95d28067-3ecd-297c-6a22-2d34fcf3a0e7
 	fromColumn: Fact_SalesAnalysis.ProductID
 	toColumn: Dim_Product.ProductID
@@ -54,7 +50,6 @@ relationship a1379e32-803d-4ea0-9ffc-1edfff66ce5d
 	toColumn: LocalDateTable_fd7d3c41-4970-48d8-a169-c362e0852591.Date
 
 relationship 5b59af77-702c-c0ca-de63-504e17a8ef85
-	isActive: false
 	fromColumn: Fact_SalesAnalysis.SalesDateKey
 	toColumn: Dim_Date.Date
 
@@ -62,4 +57,12 @@ relationship 863d201d-832b-466c-a622-59719d90d9ea
 	joinOnDateBehavior: datePartOnly
 	fromColumn: Fact_PurchaseOrder.EffectiveDueDate
 	toColumn: LocalDateTable_47f1a306-f18e-4adf-99ee-03aae086d43e.Date
+
+relationship 727360c0-2a4c-0e77-f011-909c7347b6c6
+	fromColumn: Fact_SalesAnalysis.CustomerID
+	toColumn: Dim_Customer.CustomerID
+
+relationship b9c24023-0818-0163-3b99-0b56a7c987ff
+	fromColumn: Fact_SalesOrder.EffectiveDueDate
+	toColumn: Dim_Date.Date
 

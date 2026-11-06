@@ -107,7 +107,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''Dim_Product''[AquaIDescription]'"
+                                "Value": "'''Dim_Product''[ProdDescription]'"
                               }
                             }
                           ]
@@ -146,7 +146,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''Dim_Product''[AquaIDescription]'"
+                                      "Value": "'''Dim_Product''[ProdDescription]'"
                                     }
                                   }
                                 ]
@@ -173,7 +173,7 @@
                             "0": "Tippers Code"
                           },
                           {
-                            "0": "AquaI Description"
+                            "0": "Tippers Description"
                           }
                         ]
                       }

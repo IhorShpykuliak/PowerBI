@@ -38,7 +38,7 @@ table Dim_Customer
 		dataType: int64
 		formatString: 0
 		lineageTag: ec6ff5ca-6a43-4ed2-8095-386e4b1ad272
-		summarizeBy: none
+		summarizeBy: count
 		sourceColumn: WorkflowStatusID
 
 		annotation SummarizationSetBy = Automatic
@@ -47,7 +47,7 @@ table Dim_Customer
 		dataType: int64
 		formatString: 0
 		lineageTag: 3444aca5-819d-456a-8bac-4de5e1486336
-		summarizeBy: none
+		summarizeBy: count
 		sourceColumn: CreditStatusID
 
 		annotation SummarizationSetBy = Automatic
@@ -56,7 +56,7 @@ table Dim_Customer
 		dataType: int64
 		formatString: 0
 		lineageTag: b57b1ddb-ed0b-4524-b431-68d2a73309ea
-		summarizeBy: none
+		summarizeBy: count
 		sourceColumn: CustomerCategoryID
 
 		annotation SummarizationSetBy = Automatic
@@ -65,7 +65,7 @@ table Dim_Customer
 		dataType: int64
 		formatString: 0
 		lineageTag: b438207a-120a-4e9d-a892-c244c7d2666e
-		summarizeBy: none
+		summarizeBy: count
 		sourceColumn: HomeBranchID
 
 		annotation SummarizationSetBy = Automatic

@@ -240,23 +240,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "8f3011d3b97e8242773a",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dynamic Current Month +5"
-              }
-            },
-            "Property": "Current Month +5"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

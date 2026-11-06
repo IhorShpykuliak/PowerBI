@@ -96,7 +96,19 @@ cultureInfo en-US
 			          "ConceptualProperty": "Monthly Average Sales for 6 month period"
 			        }
 			      },
-			      "State": "Generated"
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Monthly AVG Sales QTY (6 months)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    },
 			    "table_measures.forecast_orders_outstanding_qty_m0": {
 			      "Definition": {
@@ -204,7 +216,19 @@ cultureInfo en-US
 			          "ConceptualProperty": "SupplierName"
 			        }
 			      },
-			      "State": "Generated"
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "SupplierName": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    },
 			    "dim_product.outstandingpo": {
 			      "Definition": {
@@ -234,7 +258,19 @@ cultureInfo en-US
 			          "ConceptualProperty": "Ideal Stocking Level"
 			        }
 			      },
-			      "State": "Generated"
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Ideal Stocking Level": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    },
 			    "table_measures.ideal_space_requirements": {
 			      "Definition": {
@@ -243,7 +279,19 @@ cultureInfo en-US
 			          "ConceptualProperty": "Ideal Space Requirements"
 			        }
 			      },
-			      "State": "Generated"
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Ideal Space Requirements": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    },
 			    "table_measures.months_stock_remaining_inc_fo__0": {
 			      "Definition": {
@@ -252,7 +300,19 @@ cultureInfo en-US
 			          "ConceptualProperty": "Months Stock Remaining inc FO + 0"
 			        }
 			      },
-			      "State": "Generated"
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Months Stock Remaining M0": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    },
 			    "table_measures.ordered_stock_m0": {
 			      "Definition": {
@@ -297,7 +357,19 @@ cultureInfo en-US
 			          "ConceptualProperty": "Forecasted Sales M1"
 			        }
 			      },
-			      "State": "Generated"
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecasted Sales M1": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    },
 			    "table_measures.empty_column": {
 			      "Definition": {
@@ -637,6 +709,342 @@ cultureInfo en-US
 			      "Terms": [
 			        {
 			          "Forecast Orders Outstanding QTY (M+12)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_product.usdlistprice": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Dim_Product",
+			          "ConceptualProperty": "USDListPrice"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "USDListPrice": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_product.packsize": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Dim_Product",
+			          "ConceptualProperty": "PackSize"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Pack Size": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_product.cbm": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Dim_Product",
+			          "ConceptualProperty": "CBM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "CBM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.required_months_stock": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Required Months Stock"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Required Months Stock": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.current_space_requirements_cbm": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Current Space Requirements CBM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Current Space Requirements CBM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecasted_sales_m2": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecasted Sales M2"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecasted Sales M2": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecasted_sales_m3": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecasted Sales M3"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecasted Sales M3": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecasted_sales_m41": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecasted Sales M4"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecasted Sales M4": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecasted_sales_m5": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecasted Sales M5"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecasted Sales M5": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecasted_sales_m6": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecasted Sales M6"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecasted Sales M6": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecasted_sales_m7": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecasted Sales M7"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecasted Sales M7": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecasted_sales_m8": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecasted Sales M8"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecasted Sales M8": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecasted_sales_m9": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecasted Sales M9"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecasted Sales M9": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecasted_sales_m10": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecasted Sales M10"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecasted Sales M10": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecasted_sales_m11": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecasted Sales M11"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecasted Sales M11": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.forecasted_sales_m12": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Forecasted Sales M12"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Forecasted Sales M12": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
