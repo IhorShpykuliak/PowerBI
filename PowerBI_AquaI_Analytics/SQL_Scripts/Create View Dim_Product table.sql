@@ -1,20 +1,10 @@
-/*******************************************************************************
-  Script Name:  Create_Dim_Product.sql
-  Description:  Creates Conformed Dimension view for Products (Dim_Product)
-                with integrated costs, stock statistics, YTD, and Kit components.
-  Database:     Tippers
-  Author:       Ihor Shpykuliak
-*******************************************************************************/
-
-USE [Tippers];
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
 GO
 
--- Drop existing Dim_Product view if it exists
-IF OBJECT_ID('dbo.Dim_Product', 'V') IS NOT NULL
-    DROP VIEW dbo.Dim_Product;
-GO
+ALTER VIEW [dbo].[Dim_Product] AS
 
-CREATE VIEW dbo.Dim_Product AS
 WITH IQAvgCost AS
 (
     SELECT 
@@ -90,6 +80,7 @@ KitComponentsAgg AS
         ON CompProd.C_ID = KIT.C_PRODUCT
     GROUP BY KIT.C__OWNER_
 )
+
 SELECT
     p.C_ID AS ProductID,
     p.C_CODE AS ProdCode,
@@ -154,17 +145,27 @@ SELECT
 
     -- Calculated Landed Cost
     CAST(
-        CASE 
-            WHEN altUSD.CurrencyCode = 'USD' 
-                 AND altUSD.C_LISTPRICEACTUAL IS NOT NULL 
-                 AND (m.C_LENGTH * m.C_WIDTH * m.C_HEIGHT) > 0
-                 AND ex.exRate > 0
-            THEN (
-                    (CEILING((altUSD.C_LISTPRICEACTUAL / ex.exRate) * 100) / 100.0) +
-                    (((m.C_LENGTH * m.C_WIDTH * m.C_HEIGHT) / 1000000000.0) / 66000.0)
-                 ) * (1 + ISNULL(comc.C_D_RATE, 0) / 100.0)
-            ELSE i.C_NEWCOSTPRICE
-        END AS DECIMAL(18,2)
+    CASE
+        WHEN altUSD.CurrencyCode <> 'USD'
+             OR altUSD.C_LISTPRICEACTUAL IS NULL
+             OR m.C_LENGTH IS NULL
+             OR m.C_WIDTH IS NULL
+             OR m.C_HEIGHT IS NULL
+             OR (m.C_LENGTH * m.C_WIDTH * m.C_HEIGHT) = 0
+        THEN i.C_NEWCOSTPRICE
+
+        ELSE
+            (
+                (
+                    CEILING((altUSD.C_LISTPRICEACTUAL / ex.exRate) * 100) / 100.0
+                    +
+                    (((m.C_LENGTH * m.C_WIDTH * m.C_HEIGHT) / 1000000000.0) / 666000.0)
+                )
+                *
+                (1 + ISNULL(comc.C_D_RATE, 0) / 100.0)
+            )
+    END
+    AS DECIMAL(18,2)
     ) AS CalculatedLandedCost,
 
     -- Additional Descriptive Attributes
@@ -172,12 +173,11 @@ SELECT
     PP.[C_SUPPLIERPRODUCTDESCRIPTION] AS AquaIDescription,
     P.C_D_WyndamCode AS WyndamCode,
     P.C_D_WyndamDescription AS WyndamDescription,
-    P.C_ManufacturerProductCode AS SupplierStockCode,
+    P.C_ManufacturerProductCode AS ManufacturerStockCode,
     PP.C_D_MOQ AS MOQ,
     p.[C_D_PERCENTAGEGROWTH] AS GrowthFactor,
-    pp.C_PACKSIZE AS CartonQTY,
+    pp.C_PACKSIZE AS PackSize,
     p.[C_D_COREPRODUCT] AS CoreProduct
-    
 FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT] p WITH (NOLOCK)
 CROSS JOIN ExchangeRate ex
 LEFT JOIN KitComponentsAgg kc ON kc.ParentProductID = p.C_ID
@@ -194,5 +194,6 @@ LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_IS_COMMODITYCODE] comc WITH (NO
 LEFT JOIN IQAvgCost i ON i.C_PRODUCT = p.C_ID
 LEFT JOIN SalesYTD Ytd ON Ytd.Product_ID = p.C_ID
 LEFT JOIN SupplierPurchasingYTD SPY ON SPY.Product_ID = p.C_ID
-WHERE p.C_TYPE NOT IN (15, 2, 6, 19, 10, 18);
+WHERE p.C_TYPE NOT IN (15, 2, 6, 19, 10, 18)
+AND PDG.C_CODE = 'AQUAI'
 GO
