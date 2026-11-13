@@ -97,6 +97,27 @@
                                 "Value": "'''_Measures''[Forecast Orders Outstanding QTY (M+11)]'"
                               }
                             }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'''_Measures''[Months Stock Remaining inc FO + 11]'"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'''_Measures''[Ordered Stock M11]'"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'''_Measures''[Predicted Stock M11]'"
+                              }
+                            }
                           ]
                         ]
                       }
@@ -138,6 +159,39 @@
                                   }
                                 ]
                               }
+                            ],
+                            [
+                              {
+                                "0": [
+                                  {
+                                    "Literal": {
+                                      "Value": "'''_Measures''[Months Stock Remaining inc FO + 11]'"
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "0": [
+                                  {
+                                    "Literal": {
+                                      "Value": "'''_Measures''[Ordered Stock M11]'"
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "0": [
+                                  {
+                                    "Literal": {
+                                      "Value": "'''_Measures''[Predicted Stock M11]'"
+                                    }
+                                  }
+                                ]
+                              }
                             ]
                           ],
                           "columns": [
@@ -161,6 +215,15 @@
                           },
                           {
                             "0": "Forecast Orders Outstanding QTY (M+11)"
+                          },
+                          {
+                            "0": "Months Stock Remaining M+11"
+                          },
+                          {
+                            "0": "Ordered Stock M+11"
+                          },
+                          {
+                            "0": "Predicted Stock M+11"
                           }
                         ]
                       }

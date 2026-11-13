@@ -205,10 +205,10 @@ table Dim_Product
 	column StockLevel
 		dataType: double
 		lineageTag: 7901e178-9e43-4b5d-b2e3-0f9b8800fa77
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: StockLevel
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -358,13 +358,72 @@ table Dim_Product
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column 'AquaICode & AquaIDescription'
+		dataType: string
+		lineageTag: c3ef8387-5089-4a0b-8fc0-5ea9a8394d78
+		summarizeBy: none
+		sourceColumn: AquaICode & AquaIDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column TippersCode&Descr
+		dataType: string
+		lineageTag: c597aa2c-5826-4e0b-bb3d-606d1f3e629a
+		summarizeBy: none
+		sourceColumn: TippersCode&Descr
+
+		annotation SummarizationSetBy = Automatic
+
+	column WyndamCode&Descr
+		dataType: string
+		lineageTag: 8ac06518-cd7e-45db-a244-c222553f0b7a
+		summarizeBy: none
+		sourceColumn: WyndamCode&Descr
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoryDescription
+		dataType: string
+		lineageTag: 15fea9dc-88c6-4c74-8faf-baa251f7de28
+		summarizeBy: none
+		sourceColumn: CategoryDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoryPIDepartment
+		dataType: string
+		lineageTag: 6fdbb3bc-b605-48bd-8294-74bbccd32d63
+		summarizeBy: none
+		sourceColumn: CategoryPIDepartment
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoryGroupDescription
+		dataType: string
+		lineageTag: 5315144b-bc5e-475a-bab4-c67f13ac8d37
+		summarizeBy: none
+		sourceColumn: CategoryGroupDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductColour
+		dataType: string
+		lineageTag: 532c45b1-18be-4968-87bd-5bea9295d6df
+		summarizeBy: none
+		sourceColumn: ProductColour
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Dim_Product = m
 		mode: import
 		source =
 				let
-				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [ProductID]#(lf)      ,[ProdCode]#(lf)      ,[ProdDescription]#(lf)      ,[Department]#(lf)      ,[ProductType]#(lf)      ,[SupplierName]#(lf)      ,[SupplierCode]#(lf)      ,[StockingStatus]#(lf)      ,[SearchKeywords]#(lf)      ,[SupplierProductCode]#(lf)      ,[KitComponents]#(lf)      ,[Length]#(lf)      ,[Width]#(lf)      ,[Height]#(lf)      ,[GrossWeight]#(lf)      ,[CBM]#(lf)      ,[StockLevel]#(lf)      ,[OutstandingSO]#(lf)      ,[OutstandingPO]#(lf)      ,[EffectiveStockLevel]#(lf)      ,[SalesYtdQty]#(lf)      ,[SalesYtdAmount]#(lf)      ,[QtyPurchasedYtd]#(lf)      ,[ExchangeRateUSD]#(lf)      ,[ListPriceActual]#(lf)      ,[USDListPrice]#(lf)      ,[DutyRatePercentage]#(lf)      ,[StandardCost]#(lf)      ,[AvgCost]#(lf)      ,[CalculatedLandedCost]#(lf)      ,[AquaICode]#(lf)      ,[AquaIDescription]#(lf)      ,[WyndamCode]#(lf)      ,[WyndamDescription]#(lf)      ,[ManufacturerStockCode]#(lf)      ,[MOQ]#(lf)      ,[GrowthFactor]#(lf)      ,[PackSize]#(lf)      ,[CoreProduct]#(lf)#(lf)  FROM [Tippers].[dbo].[Dim_Product]"])
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [ProductID]#(lf)      ,[ProdCode]#(lf)      ,[ProdDescription]#(lf)      ,[Department]#(lf)      ,[ProductType]#(lf)      ,[SupplierName]#(lf)      ,[SupplierCode]#(lf)      ,[StockingStatus]#(lf)      ,[SearchKeywords]#(lf)      ,[SupplierProductCode]#(lf)      ,[KitComponents]#(lf)      ,[Length]#(lf)      ,[Width]#(lf)      ,[Height]#(lf)      ,[GrossWeight]#(lf)      ,[CBM]#(lf)      ,[StockLevel]#(lf)      ,[OutstandingSO]#(lf)      ,[OutstandingPO]#(lf)      ,[EffectiveStockLevel]#(lf)      ,[SalesYtdQty]#(lf)      ,[SalesYtdAmount]#(lf)      ,[QtyPurchasedYtd]#(lf)      ,[ExchangeRateUSD]#(lf)      ,[ListPriceActual]#(lf)      ,[USDListPrice]#(lf)      ,[DutyRatePercentage]#(lf)      ,[StandardCost]#(lf)      ,[AvgCost]#(lf)      ,[CalculatedLandedCost]#(lf)      ,[AquaICode]#(lf)      ,[AquaIDescription]#(lf)      ,[WyndamCode]#(lf)      ,[WyndamDescription]#(lf)      ,[ManufacturerStockCode]#(lf)      ,[MOQ]#(lf)      ,[GrowthFactor]#(lf)      ,[PackSize]#(lf)      ,[CoreProduct]#(lf),CategoryDescription#(lf),CategoryPIDepartment#(lf),CategoryGroupDescription#(lf),ProductColour#(lf)  FROM [Tippers].[dbo].[Dim_Product]"]),
+				    #"Added Custom" = Table.AddColumn(Source, "AquaICode & AquaIDescription", each [AquaICode]& " - " &[AquaIDescription]),
+				    #"Added Custom1" = Table.AddColumn(#"Added Custom", "TippersCode&Descr", each [ProdCode]& " - " &[ProdDescription]),
+				    #"Added Custom2" = Table.AddColumn(#"Added Custom1", "WyndamCode&Descr", each [WyndamCode]& " - " &[WyndamDescription])
 				in
-				    Source
+				    #"Added Custom2"
 
 	annotation PBI_NavigationStepName = Navigation
 

@@ -181,23 +181,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "7400af3222427498a1a5",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_OrderType"
-              }
-            },
-            "Property": "IsForecastOrder"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

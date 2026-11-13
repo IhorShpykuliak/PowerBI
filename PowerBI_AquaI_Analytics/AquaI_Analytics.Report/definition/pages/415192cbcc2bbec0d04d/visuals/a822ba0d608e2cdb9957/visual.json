@@ -1,12 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "53df8e4e30db03855975",
+  "name": "a822ba0d608e2cdb9957",
   "position": {
-    "x": 1103.7309847878303,
-    "y": 0,
-    "z": 0,
-    "height": 61.489191353082461,
-    "width": 176.26901521216973
+    "x": 526.84752104770814,
+    "y": 70.645463049579035,
+    "z": 8000,
+    "height": 67.05332086061739,
+    "width": 395.13564078578111,
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "slicer",
@@ -22,11 +23,11 @@
                       "Entity": "Dim_Product"
                     }
                   },
-                  "Property": "ProdCode"
+                  "Property": "StockingStatus"
                 }
               },
-              "queryRef": "Dim_Product.ProdCode",
-              "nativeQueryRef": "ProdCode",
+              "queryRef": "Dim_Product.StockingStatus",
+              "nativeQueryRef": "StockingStatus",
               "active": true
             }
           ]
@@ -40,7 +41,7 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Dropdown'"
+                  "Value": "'Basic'"
                 }
               }
             }
@@ -60,7 +61,7 @@
             "selectAllCheckboxEnabled": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -70,49 +71,11 @@
       "general": [
         {
           "properties": {
-            "selfFilterEnabled": {
+            "orientation": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "1D"
                 }
-              }
-            },
-            "selfFilter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "d",
-                    "Entity": "Dim_Product",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "Contains": {
-                        "Left": {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Source": "d"
-                              }
-                            },
-                            "Property": "ProdCode"
-                          }
-                        },
-                        "Right": {
-                          "Literal": {
-                            "Value": "'11114355'"
-                          }
-                        }
-                      }
-                    },
-                    "Annotations": {
-                      "PowerBI.MParameterBehavior": 1
-                    }
-                  }
-                ]
               }
             },
             "filter": {
@@ -137,7 +100,7 @@
                                   "Source": "d"
                                 }
                               },
-                              "Property": "ProdCode"
+                              "Property": "StockingStatus"
                             }
                           }
                         ],
@@ -145,7 +108,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'11114355'"
+                                "Value": "'Stocked'"
                               }
                             }
                           ]
@@ -165,7 +128,7 @@
             "textSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "8D"
                 }
               }
             }
@@ -187,5 +150,82 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f9df6d400030a653898a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "StockingStatus"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "Dim_Product",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "StockingStatus"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "isLockedInViewMode": true,
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
   }
 }

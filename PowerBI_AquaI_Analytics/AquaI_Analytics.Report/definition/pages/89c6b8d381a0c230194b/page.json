@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
   "name": "89c6b8d381a0c230194b",
-  "displayName": "Qty Sold By Customer",
+  "displayName": "Sales Analysis By Customer",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,
@@ -61,6 +61,21 @@
         },
         "howCreated": "User",
         "isLockedInViewMode": true
+      }
+    ]
+  },
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "181L"
+              }
+            }
+          }
+        }
       }
     ]
   }

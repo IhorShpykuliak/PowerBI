@@ -3,9 +3,9 @@
   "name": "6958f05406e00340a597",
   "position": {
     "x": 0,
-    "y": 194.45575567736884,
+    "y": 197.82708492731447,
     "z": 2000,
-    "height": 356.83633516053249,
+    "height": 353.54246365723031,
     "width": 1280,
     "tabOrder": 2000
   },
@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "Dim_Product.ProdCode",
-              "nativeQueryRef": "Tippers Code",
+              "nativeQueryRef": "ProdCode",
               "displayName": "Tippers Code"
             },
             {
@@ -42,7 +42,7 @@
                 }
               },
               "queryRef": "Dim_Product.ProdDescription",
-              "nativeQueryRef": "Tippers Description",
+              "nativeQueryRef": "ProdDescription",
               "displayName": "Tippers Description"
             },
             {
@@ -252,7 +252,7 @@
                 }
               },
               "queryRef": "_Measures.Monthly Average Sales for 6 month period",
-              "nativeQueryRef": "Monthly AVG Sales QTY (6 months)",
+              "nativeQueryRef": "Monthly Average Sales for 6 month period",
               "displayName": "Monthly AVG Sales QTY (6 months)"
             },
             {
@@ -297,7 +297,7 @@
                 }
               },
               "queryRef": "_Measures.Months Stock Remaining inc FO + 0",
-              "nativeQueryRef": "Months Stock Remaining M0",
+              "nativeQueryRef": "Months Stock Remaining inc FO + 0",
               "displayName": "Months Stock Remaining M0"
             },
             {
@@ -623,6 +623,21 @@
                       "Entity": "_Measures"
                     }
                   },
+                  "Property": "Months Stock Remaining inc FO + 10"
+                }
+              },
+              "queryRef": "_Measures.Months Stock Remaining inc FO + 10",
+              "nativeQueryRef": "Months Stock Remaining inc FO + 10",
+              "displayName": "Months Stock Remaining M+10"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
                   "Property": "Forecasted Sales M11"
                 }
               },
@@ -653,6 +668,51 @@
                       "Entity": "_Measures"
                     }
                   },
+                  "Property": "Months Stock Remaining inc FO + 11"
+                }
+              },
+              "queryRef": "_Measures.Months Stock Remaining inc FO + 11",
+              "nativeQueryRef": "Months Stock Remaining inc FO + 11",
+              "displayName": "Months Stock Remaining M+11"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Ordered Stock M11"
+                }
+              },
+              "queryRef": "_Measures.Ordered Stock M11",
+              "nativeQueryRef": "Ordered Stock M11",
+              "displayName": "Ordered Stock M+11"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Predicted Stock M11"
+                }
+              },
+              "queryRef": "_Measures.Predicted Stock M11",
+              "nativeQueryRef": "Predicted Stock M11",
+              "displayName": "Predicted Stock M+11"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
                   "Property": "Forecasted Sales M12"
                 }
               },
@@ -674,37 +734,54 @@
               "queryRef": "_Measures.Forecast Orders Outstanding QTY (M+12)",
               "nativeQueryRef": "Forecast Orders Outstanding QTY (M+12)",
               "displayName": "Forecast Orders Outstanding QTY (M+12)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Ordered Stock M12"
+                }
+              },
+              "queryRef": "_Measures.Ordered Stock M12",
+              "nativeQueryRef": "Ordered Stock M12",
+              "displayName": "Ordered Stock M+12"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Months Stock Remaining inc FO + 12"
+                }
+              },
+              "queryRef": "_Measures.Months Stock Remaining inc FO + 12",
+              "nativeQueryRef": "Months Stock Remaining inc FO + 12",
+              "displayName": "Months Stock Remaining M+12"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Predicted Stock M12"
+                }
+              },
+              "queryRef": "_Measures.Predicted Stock M12",
+              "nativeQueryRef": "Predicted Stock M12",
+              "displayName": "Predicted Stock M+12"
             }
           ],
           "fieldParameters": [
-            {
-              "parameterExpr": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dynamic Current Month +1"
-                    }
-                  },
-                  "Property": "Current Month +1"
-                }
-              },
-              "index": 3,
-              "length": 2
-            },
-            {
-              "parameterExpr": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dynamic Current Month"
-                    }
-                  },
-                  "Property": "Current Month"
-                }
-              },
-              "index": 2,
-              "length": 2
-            },
             {
               "parameterExpr": {
                 "Column": {
@@ -732,6 +809,34 @@
               },
               "index": 1,
               "length": 16
+            },
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dynamic Current Month"
+                    }
+                  },
+                  "Property": "Current Month"
+                }
+              },
+              "index": 2,
+              "length": 2
+            },
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dynamic Current Month +1"
+                    }
+                  },
+                  "Property": "Current Month +1"
+                }
+              },
+              "index": 3,
+              "length": 2
             },
             {
               "parameterExpr": {
@@ -857,7 +962,7 @@
                 }
               },
               "index": 12,
-              "length": 2
+              "length": 3
             },
             {
               "parameterExpr": {
@@ -871,7 +976,7 @@
                 }
               },
               "index": 13,
-              "length": 2
+              "length": 5
             },
             {
               "parameterExpr": {
@@ -885,7 +990,7 @@
                 }
               },
               "index": 14,
-              "length": 2
+              "length": 5
             }
           ]
         }
@@ -1108,7 +1213,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "224.53965794127564D"
+                  "Value": "147.2435673375537D"
                 }
               }
             }
@@ -1122,7 +1227,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "77.39528581565554D"
+                  "Value": "101.41409870598932D"
                 }
               }
             }
@@ -2151,6 +2256,20 @@
           },
           "selector": {
             "metadata": "Dim_Product.ListPriceActual"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "186.70319634703196D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Product.ProdDescription"
           }
         }
       ],
@@ -5390,640 +5509,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "98c235b911635eb74099",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "ProdCode"
-          }
-        },
-        "type": "Categorical",
-        "objects": {
-          "general": [
-            {
-              "properties": {
-                "isInvertedSelectionMode": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "true"
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "name": "2d65c6f64e8ca60b8d03",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "SupplierCode"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "aac51da200ca4b9b9384",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "SupplierName"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "ecd33c27907643603c10",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "StockingStatus"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "895dd302b37eb07c52a6",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "USDListPrice"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "1f6f2d2470755c00ba07",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "CalculatedLandedCost"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "693a1b4ab094ae57a9d5",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "MOQ"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "6c89cf7369247eec1720",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "PackSize"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "3f3f03a622590309aadb",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "CBM"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ff447e49b0ebc1c2ea5e",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "GrowthFactor"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "094a17c33502be90d73c",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Required Months Stock"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "1314d2790748e66be306",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Ideal Stocking Level"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "f2ea34556a93070b393e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Current Space Requirements CBM"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "0927913ca5b8c138ba15",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Ideal Space Requirements"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "e66ae7f02565950b05db",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Monthly Average Sales for 6 month period"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "debf615d2a29908b76e4",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "OutstandingPO"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "5598f0e18363b0d6d63a",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "StockLevel"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "862f9b635935e50d4ae7",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Months Stock Remaining inc FO + 0"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "10cf44f9c8d157dcb503",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M+0)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "078f742d90160196b092",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecasted Sales M1"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "c84ba21d6397855730d0",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M+1)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "05ccce6faa488b0bd86b",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecasted Sales M2"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "7be7d9a884357c89ee9d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M+2)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "05d9aab5edea70b6a12e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecasted Sales M3"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "0ea88f694c32544b0c9c",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M+3)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "8ed061d06599a9a30bab",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecasted Sales M4"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "a3703619a8c10025a3a3",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M+4)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "e19ed70c6327378a5a04",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecasted Sales M5"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "fdfa6ace8081408ce208",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M+5)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "dbccd282b684b79864bd",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecasted Sales M6"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "a5a42787b93a8c970d39",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M+6)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "919de6b8c960e5be16be",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecasted Sales M7"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "c15d0d11ca4e4d862918",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M+7)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "74fca7e3b150077dc1b0",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecasted Sales M8"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "2a853a892aaa6d3a6cdc",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M+8)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "2ad6d342a114e7086ee7",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecasted Sales M9"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "7c653caa795200503ed1",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M+9)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "7936d315c47c0ce03d02",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecasted Sales M10"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "70e88333c08d0b49d6ac",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M+10)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "9333ea993516ac57052c",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecasted Sales M11"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "b229f7ac637440692ba5",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M+11)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "f162115db90b8404a3ea",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecasted Sales M12"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "c772cc887111b8b3e8b7",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Forecast Orders Outstanding QTY (M+12)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ab9cb909aa291cc30522",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Product"
-              }
-            },
-            "Property": "ProdDescription"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

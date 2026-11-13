@@ -1,0 +1,77 @@
+table Fact_Aquai_Sales_Daily
+	lineageTag: 16314777-146e-4beb-ba02-cf1cd28bdb03
+
+	column CustomerCodeNorm
+		dataType: string
+		sourceProviderType: nvarchar(100)
+		lineageTag: ad0a5d94-b84a-4777-a294-772bd670996f
+		summarizeBy: none
+		sourceColumn: CustomerCodeNorm
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: f5e279b1-12e3-4aeb-bc13-f5888cf39aaf
+		summarizeBy: none
+		sourceColumn: SalesDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 989e0ebd-1786-483e-92c4-3be6bb097b00
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales
+		dataType: double
+		sourceProviderType: decimal(38, 2)
+		lineageTag: 5ffaf05d-7ecf-4e57-af45-13b3cc57b4d5
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Cost
+		dataType: double
+		sourceProviderType: decimal(38, 2)
+		lineageTag: 38531f98-a13c-4bb1-af7b-0ff5427f2634
+		summarizeBy: sum
+		sourceColumn: Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GP
+		dataType: double
+		sourceProviderType: decimal(38, 2)
+		lineageTag: c89ee628-fded-43a4-a3a8-a84b963b2ebf
+		summarizeBy: sum
+		sourceColumn: GP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fact_Aquai_Sales_Daily = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT  [CustomerCodeNorm]#(lf)      ,[SalesDate]#(lf)      ,[DateKey]#(lf)      ,[Sales]#(lf)      ,[Cost]#(lf)      ,[GP]#(lf)  FROM [Tippers].[dbo].[Fact_AquaI_Sales_Daily]"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

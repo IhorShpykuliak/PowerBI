@@ -66,3 +66,32 @@ relationship b9c24023-0818-0163-3b99-0b56a7c987ff
 	fromColumn: Fact_SalesOrder.EffectiveDueDate
 	toColumn: Dim_Date.Date
 
+relationship 864c99a2-98fa-3e05-585d-92bcf1943078
+	fromColumn: Dim_BranchStock.ProductID
+	toColumn: Dim_Product.ProductID
+
+relationship 63515ed2-9d20-6447-14fb-bc1d150933cb
+	fromColumn: Dim_BranchStock.BranchID
+	toColumn: Dim_Branch.BranchID
+
+relationship 09f71f89-a75f-79d5-c09c-e55ecfc12115
+	fromColumn: Fact_AquaISales2025.customer_code
+	toColumn: Dim_Customer.CustomerCode
+
+relationship 76eb62c3-78f6-4299-eeb7-5e0dc4fcc56e
+	fromColumn: Fact_AquaISales2025.sales_date
+	toColumn: Dim_Date.Date
+
+relationship 4acaa0f3-4336-d1c9-a11f-d7091fb9e3bf
+	fromColumn: Fact_Aquai_Sales_Daily.CustomerCodeNorm
+	toColumn: Dim_Customer.CustomerCodeNorm
+
+relationship dc512fb4-ea57-4582-a8ca-4c035947a9b2
+	fromColumn: Fact_Aquai_Sales_Daily.DateKey
+	toColumn: Dim_Date.Date
+
+relationship AutoDetected_61790dfd-cf02-44bb-b21e-0baa6289a117
+	isActive: false
+	fromColumn: Dim_Customer.SalesRepID
+	toColumn: Dim_SalesRep.SalesRepID
+

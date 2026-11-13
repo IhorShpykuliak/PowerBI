@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
   "themeCollection": {
     "baseTheme": {
       "name": "CY25SU11",
@@ -48,20 +48,24 @@
       }
     ]
   },
+  "publicCustomVisuals": [
+    "PBI_CV_7B952816_A48F_49B4_9E13_15E3BB2C0337",
+    "htmlContent443BE3AD55E043BF878BED274D3A6855"
+  ],
   "resourcePackages": [
     {
       "name": "SharedResources",
       "type": "SharedResources",
       "items": [
         {
-          "name": "CY25SU11",
-          "path": "BaseThemes/CY25SU11.json",
-          "type": "BaseTheme"
-        },
-        {
           "name": "AccessibleDefault",
           "path": "BuiltInThemes/AccessibleDefault.json",
           "type": "CustomTheme"
+        },
+        {
+          "name": "CY25SU11",
+          "path": "BaseThemes/CY25SU11.json",
+          "type": "BaseTheme"
         }
       ]
     }

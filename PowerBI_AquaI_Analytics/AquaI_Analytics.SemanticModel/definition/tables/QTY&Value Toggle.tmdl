@@ -1,0 +1,48 @@
+table 'QTY&Value Toggle'
+	lineageTag: 37a99a6c-141d-44a8-8e18-fee058d3868d
+
+	column 'QTY&Value Toggle'
+		lineageTag: b009ec71-5f33-45ee-9d1d-fdf7dc75a4f6
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'QTY&Value Toggle Order'
+
+		relatedColumnDetails
+			groupByColumn: 'QTY&Value Toggle Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'QTY&Value Toggle Fields'
+		isHidden
+		lineageTag: dc0b6c55-21a8-4603-a31c-9c91c2afba17
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'QTY&Value Toggle Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'QTY&Value Toggle Order'
+		isHidden
+		formatString: 0
+		lineageTag: b9b47e97-f42e-4473-93d1-a263d9d78496
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'QTY&Value Toggle' = calculated
+		mode: import
+		source =
+				{
+				    ("QTY", NAMEOF('_Measures'[Total Qty]), 0),
+				    ("Amount", NAMEOF('_Measures'[Total Amount]), 1)
+				}
+
+	annotation PBI_Id = 06958e773d8f4ea59533dd5237907967
+

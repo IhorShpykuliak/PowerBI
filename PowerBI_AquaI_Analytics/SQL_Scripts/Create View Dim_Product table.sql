@@ -177,7 +177,11 @@ SELECT
     PP.C_D_MOQ AS MOQ,
     p.[C_D_PERCENTAGEGROWTH] AS GrowthFactor,
     pp.C_PACKSIZE AS PackSize,
-    p.[C_D_COREPRODUCT] AS CoreProduct
+    p.[C_D_COREPRODUCT] AS CoreProduct,
+    Cat.C_DESCRIPTION AS CategoryDescription,
+    Cat.C_D_PIDEPARTMENT AS CategoryPIDepartment,
+    Cgroup.C_DESCRIPTION AS CategoryGroupDescription,
+    Colour.C_DESCRIPTION AS ProductColour
 FROM [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCT] p WITH (NOLOCK)
 CROSS JOIN ExchangeRate ex
 LEFT JOIN KitComponentsAgg kc ON kc.ParentProductID = p.C_ID
@@ -194,6 +198,10 @@ LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_IS_COMMODITYCODE] comc WITH (NO
 LEFT JOIN IQAvgCost i ON i.C_PRODUCT = p.C_ID
 LEFT JOIN SalesYTD Ytd ON Ytd.Product_ID = p.C_ID
 LEFT JOIN SupplierPurchasingYTD SPY ON SPY.Product_ID = p.C_ID
+LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].T_PRODUCTCATEGORY Cat WITH (NOLOCK)  ON Cat.C_ID = P.C_CATEGORY
+LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTCATEGORYGROUP] Cgroup WITH (NOLOCK)  ON Cat.C_GROUP = Cgroup.C_ID
+LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTCATEGORYCLASS] Class WITH (NOLOCK)  ON Cgroup.C_CLASS = Class.C_ID
+LEFT JOIN [Intact_IQ_Walter_Tipper_Ltd].[dbo].[T_PRODUCTCOLOUR] Colour WITH (NOLOCK)  ON p.C_COLOUR = Colour.C_ID
 WHERE p.C_TYPE NOT IN (15, 2, 6, 19, 10, 18)
 AND PDG.C_CODE = 'AQUAI'
 GO

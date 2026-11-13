@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "3ea2a01470da513613d4",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "cd05514faea8b586cb58",
   "position": {
-    "x": 1103.7309847878303,
-    "y": 61.489191353082461,
-    "z": 3000,
-    "height": 273.62690152121695,
-    "width": 176.26901521216973
+    "x": 721.97752808988764,
+    "y": 62.322097378277157,
+    "z": 4002,
+    "height": 63.280898876404493,
+    "width": 313.52808988764048
   },
   "visual": {
     "visualType": "slicer",
@@ -31,6 +31,23 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_Product"
+                  }
+                },
+                "Property": "Department"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
       }
     },
     "objects": {
@@ -40,16 +57,31 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Basic'"
+                  "Value": "'Dropdown'"
                 }
               }
             }
           }
         }
       ],
-      "general": [
+      "selection": [
         {
-          "properties": {}
+          "properties": {
+            "singleSelect": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectAllCheckboxEnabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
         }
       ],
       "items": [
@@ -71,27 +103,39 @@
             "textSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "8D"
+                }
+              }
+            },
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
                 }
               }
             }
           }
         }
       ],
-      "selection": [
+      "general": [
         {
           "properties": {
-            "selectAllCheckboxEnabled": {
+            "outlineWeight": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "3D"
                 }
               }
             },
-            "singleSelect": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0.4
+                    }
+                  }
                 }
               }
             }
@@ -104,7 +148,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "7ba1497f0a8004058d0e",
+        "name": "fbbe0e1d91ae77ada80a",
         "field": {
           "Column": {
             "Expression": {

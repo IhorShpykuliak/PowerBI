@@ -8,9 +8,9 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_ProTooling = ["DevMode"]
+annotation PBI_ProTooling = ["DevMode","CopilotTooling"]
 
-annotation PBI_QueryOrder = ["Dim_Product","Fact_PurchaseOrder","Dim_Date","Dim_Supplier","RangeStart","RangeEnd","Fact_SalesOrder","Dim_Customer","Dim_Branch","Dim_SalesRep","Dim_AlternateSupplierDoNotUse","Fact_SalesAnalysis","Dim_OrderType","Fact_AquaISales2025"]
+annotation PBI_QueryOrder = ["Dim_Product","Fact_PurchaseOrder","Dim_Date","Dim_Supplier","RangeStart","RangeEnd","Fact_SalesOrder","Dim_Customer","Dim_Branch","Dim_SalesRep","Dim_AlternateSupplierDoNotUse","Fact_SalesAnalysis","Dim_OrderType","Fact_AquaISales2025","Dim_BranchStock","Fact_Aquai_Sales_Daily"]
 
 ref table Dim_Product
 ref table Fact_PurchaseOrder
@@ -45,6 +45,10 @@ ref table 'Dynamic Current Month +11'
 ref table 'Dynamic Current Month +12'
 ref table Custom_Growth
 ref table Fact_AquaISales2025
+ref table Dim_BranchStock
+ref table Fact_Aquai_Sales_Daily
+ref table 'QTY&Value Toggle'
+ref table 'Product Code Chooser'
 
 ref cultureInfo en-US
 

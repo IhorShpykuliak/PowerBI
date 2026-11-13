@@ -1,0 +1,466 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "a7e611ca16314894c321",
+  "position": {
+    "x": 527.2357086922475,
+    "y": 551.29209083790136,
+    "z": 3000,
+    "height": 168.39467501957714,
+    "width": 752.7642913077525,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_SalesOrder"
+                    }
+                  },
+                  "Property": "OrderNumber"
+                }
+              },
+              "queryRef": "Fact_SalesOrder.OrderNumber",
+              "nativeQueryRef": "OrderNumber"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_SalesOrder"
+                    }
+                  },
+                  "Property": "EffectiveDueDate"
+                }
+              },
+              "queryRef": "Fact_SalesOrder.EffectiveDueDate",
+              "nativeQueryRef": "EffectiveDueDate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Customer"
+                    }
+                  },
+                  "Property": "CustomerCode"
+                }
+              },
+              "queryRef": "Dim_Customer.CustomerCode",
+              "nativeQueryRef": "CustomerCode"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Customer"
+                    }
+                  },
+                  "Property": "CustomerName"
+                }
+              },
+              "queryRef": "Dim_Customer.CustomerName",
+              "nativeQueryRef": "CustomerName"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_SalesOrder"
+                        }
+                      },
+                      "Property": "Quantity Ordered"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_SalesOrder.QuantityOrdered)",
+              "nativeQueryRef": "Sum of Quantity Ordered"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_SalesOrder"
+                        }
+                      },
+                      "Property": "LineNetAmount"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_SalesOrder.LineNetAmount)",
+              "nativeQueryRef": "Sum of LineNetAmount"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_SalesOrder"
+                        }
+                      },
+                      "Property": "Quantity Outstanding"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_SalesOrder.QuantityOutstanding)",
+              "nativeQueryRef": "Sum of Quantity Outstanding"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_OrderType"
+                    }
+                  },
+                  "Property": "IsForecastOrder"
+                }
+              },
+              "queryRef": "Dim_OrderType.IsForecastOrder",
+              "nativeQueryRef": "Forecast Order?",
+              "displayName": "Forecast Order?"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_OrderType"
+                  }
+                },
+                "Property": "IsForecastOrder"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "123.16504660086838D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Customer.CustomerName"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "108.2216015540013D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fact_SalesOrder.QuantityOrdered)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "99.46194706796841D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_SalesOrder.OrderNumber"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "67.4674521222742D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Customer.CustomerCode"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "112.25261180970455D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fact_SalesOrder.QuantityOutstanding)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "64.48003458740105D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_OrderType.IsForecastOrder"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "64.87243292245843D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_SalesOrder.EffectiveDueDate"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "91.59373326887298D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fact_SalesOrder.LineNetAmount)"
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FBD9FF'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "9b552a670a94b6041eeb",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_SalesOrder"
+              }
+            },
+            "Property": "OrderNumber"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ff700d216de3d0088c3c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_SalesOrder"
+              }
+            },
+            "Property": "EffectiveDueDate"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1fb5273ee88599c70b3a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Customer"
+              }
+            },
+            "Property": "CustomerCode"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9cbd828d26ee0886be0c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Customer"
+              }
+            },
+            "Property": "CustomerName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "857b30459063347a3518",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_SalesOrder"
+                  }
+                },
+                "Property": "Quantity Ordered"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "33baca5787c21b55ad05",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_SalesOrder"
+                  }
+                },
+                "Property": "Quantity Outstanding"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "464589afe03c2e10ead3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_OrderType"
+              }
+            },
+            "Property": "IsForecastOrder"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5a0272ed520cb930c982",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_SalesOrder"
+                  }
+                },
+                "Property": "LineNetAmount"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

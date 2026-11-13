@@ -1,11 +1,11 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "bf19d39e662a8e01dd46",
   "position": {
     "x": 0,
-    "y": 69.031078610603288,
+    "y": 184.76343223736967,
     "z": 0,
-    "height": 414.18647166361973,
+    "height": 297.67441860465118,
     "width": 1280
   },
   "visual": {
@@ -56,27 +56,27 @@
                       "Entity": "Dim_Product"
                     }
                   },
-                  "Property": "ProdDescription"
+                  "Property": "AquaIDescription"
                 }
               },
-              "queryRef": "Dim_Product.ProdDescription",
-              "nativeQueryRef": "ProdDescription",
-              "active": true
+              "queryRef": "Dim_Product.AquaIDescription",
+              "nativeQueryRef": "AquaIDescription",
+              "active": false
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Fact_SalesAnalysis"
+                      "Entity": "Dim_Product"
                     }
                   },
-                  "Property": "ProductCode"
+                  "Property": "AquaICode"
                 }
               },
-              "queryRef": "Fact_SalesAnalysis.ProductCode",
-              "nativeQueryRef": "ProductCode",
-              "active": true
+              "queryRef": "Dim_Product.AquaICode",
+              "nativeQueryRef": "AquaICode",
+              "active": false
             }
           ]
         },
@@ -84,22 +84,35 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Fact_SalesAnalysis"
-                        }
-                      },
-                      "Property": "QuantitySold"
+                    "SourceRef": {
+                      "Entity": "_Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Total Qty"
                 }
               },
-              "queryRef": "Sum(Fact_SalesAnalysis.QuantitySold)",
-              "nativeQueryRef": "Sum of QuantitySold"
+              "queryRef": "_Measures.Total Qty",
+              "nativeQueryRef": "QTY",
+              "displayName": "QTY"
+            }
+          ],
+          "fieldParameters": [
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "QTY&Value Toggle"
+                    }
+                  },
+                  "Property": "QTY&Value Toggle"
+                }
+              },
+              "index": 0,
+              "length": 1,
+              "sortDirection": "Descending"
             }
           ]
         }
@@ -108,18 +121,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Fact_SalesAnalysis"
-                      }
-                    },
-                    "Property": "QuantitySold"
+                  "SourceRef": {
+                    "Entity": "_Measures"
                   }
                 },
-                "Function": 0
+                "Property": "Total Qty"
               }
             },
             "direction": "Descending"
@@ -154,7 +162,7 @@
           },
           {
             "queryRefs": [
-              "Dim_Product.ProdDescription"
+              "Dim_Product.AquaIDescription"
             ],
             "isCollapsed": true,
             "identityKeys": [
@@ -165,7 +173,7 @@
                       "Entity": "Dim_Product"
                     }
                   },
-                  "Property": "ProdDescription"
+                  "Property": "AquaIDescription"
                 }
               }
             ],
@@ -173,7 +181,7 @@
           },
           {
             "queryRefs": [
-              "Fact_SalesAnalysis.ProductCode"
+              "Dim_Product.AquaICode"
             ],
             "isCollapsed": true,
             "identityKeys": [
@@ -181,10 +189,10 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Fact_SalesAnalysis"
+                      "Entity": "Dim_Product"
                     }
                   },
-                  "Property": "ProductCode"
+                  "Property": "AquaICode"
                 }
               }
             ],
@@ -193,38 +201,6 @@
         ],
         "root": {
           "children": [
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'SAM INTERIORS BIRMINGHAM'"
-                  }
-                }
-              ],
-              "isToggled": true
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'F W Hipkin Ltd'"
-                  }
-                }
-              ],
-              "isToggled": true,
-              "children": [
-                {
-                  "identityValues": [
-                    {
-                      "Literal": {
-                        "Value": "'1800mm Waterproof Front Bath Panel - White - New Style'"
-                      }
-                    }
-                  ],
-                  "isToggled": true
-                }
-              ]
-            },
             {
               "identityValues": [
                 {
@@ -238,27 +214,49 @@
                   "identityValues": [
                     {
                       "Literal": {
-                        "Value": "'Azzio Warwick Mono Basin Mixer & Click Clack - Matt Black'"
+                        "Value": "'Noveua Preston Mono Basin Mixer & No Waste or Tails - Contract Only'"
                       }
                     }
                   ],
                   "isToggled": true
-                },
+                }
+              ]
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'PORCELANOSA UK LTD'"
+                  }
+                }
+              ],
+              "children": [
                 {
                   "identityValues": [
                     {
                       "Literal": {
-                        "Value": "'Azzio 6mm Square Shower Screen 1400mm x 800mm - Chrome - White Box'"
+                        "Value": "'Hi-Flow Shower Waste 90mm - 40mm Outlet - Chrome'"
                       }
                     }
                   ],
                   "isToggled": true
-                },
+                }
+              ]
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'BELL PLUMBING SUPPLIES LIMITED'"
+                  }
+                }
+              ],
+              "children": [
                 {
                   "identityValues": [
                     {
                       "Literal": {
-                        "Value": "'Contract Item Only'"
+                        "Value": "'MX Shower Riser Kit For Square, Rectangle Shower Trays (Up to 1200mm)'"
                       }
                     }
                   ],
@@ -277,7 +275,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "476.1351322664846D"
+                  "Value": "389.1676828745226D"
                 }
               }
             }
@@ -285,6 +283,37 @@
           "selector": {
             "metadata": "Dim_Customer.CustomerName"
           }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "valuesOnRow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowHeaders": [
+        {
+          "properties": {
+            "expandCollapseButtonsSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
         }
       ]
     },
@@ -302,7 +331,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'QTY Sold'"
+                  "Value": "'Sales'"
                 }
               }
             },
@@ -334,6 +363,19 @@
             }
           }
         }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Default'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -341,7 +383,101 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "db0253703a6c7b7cd1eb",
+        "name": "118e871a0ce76a397edb",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "AquaICode"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "Dim_Product",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "AquaICode"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "''"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "isLockedInViewMode": true,
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "3a53eb7d079896bbaaca",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Date"
+              }
+            },
+            "Property": "YearMonthName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "58d09a985e6020a55700",
         "field": {
           "Column": {
             "Expression": {
@@ -355,40 +491,7 @@
         "type": "Categorical"
       },
       {
-        "name": "a981af0c170826bba8dd",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Fact_SalesAnalysis"
-                  }
-                },
-                "Property": "QuantitySold"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "fd86077e32961462129b",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_SalesAnalysis"
-              }
-            },
-            "Property": "ProductCode"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "80232a8d53d9257c7c5a",
+        "name": "7c723aa4cecd71448c97",
         "field": {
           "Column": {
             "Expression": {
@@ -396,21 +499,7 @@
                 "Entity": "Dim_Product"
               }
             },
-            "Property": "ProdDescription"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "9cbd1886a7b16557b0d3",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Date"
-              }
-            },
-            "Property": "YearMonthName"
+            "Property": "AquaIDescription"
           }
         },
         "type": "Categorical"

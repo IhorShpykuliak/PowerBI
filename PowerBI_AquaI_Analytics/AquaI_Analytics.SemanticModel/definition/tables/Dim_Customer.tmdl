@@ -94,14 +94,40 @@ table Dim_Customer
 
 		annotation SummarizationSetBy = Automatic
 
+	column CustomerCodeNorm
+		dataType: string
+		lineageTag: b777b7f4-22fa-4822-90c6-b414efdce5ab
+		summarizeBy: none
+		sourceColumn: CustomerCodeNorm
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesRepID
+		dataType: int64
+		formatString: 0
+		lineageTag: 859fa21b-5468-431a-b85c-9f593cdfda62
+		summarizeBy: count
+		sourceColumn: SalesRepID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Code & Name'
+		dataType: string
+		lineageTag: 2efd0d10-fbaf-4d92-9e93-cd9dbb4dbd00
+		summarizeBy: none
+		sourceColumn: Customer Code & Name
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Dim_Customer = m
 		mode: import
 		source =
 				let
-				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [CustomerID]#(lf)      ,[CustomerCode]#(lf)      ,[CustomerName]#(lf)      ,[TradingName]#(lf)      ,[WorkflowStatusID]#(lf)      ,[CreditStatusID]#(lf)      ,[CustomerCategoryID]#(lf)      ,[HomeBranchID]#(lf)      ,[Address]#(lf)      ,[Phone]#(lf)      ,[EmailAddress]#(lf)  FROM [Tippers].[dbo].[Dim_Customer]"]),
-				    #"Renamed Columns" = Table.RenameColumns(Source,{{"CustomerCode", "CustomerCode"}})
+				    Source = Sql.Database("SER-SQL-01\SQL", "Tippers", [Query="SELECT [CustomerID]#(lf)      ,[CustomerCode]#(lf)      ,[CustomerName]#(lf)      ,[CustomerCodeNorm]#(lf)      ,[TradingName]#(lf)      ,[WorkflowStatusID]#(lf)      ,[CreditStatusID]#(lf)      ,[CustomerCategoryID]#(lf)      ,[HomeBranchID]#(lf)      ,[Address]#(lf)      ,[Phone]#(lf)      ,[EmailAddress]#(lf)      ,SalesRepID#(lf)  FROM [Tippers].[dbo].[Dim_Customer]"]),
+				    #"Renamed Columns" = Table.RenameColumns(Source,{{"CustomerCode", "CustomerCode"}}),
+				    #"Added Custom" = Table.AddColumn(#"Renamed Columns", "Customer Code & Name", each [CustomerCode]& " - " &[CustomerName])
 				in
-				    #"Renamed Columns"
+				    #"Added Custom"
 
 	annotation PBI_NavigationStepName = Navigation
 

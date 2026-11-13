@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "3763e08f3c83c0e42987",
   "position": {
-    "x": 830.71297989031075,
+    "x": 0,
     "y": 0,
-    "z": 2000,
-    "height": 69.031078610603288,
-    "width": 191.88299817184642
+    "z": 1000,
+    "height": 62.322097378277157,
+    "width": 640.47940074906364
   },
   "visual": {
     "visualType": "slicer",
@@ -22,17 +22,34 @@
                       "Entity": "Dim_Product"
                     }
                   },
-                  "Property": "ProdCode"
+                  "Property": "AquaICode & AquaIDescription"
                 }
               },
-              "queryRef": "Dim_Product.ProdCode",
-              "nativeQueryRef": "ProdCode",
+              "queryRef": "Dim_Product.AquaICode & AquaIDescription",
+              "nativeQueryRef": "AquaICode & AquaIDescription",
               "active": true
             }
           ]
         }
       }
     },
+    "expansionStates": [
+      {
+        "roles": [
+          "Values"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Dim_Product.AquaICode & AquaIDescription"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
     "objects": {
       "data": [
         {
@@ -76,6 +93,13 @@
                   "Value": "8D"
                 }
               }
+            },
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
             }
           }
         }
@@ -103,6 +127,25 @@
                 }
               }
             },
+            "outlineWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            },
             "selfFilter": {
               "filter": {
                 "Version": 2,
@@ -124,12 +167,12 @@
                                 "Source": "d"
                               }
                             },
-                            "Property": "ProdCode"
+                            "Property": "AquaICode & AquaIDescription"
                           }
                         },
                         "Right": {
                           "Literal": {
-                            "Value": "'4355'"
+                            "Value": "'NV300CON'"
                           }
                         }
                       }
@@ -146,5 +189,104 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "73aad61537e3a05108b5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "AquaICode"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "Dim_Product",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "AquaICode"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "''"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isLockedInViewMode": true,
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "a5042bdfc0692e35ce43",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Product"
+              }
+            },
+            "Property": "AquaICode & AquaIDescription"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

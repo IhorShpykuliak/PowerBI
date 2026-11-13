@@ -359,7 +359,7 @@ table _Measures
 			    VAR AvgSales = [Monthly Average Sales for 6 month period]
 			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
 			RETURN
-			    (AvgSales * (1 + Growth))
+			    (AvgSales * (1 + (Growth/100)))
 			```
 		lineageTag: 2acf7e7b-a214-45e4-9d36-e7f0808036cf
 
@@ -370,7 +370,7 @@ table _Measures
 			    VAR PrevMonth = [Forecasted Sales M1]
 			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
 			RETURN
-			    PrevMonth * (1 + Growth)
+			    PrevMonth * (1 + (Growth/100))
 			```
 		lineageTag: 7819d4bf-4cc8-429d-8c47-fd5c16e20665
 
@@ -381,7 +381,7 @@ table _Measures
 			    VAR PrevMonth = [Forecasted Sales M2]
 			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
 			RETURN
-			    PrevMonth * (1 + Growth)
+			    PrevMonth * (1 + (Growth/100))
 			```
 		lineageTag: 503df906-10a5-4cbf-b916-4f32ecfc0512
 
@@ -585,7 +585,7 @@ table _Measures
 			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
 			    VAR CurrentOrders = [Forecast Orders Outstanding QTY (M+0)]
 			RETURN
-			    (AvgSales * Growth) + CurrentOrders
+			    (AvgSales * (Growth/100)) + CurrentOrders
 			```
 		lineageTag: a562d398-d655-417e-9fd6-8bba57b19e6d
 
@@ -952,7 +952,7 @@ table _Measures
 			    VAR PrevMonth = [Forecasted Sales M3]
 			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
 			RETURN
-			    PrevMonth * (1 + Growth)
+			    PrevMonth * (1 + (Growth/100))
 			```
 		lineageTag: 36697e6b-5757-41c6-bb15-9738a216e16e
 
@@ -963,7 +963,7 @@ table _Measures
 			    VAR PrevMonth = [Forecasted Sales M4]
 			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
 			RETURN
-			    PrevMonth * (1 + Growth)
+			    PrevMonth * (1 + (Growth/100))
 			```
 		lineageTag: 02bbf9c1-77a7-46dc-92be-48d9ba3684c1
 
@@ -974,7 +974,7 @@ table _Measures
 			    VAR PrevMonth = [Forecasted Sales M5]
 			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
 			RETURN
-			    PrevMonth * (1 + Growth)
+			    PrevMonth * (1 + (Growth/100))
 			```
 		lineageTag: df86779d-e3dd-41f9-aa56-68aeb2361a76
 
@@ -985,7 +985,7 @@ table _Measures
 			    VAR PrevMonth = [Forecasted Sales M6]
 			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
 			RETURN
-			    PrevMonth * (1 + Growth)
+			    PrevMonth * (1 + (Growth/100))
 			```
 		lineageTag: 74b380ab-e237-45fa-8dc0-b9cf99ea6549
 
@@ -996,7 +996,7 @@ table _Measures
 			    VAR PrevMonth = [Forecasted Sales M7]
 			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
 			RETURN
-			    PrevMonth * (1 + Growth)
+			    PrevMonth * (1 + (Growth/100))
 			```
 		lineageTag: 533b9b7a-5f9e-4c35-adc0-599786aad91f
 
@@ -1007,7 +1007,7 @@ table _Measures
 			    VAR PrevMonth = [Forecasted Sales M8]
 			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
 			RETURN
-			    PrevMonth * (1 + Growth)
+			    PrevMonth * (1 + (Growth/100))
 			```
 		lineageTag: 0a8e0cde-8c8b-4b5b-a65b-37c889f789f3
 
@@ -1018,7 +1018,7 @@ table _Measures
 			    VAR PrevMonth = [Forecasted Sales M9]
 			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
 			RETURN
-			    PrevMonth * (1 + Growth)
+			    PrevMonth * (1 + (Growth/100))
 			```
 		lineageTag: a919bcee-166e-4905-ba2e-641f7000a891
 
@@ -1029,7 +1029,7 @@ table _Measures
 			    VAR PrevMonth = [Forecasted Sales M10]
 			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
 			RETURN
-			    PrevMonth * (1 + Growth)
+			    PrevMonth * (1 + (Growth/100))
 			```
 		lineageTag: 06e53870-7bca-49b3-a203-f0c7231621df
 
@@ -1040,7 +1040,7 @@ table _Measures
 			    VAR PrevMonth = [Forecasted Sales M11]
 			    VAR Growth = SELECTEDVALUE('Dim_Product'[GrowthFactor], 1)
 			RETURN
-			    PrevMonth * (1 + Growth)
+			    PrevMonth * (1 + (Growth/100))
 			```
 		lineageTag: 5424e5f1-f19f-41b0-9bca-4ce1575ce17d
 
@@ -1170,6 +1170,236 @@ table _Measures
 			)
 			```
 		lineageTag: cce4a589-60c1-4191-86eb-2983565013df
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SalesAI = SUM ( Fact_Aquai_Sales_Daily[Sales] )
+		lineageTag: 2ec4d36d-d99d-4ad2-b92b-8a50988bf256
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure CostAI = SUM ( Fact_Aquai_Sales_Daily[Cost] )
+		lineageTag: 40fc43c1-a8c4-4602-9bac-ec5af1cd3956
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure GP_AI = SUM ( Fact_Aquai_Sales_Daily[GP] )
+		lineageTag: d49acd19-a2e8-4c46-b88a-bf26e7cdfb6e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Measure
+		lineageTag: 72d07a54-e268-4288-97b4-10eb0b646080
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'Is Full Month' = ```
+			
+			VAR t = TODAY()
+			RETURN IF ( DAY ( t ) = 1 || ( DAY ( t ) = 2 && WEEKDAY ( t, 2 ) = 1 ), 1, 0 )
+			
+			```
+		formatString: 0
+		lineageTag: acd0e630-afcf-48de-b0df-3dbf1968b0ea
+
+	measure 'CY End' = ```
+			IF ( [Is Full Month] = 1, EOMONTH ( TODAY (), -1 ), TODAY () - 1 )
+			
+			```
+		formatString: General Date
+		lineageTag: fe6bc414-6475-4629-915b-fa139aefe141
+
+	measure 'CY Start' = ```
+			DATE ( YEAR ( [CY End] ), MONTH ( [CY End] ), 1 )
+			
+			```
+		formatString: General Date
+		lineageTag: 210d5611-1af4-418c-9146-e7cd7fdc53a3
+
+	measure 'LY Start' = ```
+			EDATE ( [CY Start], -12 )
+			
+			```
+		formatString: General Date
+		lineageTag: c5794e0d-8b3a-44ba-b03a-1fd63e4e82dc
+
+	measure 'LY End' = ```
+			IF ( [Is Full Month] = 1, EOMONTH ( [LY Start], 0 ), EDATE ( [CY End], -12 ) )
+			
+			```
+		formatString: General Date
+		lineageTag: 838ed550-fe6a-49ce-bd13-d23a8ccf6564
+
+	measure 'CY Year Start' = ```
+			DATE ( YEAR ( [CY End] ), 1, 1 )
+			
+			```
+		formatString: General Date
+		lineageTag: 355f583e-a07c-4e29-a4e7-37463ad9571d
+
+	measure 'LY Year Start' = ```
+			EDATE ( [CY Year Start], -12 )
+			
+			```
+		formatString: General Date
+		lineageTag: 153d9705-0c64-43f7-81d2-388c4be0d68d
+
+	measure 'LY YTD End' = EDATE ( [CY End], -12 )
+		formatString: General Date
+		lineageTag: 2df634ae-64f9-4c0c-81b0-1a0f43f4b443
+
+	measure 'Sales CY MTD' = ```
+			
+			CALCULATE ( [SalesAI], FILTER ( ALL ( Dim_Date[Date] ), Dim_Date[Date] >= [CY Start] && Dim_Date[Date] <= [CY End] ) )
+			
+			
+			```
+		lineageTag: d4221065-b04e-40b4-9b3c-9cfa98c9e842
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales LY MTD' = ```
+			
+			CALCULATE ( [SalesAI], FILTER ( ALL ( Dim_Date[Date] ), Dim_Date[Date] >= [LY Start] && Dim_Date[Date] <= [LY End] ) )
+			
+			```
+		lineageTag: bbccc002-0d0f-4900-9673-abf0f5f8b017
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales CY YTD' = ```
+			
+			CALCULATE ( [SalesAI], FILTER ( ALL ( Dim_Date[Date] ), Dim_Date[Date] >= [CY Year Start] && Dim_Date[Date] <= [CY End] ) )
+			
+			```
+		lineageTag: 2b176cc7-0719-49da-ac87-f0095ec66226
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'GP CY MTD' = ```
+			
+			CALCULATE ( [GP_AI], FILTER ( ALL ( Dim_Date[Date] ), Dim_Date[Date] >= [CY Start] && Dim_Date[Date] <= [CY End] ) )
+			
+			
+			```
+		lineageTag: 9e4e11e5-5f3c-4491-89b7-c4c803763dab
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'GP LY MTD' = ```
+			
+			CALCULATE ( [GP_AI], FILTER ( ALL ( Dim_Date[Date] ), Dim_Date[Date] >= [LY Start] && Dim_Date[Date] <= [LY End] ) )
+			
+			
+			```
+		lineageTag: 1bc3a074-6530-48b7-99c7-299c2c709fc2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'GP CY YTD' =
+			
+			CALCULATE ( [GP_AI], FILTER ( ALL ( Dim_Date[Date] ), Dim_Date[Date] >= [CY Year Start] && Dim_Date[Date] <= [CY End] ) )
+		lineageTag: b3a6fa03-6df0-4b49-a9fe-d8dcfdc98cdd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'HTML Table Sticky' = ```
+			
+			VAR _HeaderCode = "
+			<style>
+			    table {
+			        border-collapse: collapse;
+			        width: 100%;
+			        font-family: Arial, sans-serif;
+			        font-size: 12px;
+			    }
+			    th, td {
+			        padding: 8px 12px;
+			        border: 1px solid #ddd;
+			        text-align: left;
+			        white-space: nowrap;
+			    }
+			    th {
+			        background-color: #f2f2f2;
+			        position: sticky;
+			        top: 0;
+			        z-index: 2;
+			    }
+			    td:nth-child(1), th:nth-child(1) {
+			        position: sticky;
+			        left: 0;
+			        background-color: #ffffff;
+			        z-index: 1;
+			    }
+			    td:nth-child(2), th:nth-child(2) {
+			        position: sticky;
+			        left: 100px;
+			        background-color: #ffffff;
+			        z-index: 1;
+			    }
+			</style>
+			<table>
+			    <thead>
+			        <tr>
+			            <th>Product Code</th>
+			            <th>Selected Metric Value</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			"
+			
+			VAR _Rows = 
+			    CONCATENATEX(
+			        VALUES('Dim_Product'[ProdCode]),
+			        VAR _SelectedMetric = SELECTEDVALUE('Dynamic Product Information'[Dynamic Product Info])
+			        VAR _Val = 
+			            SWITCH(
+			                _SelectedMetric,
+			                "SupplierCode", COALESCE(SELECTEDVALUE('Dim_Product'[SupplierCode]), ""),
+			                "SupplierName", COALESCE(SELECTEDVALUE('Dim_Product'[SupplierName]), ""),
+			                "Stocking Status", COALESCE(SELECTEDVALUE('Dim_Product'[StockingStatus]), ""),
+			                "USDListPrice", FORMAT(SELECTEDVALUE('Dim_Product'[USDListPrice]), "General Number"),
+			                "List Price Actual", FORMAT(SELECTEDVALUE('Dim_Product'[ListPriceActual]), "General Number"),
+			                "Calculated Landed Cost", FORMAT(SELECTEDVALUE('Dim_Product'[CalculatedLandedCost]), "General Number"),
+			                "MOQ", FORMAT(SELECTEDVALUE('Dim_Product'[MOQ]), "General Number"),
+			                "Pack Size", FORMAT(SELECTEDVALUE('Dim_Product'[PackSize]), "General Number"),
+			                "CBM", FORMAT(SELECTEDVALUE('Dim_Product'[CBM]), "General Number"),
+			                "Growth Factor", FORMAT(SELECTEDVALUE('Dim_Product'[GrowthFactor]), "General Number"),
+			                "Required Months Stock", FORMAT([Required Months Stock], "General Number"),
+			                "Ideal Stocking Level", FORMAT([Ideal Stocking Level], "General Number"),
+			                "Current Space Requirements CBM", FORMAT([Current Space Requirements CBM], "General Number"),
+			                "Ideal Space Requirements", FORMAT([Ideal Space Requirements], "General Number"),
+			                "Monthly AVG Sales QTY (6 months)", FORMAT([Monthly Average Sales for 6 month period], "General Number"),
+			                "Outstanding PO", FORMAT(SELECTEDVALUE('Dim_Product'[OutstandingPO]), "General Number"),
+			                "Stock Level", FORMAT(SELECTEDVALUE('Dim_Product'[StockLevel]), "General Number"),
+			                "-"
+			            )
+			        RETURN
+			        "<tr>
+			            <td>" & 'Dim_Product'[ProdCode] & "</td>
+			            <td>" & _Val & "</td>
+			         </tr>",
+			        ""
+			    )
+			
+			VAR _FooterCode = "</tbody></table>"
+			
+			RETURN
+			IF(
+			    ISBLANK(_Rows),
+			    "<div style='padding: 10px; font-family: Arial;'>No data for selected filters</div>",
+			    _HeaderCode & _Rows & _FooterCode
+			)
+			```
+		lineageTag: 8810d653-c549-4cdb-b6b9-16fea8ae48ab
+
+	measure 'Total Qty' = SUM('Fact_SalesAnalysis'[QuantitySold])
+		lineageTag: a53fdd80-6ca8-4e73-a337-cf6e97254e20
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Amount' = SUM('Fact_SalesAnalysis'[NetSalesAmount])
+		lineageTag: 089a9b06-e31a-47e7-afe6-7524c2d38207
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 

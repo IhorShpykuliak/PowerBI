@@ -19,12 +19,14 @@ SELECT
     LTRIM(RTRIM(C.C_CODE))                     AS CustomerCode,
     LTRIM(RTRIM(C.C_NAME))                     AS CustomerName,
     LTRIM(RTRIM(C.C_TRADINGNAME))              AS TradingName,
+    UPPER(LTRIM(RTRIM(C.C_CODE)))              AS CustomerCodeNorm,
     
     C.C_WORKFLOWSTATUS                         AS WorkflowStatusID,
     C.C_CREDITSTATUS                           AS CreditStatusID,
     C.C_CATEGORY                               AS CustomerCategoryID,
     C.C_HOMEBRANCH                             AS HomeBranchID,
-    
+    C.C_SalesRep                               AS SalesRepID,
+
     LTRIM(RTRIM(C.C_ADDRESS))                  AS Address,
     LTRIM(RTRIM(C.C_PHONE))                    AS Phone,
     LTRIM(RTRIM(C.C_EMAILADDRESS))             AS EmailAddress

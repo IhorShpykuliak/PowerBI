@@ -14,7 +14,7 @@ table Dim_Date
 	column Date
 		dataType: dateTime
 		isKey
-		formatString: General Date
+		formatString: Short Date
 		lineageTag: e4bbe431-630c-475c-b5db-06cd8bb5a754
 		summarizeBy: none
 		sourceColumn: Date

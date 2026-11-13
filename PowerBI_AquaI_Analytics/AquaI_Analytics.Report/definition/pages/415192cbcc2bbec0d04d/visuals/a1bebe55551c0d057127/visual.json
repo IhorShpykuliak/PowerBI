@@ -1,0 +1,363 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "a1bebe55551c0d057127",
+  "position": {
+    "x": 0,
+    "y": 551.29209083790136,
+    "z": 2000,
+    "height": 168.39467501957714,
+    "width": 516.20986687548941,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_PurchaseOrder"
+                    }
+                  },
+                  "Property": "PO Number"
+                }
+              },
+              "queryRef": "Fact_PurchaseOrder.PONumber",
+              "nativeQueryRef": "PO Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_PurchaseOrder"
+                    }
+                  },
+                  "Property": "EffectiveDueDate"
+                }
+              },
+              "queryRef": "Fact_PurchaseOrder.EffectiveDueDate",
+              "nativeQueryRef": "EffectiveDueDate"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_PurchaseOrder"
+                        }
+                      },
+                      "Property": "Qty Ordered"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_PurchaseOrder.QtyOrdered)",
+              "nativeQueryRef": "Sum of Qty Ordered"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_PurchaseOrder"
+                        }
+                      },
+                      "Property": "Qty Outstanding"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_PurchaseOrder.QtyOutstanding)",
+              "nativeQueryRef": "Sum of Qty Outstanding"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_PurchaseOrder"
+                        }
+                      },
+                      "Property": "Qty Written Off"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_PurchaseOrder.QtyWrittenOff)",
+              "nativeQueryRef": "Sum of Qty Written Off"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_PurchaseOrder"
+                        }
+                      },
+                      "Property": "Qty Supplied"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_PurchaseOrder.Qty Supplied)",
+              "nativeQueryRef": "Sum of Qty Supplied"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Fact_PurchaseOrder"
+                      }
+                    },
+                    "Property": "Qty Outstanding"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "90.2982477329229D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_PurchaseOrder.PONumber"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "77.94527473028893D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fact_PurchaseOrder.QtyOrdered)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "84.33090803680378D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fact_PurchaseOrder.QtyOutstanding)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "80.31031648200212D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fact_PurchaseOrder.QtyWrittenOff)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "79.25408962566905D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fact_PurchaseOrder.Qty Supplied)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "83.9332959297218D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_PurchaseOrder.EffectiveDueDate"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#DAEDFF'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "fd8bf83080105303d476",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_PurchaseOrder"
+              }
+            },
+            "Property": "PO Number"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "4991746e952bb554b2ca",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_PurchaseOrder"
+              }
+            },
+            "Property": "EffectiveDueDate"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "032421867c98702c8100",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_PurchaseOrder"
+                  }
+                },
+                "Property": "Qty Ordered"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0d1c9362bc85b500a526",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_PurchaseOrder"
+                  }
+                },
+                "Property": "Qty Outstanding"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2a8e5297018790960d71",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_PurchaseOrder"
+                  }
+                },
+                "Property": "Qty Written Off"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5976238601d776867252",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_PurchaseOrder"
+                  }
+                },
+                "Property": "Qty Supplied"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

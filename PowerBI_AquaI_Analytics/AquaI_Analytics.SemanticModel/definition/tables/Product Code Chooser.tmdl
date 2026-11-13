@@ -1,0 +1,49 @@
+table 'Product Code Chooser'
+	lineageTag: e39ded37-eedc-444b-9fb0-183cbc1207e2
+
+	column 'Product Code Chooser'
+		lineageTag: 2e7a92c5-1e15-4531-9384-7d99c3716333
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'AquaI & Tippers product Code Order'
+
+		relatedColumnDetails
+			groupByColumn: 'AquaI & Tippers product Code Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AquaI & Tippers product Code Fields'
+		isHidden
+		lineageTag: 78289a56-39c3-4c6a-85f0-2103d0c4300c
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'AquaI & Tippers product Code Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AquaI & Tippers product Code Order'
+		isHidden
+		formatString: 0
+		lineageTag: 87e84f0f-ca1e-4a7c-a0c7-fade53162e57
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Product Code Chooser' = calculated
+		mode: import
+		source =
+				{
+				    ("AquaI", NAMEOF('Dim_Product'[AquaICode & AquaIDescription]), 0),
+				    ("Tippers", NAMEOF('Dim_Product'[TippersCode&Descr]), 1),
+				    ("Wyndam", NAMEOF('Dim_Product'[WyndamCode&Descr]), 2)
+				}
+
+	annotation PBI_Id = 367ca7f507ed4575a783c9f96359fe55
+
